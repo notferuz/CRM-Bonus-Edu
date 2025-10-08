@@ -1,0 +1,435 @@
+{% extends "base.html" %}
+
+{% block title %}Преподаватели - Bonus Education CRM{% endblock %}
+
+{% block page_title %}
+    <i class="fas fa-chalkboard-teacher me-3" style="color: #5580f1;"></i>
+    Преподаватели
+{% endblock %}
+
+{% block page_subtitle %}Управление преподавателями и их специализациями{% endblock %}
+
+{% block content %}
+
+<!-- Кнопки действий -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex gap-2">
+                <button class="btn btn-outline-success" onclick="exportToCSV('teachers')">
+                    <i class="fas fa-file-csv me-2"></i>Экспорт преподавателей
+            </button>
+            </div>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTeacherModal">
+                <i class="fas fa-plus me-2"></i>Добавить преподавателя
+            </button>
+        </div>
+            </div>
+        </div>
+
+        <!-- Список преподавателей -->
+        <div class="row">
+            {% for teacher in teachers %}
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 fade-in-up teacher-card" style="animation-delay: {{ loop.index0 * 0.1 }}s;">
+            <div class="card-header border-0 py-3">
+                <div class="d-flex align-items-center">
+                    <div class="teacher-avatar me-3">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                        <h5 class="mb-0 text-white">{{ teacher.name }}</h5>
+                        <small class="text-white-50">{{ teacher.specialization }}</small>
+                    </div>
+                </div>
+                    </div>
+                    
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <div class="teacher-info">
+                            <i class="fas fa-id-badge text-muted me-2"></i>
+                            <span class="text-muted">Telegram / Телефон:</span>
+                            <strong>{{ teacher.telegram_contact or teacher.phone or 'Не указан' }}</strong>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="teacher-info">
+                            <i class="fas fa-graduation-cap text-muted me-2"></i>
+                            <span class="text-muted">Сертификат:</span>
+                            <strong>{{ teacher.certificate_level or 'Не указан' }}</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <div class="teacher-info">
+                            <i class="fas fa-clock text-muted me-2"></i>
+                            <span class="text-muted">Опыт:</span>
+                            <strong>
+                                {% if teacher.experience_years_display is not none %}
+                                    {{ teacher.experience_years_display }} лет
+                                {% elif teacher.experience %}
+                                    {{ teacher.experience }}
+                                {% else %}
+                                    Не указан
+                                {% endif %}
+                            </strong>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="teacher-info">
+                            <i class="fas fa-book-open text-muted me-2"></i>
+                            <span class="text-muted">Кто преподаватель, чему учит:</span>
+                            <strong>{{ teacher.specialization or 'Не указано' }}</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="teacher-info">
+                        <i class="fas fa-business-time text-muted me-2"></i>
+                        <span class="text-muted">Время занятий:</span>
+                        <strong>
+                            {% if teacher.work_time_start and teacher.work_time_end %}
+                                {{ teacher.work_time_start }} - {{ teacher.work_time_end }}
+                            {% else %}
+                                Не указано
+                            {% endif %}
+                        </strong>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <h6 class="mb-2">
+                        <i class="fas fa-language me-2"></i>Языки:
+                    </h6>
+                    <div class="d-flex flex-wrap gap-1">
+                        {% if teacher.languages %}
+                            {% for language in teacher.languages %}
+                            <span class="badge bg-light text-dark">
+                                <i class="fas fa-globe me-1"></i>
+                                {{ language }}
+                            </span>
+                            {% endfor %}
+                        {% else %}
+                            <span class="text-muted">Не указаны</span>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <h6 class="mb-1"><i class="fas fa-thumbs-up me-2 text-success"></i>Плюсы</h6>
+                    <p class="mb-2 small text-muted">{{ teacher.advantages or '—' }}</p>
+                </div>
+                <div class="mb-3">
+                    <h6 class="mb-1"><i class="fas fa-thumbs-down me-2 text-danger"></i>Минусы</h6>
+                    <p class="mb-0 small text-muted">{{ teacher.disadvantages or '—' }}</p>
+                </div>
+            </div>
+            
+            <div class="card-footer bg-transparent border-0">
+                <div class="d-flex gap-2 align-items-center">
+                    <button class="btn btn-outline-primary btn-sm flex-fill" onclick="viewTeacher({{ teacher.id }})">
+                        <i class="fas fa-eye me-1"></i>Подробнее
+                    </button>
+                    <button class="btn btn-outline-success btn-sm flex-fill" onclick="editTeacher({{ teacher.id }})">
+                        <i class="fas fa-edit me-1"></i>Редактировать
+                    </button>
+                    <form action="/delete_teacher/{{ teacher.id }}" method="post" class="ms-auto" onsubmit="return confirm('Удалить преподавателя?');">
+                        <button class="btn btn-outline-danger btn-sm" type="submit" title="Удалить">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+        </div>
+
+        {% if not teachers %}
+        <div class="row">
+            <div class="col-12">
+                <div class="empty-state">
+                    <i class="fas fa-chalkboard-teacher"></i>
+            <h5>Пока нет преподавателей</h5>
+                    <p>Добавьте первого преподавателя</p>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTeacherModal">
+                <i class="fas fa-plus me-2"></i>
+                        Добавить преподавателя
+                    </button>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+
+    <!-- Модальное окно добавления преподавателя -->
+    <div class="modal fade" id="addTeacherModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="border-radius: 16px;">
+            <div class="modal-header border-0 py-3">
+                <h5 class="modal-title" style="color: #5580f1;">
+                    <i class="fas fa-user-plus me-3"></i>
+                        Добавить преподавателя
+                    </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+            <form action="/add_teacher" method="post">
+                <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                            <label class="form-label">ФИО *</label>
+                            <input type="text" class="form-control" name="name" required placeholder="Иванов Иван Иванович">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                            <label class="form-label">Номер/Ник в Telegram *</label>
+                            <input type="text" class="form-control" name="telegram_contact" required placeholder="@username или +998901234567">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Уровень сертификата *</label>
+                            <select class="form-control" name="certificate_level" required>
+                                <option value="">Выберите уровень</option>
+                                <option value="A1">A1 - Начальный</option>
+                                <option value="A2">A2 - Элементарный</option>
+                                <option value="B1">B1 - Средний</option>
+                                <option value="B2">B2 - Выше среднего</option>
+                                <option value="C1">C1 - Продвинутый</option>
+                                <option value="C2">C2 - Владение</option>
+                                <option value="Native">Native - Носитель языка</option>
+                            </select>
+                            </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Опыт работы (лет) *</label>
+                            <input type="number" class="form-control" name="experience_years" min="0" max="50" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Кто учитель, чему учит *</label>
+                        <textarea class="form-control" name="specialization" rows="2" required placeholder="Например: Преподаватель английского языка для начинающих и среднего уровня"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Время проведения занятий</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="form-label">С</label>
+                                <input type="time" class="form-control" name="work_time_start">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">До</label>
+                                <input type="time" class="form-control" name="work_time_end">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Плюсы (достоинства)</label>
+                            <textarea class="form-control" name="advantages" rows="3" placeholder="Хорошо объясняет, терпеливый, опытный..."></textarea>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Минусы (замечания)</label>
+                            <textarea class="form-control" name="disadvantages" rows="3" placeholder="Иногда опаздывает, строгий..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-2"></i>Сохранить
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Стили для карточек преподавателей */
+    .teacher-card {
+        border-radius: 16px;
+        border: 1px solid #e5e7eb;
+        transition: all 0.3s ease;
+    }
+
+    .teacher-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(85, 128, 241, 0.15);
+        border-color: #5580f1;
+    }
+
+    .teacher-card .card-header {
+        background: linear-gradient(135deg, #5580f1 0%, #4a6fd8 100%);
+        border-radius: 16px 16px 0 0;
+    }
+
+    .teacher-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+    }
+
+    .teacher-info {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+    }
+
+    /* Статистические карточки */
+    .stat-card {
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        border: 1px solid #e5e7eb;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(85, 128, 241, 0.15);
+        border-color: #5580f1;
+    }
+
+    .stat-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #5580f1 0%, #4a6fd8 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #5580f1;
+        line-height: 1;
+        margin-bottom: 4px;
+    }
+
+    .stat-label {
+        color: #6b7280;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    /* Анимации */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .fade-in-up {
+        animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* Empty state */
+    .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+        color: #6b7280;
+    }
+
+    .empty-state i {
+        font-size: 4rem;
+        color: #d1d5db;
+        margin-bottom: 20px;
+    }
+
+    .empty-state h5 {
+        color: #374151;
+        margin-bottom: 10px;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 768px) {
+        .teacher-card .card-body {
+            padding: 16px;
+        }
+        
+        .stat-card {
+            padding: 16px;
+        }
+        
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+
+<script>
+    // Функция просмотра преподавателя
+    function viewTeacher(teacherId) {
+        window.location.href = `/teachers/${teacherId}`;
+    }
+
+    // Функция редактирования преподавателя (пока открываем страницу деталей)
+    function editTeacher(teacherId) {
+        window.location.href = `/teachers/${teacherId}`;
+    }
+
+    // Функция экспорта в CSV
+    function exportToCSV(type) {
+        showNotification('Подготовка файла...', 'info');
+        
+        const link = document.createElement('a');
+        link.href = `/export/${type}`;
+        link.download = `${type}_export.csv`;
+        link.click();
+        
+        setTimeout(() => {
+            showNotification('Файл успешно скачан!', 'success');
+        }, 1000);
+    }
+
+    // Функция уведомлений
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+        notification.className = `alert alert-${type === 'success' ? 'success' : type === 'error' ? 'danger' : 'info'} position-fixed`;
+        notification.style.cssText = `
+            top: 20px; 
+            right: 20px; 
+            z-index: 9999; 
+            min-width: 200px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: none;
+            padding: 12px 16px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        `;
+        
+        notification.innerHTML = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+    </script>
+
+{% endblock %}

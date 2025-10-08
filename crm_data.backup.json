@@ -1,0 +1,1845 @@
+{
+  "users": [
+    {
+      "telegram_id": 670031187,
+      "username": "feruuuz12",
+      "first_name": "Feruz",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram",
+      "status": "call_success",
+      "first_contact_date": "2025-10-03",
+      "first_call_response": null,
+      "first_call_date": null,
+      "second_contact_response": null,
+      "second_contact_date": null,
+      "decision": null,
+      "decision_date": null,
+      "result": null,
+      "is_active": true,
+      "id": 6,
+      "created_at": "2025-10-03T11:18:47.473469",
+      "last_activity": "2025-10-08T13:01:44.407504",
+      "updated_at": "2025-10-03T17:20:58.557103"
+    },
+    {
+      "telegram_id": 8154625975,
+      "username": "sardorbek_ceo",
+      "first_name": "S",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram",
+      "status": "new",
+      "first_contact_date": "2025-10-03",
+      "first_call_response": null,
+      "first_call_date": null,
+      "second_contact_response": null,
+      "second_contact_date": null,
+      "decision": null,
+      "decision_date": null,
+      "result": null,
+      "is_active": true,
+      "id": 7,
+      "created_at": "2025-10-03T12:00:01.380770",
+      "last_activity": "2025-10-03T12:15:18.944557",
+      "updated_at": "2025-10-03T17:20:49.391330"
+    },
+    {
+      "telegram_id": 8074264447,
+      "username": "ya_yest_grut",
+      "first_name": "LibertyWalk",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram",
+      "status": "callback",
+      "first_contact_date": "2025-10-03",
+      "first_call_response": null,
+      "first_call_date": null,
+      "second_contact_response": null,
+      "second_contact_date": null,
+      "decision": null,
+      "decision_date": null,
+      "result": null,
+      "is_active": true,
+      "id": 8,
+      "created_at": "2025-10-03T17:09:32.064492",
+      "last_activity": "2025-10-03T17:11:10.471235",
+      "preferred_language": "Английский",
+      "updated_at": "2025-10-03T17:20:52.560971"
+    },
+    {
+      "telegram_id": 5220049342,
+      "username": null,
+      "first_name": "Muhammaddiyor",
+      "last_name": "Zaitov",
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 9,
+      "created_at": "2025-10-08T12:52:20.983834",
+      "last_activity": "2025-10-08T12:55:51.615759",
+      "preferred_language": "Турецкий"
+    },
+    {
+      "telegram_id": 5543887346,
+      "username": null,
+      "first_name": "Elizaveta Artemova",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 10,
+      "created_at": "2025-10-08T12:53:01.723966",
+      "last_activity": "2025-10-08T12:53:01.723968"
+    },
+    {
+      "telegram_id": 2030490232,
+      "username": null,
+      "first_name": "Рахимова Мадина",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 11,
+      "created_at": "2025-10-08T12:53:02.810629",
+      "last_activity": "2025-10-08T12:53:02.810634"
+    },
+    {
+      "telegram_id": 824553295,
+      "username": null,
+      "first_name": "Diliy️",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 12,
+      "created_at": "2025-10-08T12:53:02.815533",
+      "last_activity": "2025-10-08T12:53:02.815535"
+    },
+    {
+      "telegram_id": 6824316008,
+      "username": null,
+      "first_name": "China Yiwu International Trade Market",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 13,
+      "created_at": "2025-10-08T12:55:49.309627",
+      "last_activity": "2025-10-08T12:55:49.309632"
+    },
+    {
+      "telegram_id": 5196151499,
+      "username": "shahriyor_ash",
+      "first_name": "Shaxriyor",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 14,
+      "created_at": "2025-10-08T12:55:49.612738",
+      "last_activity": "2025-10-08T12:55:51.774037"
+    },
+    {
+      "telegram_id": 6933146720,
+      "username": null,
+      "first_name": "🫵",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 15,
+      "created_at": "2025-10-08T12:55:51.607536",
+      "last_activity": "2025-10-08T12:55:51.607540"
+    },
+    {
+      "telegram_id": 7563572486,
+      "username": null,
+      "first_name": "Махмуд",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 16,
+      "created_at": "2025-10-08T12:55:51.779803",
+      "last_activity": "2025-10-08T12:57:05.985037"
+    },
+    {
+      "telegram_id": 8344968957,
+      "username": null,
+      "first_name": "Farxod",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 17,
+      "created_at": "2025-10-08T12:55:51.783968",
+      "last_activity": "2025-10-08T12:55:51.783970"
+    },
+    {
+      "telegram_id": 6327566526,
+      "username": null,
+      "first_name": "𝙰𝚕𝚖𝚞𝚛𝚘𝚍𝚘𝚟",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 18,
+      "created_at": "2025-10-08T12:55:51.787320",
+      "last_activity": "2025-10-08T12:55:51.787322"
+    },
+    {
+      "telegram_id": 6641248729,
+      "username": null,
+      "first_name": "Sayan🐺",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 19,
+      "created_at": "2025-10-08T12:56:04.733534",
+      "last_activity": "2025-10-08T12:56:04.733537"
+    },
+    {
+      "telegram_id": 6393250665,
+      "username": null,
+      "first_name": "🫶🫶🫶🫶🫶🫶🫶🫶🫰🫰🫰",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 20,
+      "created_at": "2025-10-08T12:57:05.063865",
+      "last_activity": "2025-10-08T12:57:05.063869"
+    },
+    {
+      "telegram_id": 7044792865,
+      "username": null,
+      "first_name": "Hazar🖤",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 21,
+      "created_at": "2025-10-08T12:57:05.957984",
+      "last_activity": "2025-10-08T12:57:05.957987"
+    },
+    {
+      "telegram_id": 6593500548,
+      "username": null,
+      "first_name": "МБМ",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 22,
+      "created_at": "2025-10-08T12:57:05.965217",
+      "last_activity": "2025-10-08T12:57:10.815537"
+    },
+    {
+      "telegram_id": 8414517500,
+      "username": null,
+      "first_name": "HR",
+      "last_name": "FAB",
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 23,
+      "created_at": "2025-10-08T12:57:05.975982",
+      "last_activity": "2025-10-08T12:57:08.372393"
+    },
+    {
+      "telegram_id": 469230638,
+      "username": null,
+      "first_name": "Екатерина",
+      "last_name": "Новикова",
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 24,
+      "created_at": "2025-10-08T12:57:08.363984",
+      "last_activity": "2025-10-08T12:57:08.363987"
+    },
+    {
+      "telegram_id": 7681298357,
+      "username": null,
+      "first_name": "❣️𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫𒐫 𒐫𒐫𒐫𒐫𒐫𒐫𒐫",
+      "last_name": "Sardor",
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 25,
+      "created_at": "2025-10-08T12:57:09.739702",
+      "last_activity": "2025-10-08T13:02:37.101196"
+    },
+    {
+      "telegram_id": 2051662224,
+      "username": null,
+      "first_name": "Anvarofff_777",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 26,
+      "created_at": "2025-10-08T12:57:10.809531",
+      "last_activity": "2025-10-08T12:57:10.809534"
+    },
+    {
+      "telegram_id": 7648672886,
+      "username": null,
+      "first_name": ".",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 27,
+      "created_at": "2025-10-08T12:58:04.628244",
+      "last_activity": "2025-10-08T12:58:04.628247"
+    },
+    {
+      "telegram_id": 7788970489,
+      "username": null,
+      "first_name": "Шахноза",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 28,
+      "created_at": "2025-10-08T12:58:04.633346",
+      "last_activity": "2025-10-08T12:58:04.633349"
+    },
+    {
+      "telegram_id": 5035069556,
+      "username": null,
+      "first_name": "Nazira",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 29,
+      "created_at": "2025-10-08T12:58:04.638406",
+      "last_activity": "2025-10-08T12:58:04.638409"
+    },
+    {
+      "telegram_id": 6738509619,
+      "username": null,
+      "first_name": "Зухра",
+      "last_name": "Джурабаева ABN-MB",
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 30,
+      "created_at": "2025-10-08T13:01:45.009024",
+      "last_activity": "2025-10-08T13:01:45.009029"
+    },
+    {
+      "telegram_id": 5782196732,
+      "username": null,
+      "first_name": "Nodirbek",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 31,
+      "created_at": "2025-10-08T13:01:46.803233",
+      "last_activity": "2025-10-08T13:02:35.770177"
+    },
+    {
+      "telegram_id": 5998582830,
+      "username": null,
+      "first_name": "вохид",
+      "last_name": "💤",
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 32,
+      "created_at": "2025-10-08T13:02:34.551750",
+      "last_activity": "2025-10-08T13:03:35.304173"
+    },
+    {
+      "telegram_id": 6254929371,
+      "username": null,
+      "first_name": ".",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 33,
+      "created_at": "2025-10-08T13:02:38.153970",
+      "last_activity": "2025-10-08T13:02:38.153977"
+    },
+    {
+      "telegram_id": 5043693527,
+      "username": null,
+      "first_name": "𝓘.𝓜",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 34,
+      "created_at": "2025-10-08T13:03:34.562779",
+      "last_activity": "2025-10-08T13:03:34.562783"
+    },
+    {
+      "telegram_id": 7276162170,
+      "username": null,
+      "first_name": "Reyal Guli Mama Roza",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 35,
+      "created_at": "2025-10-08T13:03:35.296013",
+      "last_activity": "2025-10-08T13:03:35.296017"
+    },
+    {
+      "telegram_id": 7698452985,
+      "username": null,
+      "first_name": "Safia HR",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 36,
+      "created_at": "2025-10-08T13:03:35.310608",
+      "last_activity": "2025-10-08T13:03:35.310610"
+    },
+    {
+      "telegram_id": 5543443920,
+      "username": null,
+      "first_name": "Bakhodir ",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 37,
+      "created_at": "2025-10-08T13:04:35.769244",
+      "last_activity": "2025-10-08T13:04:35.769246"
+    },
+    {
+      "telegram_id": 7321707272,
+      "username": null,
+      "first_name": "$$$$$$$",
+      "last_name": "$$$$$$$",
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 38,
+      "created_at": "2025-10-08T13:04:36.806267",
+      "last_activity": "2025-10-08T13:04:36.806273"
+    },
+    {
+      "telegram_id": 7617749180,
+      "username": null,
+      "first_name": "Кибрланма",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 39,
+      "created_at": "2025-10-08T13:04:37.687186",
+      "last_activity": "2025-10-08T13:04:37.687194"
+    },
+    {
+      "telegram_id": 7328126740,
+      "username": null,
+      "first_name": "Coffee Belt",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 40,
+      "created_at": "2025-10-08T13:04:37.698422",
+      "last_activity": "2025-10-08T13:04:37.698427"
+    },
+    {
+      "telegram_id": 8042638263,
+      "username": null,
+      "first_name": "Акмал",
+      "last_name": null,
+      "phone": null,
+      "instagram_username": null,
+      "level": null,
+      "source": "telegram_personal",
+      "status": "active",
+      "first_contact_date": "2025-10-08",
+      "is_active": true,
+      "id": 41,
+      "created_at": "2025-10-08T13:04:38.063387",
+      "last_activity": "2025-10-08T13:04:38.063391"
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "name": "Турецкий язык A1 (Средний уровень)",
+      "description": "Изучение турецкого языка с нуля. Основы грамматики, лексика, произношение тест",
+      "level": "A1",
+      "duration_months": 6,
+      "price": "160000.0",
+      "is_active": true,
+      "duration": "6 месяца",
+      "days": [
+        "Понедельник",
+        "Среда",
+        "Пятница"
+      ],
+      "time_from": "16:50",
+      "time_to": "21:45",
+      "teacher_id": 1,
+      "teacher_name": "Хасанов Феруз",
+      "status": "Начальный",
+      "language": "Корейский"
+    },
+    {
+      "id": 5,
+      "name": "Турецкий язык C1 (Продвинутый уровень)",
+      "description": "Профессиональный уровень турецкого языка. Деловое общение, специализированная лексика",
+      "level": "C1",
+      "duration_months": 4,
+      "price": "250000.0",
+      "is_active": true,
+      "duration": "4 месяца",
+      "days": [
+        "Понедельник",
+        "Суббота",
+        "Воскресенье"
+      ],
+      "time_from": null,
+      "time_to": null,
+      "status": null,
+      "language": "Турецкий"
+    },
+    {
+      "id": 6,
+      "name": "Индивидуальные занятия",
+      "description": "Персональные уроки турецкого языка с опытным преподавателем",
+      "level": "A1",
+      "duration_months": 5,
+      "price": "500000.0",
+      "is_active": true,
+      "duration": "5 месяца",
+      "days": [
+        "Понедельник",
+        "Среда",
+        "Суббота"
+      ],
+      "time_from": "17:23",
+      "time_to": "17:23",
+      "status": null,
+      "teacher_id": 1,
+      "teacher_name": "Айше Кара",
+      "language": "Турецкий"
+    }
+  ],
+  "teachers": [
+    {
+      "id": 1,
+      "name": "Хасанов Феруз",
+      "specialization": "Турецкий язык для начинающих",
+      "languages": [
+        "Английский",
+        "Турецкий"
+      ],
+      "experience_years": 8,
+      "bio": "Опытный преподаватель турецкого языка с 8-летним стажем. Специализируется на работе с начинающими студентами.",
+      "is_active": true,
+      "phone": null,
+      "email": null,
+      "experience": "8 лет",
+      "hours_per_week": null,
+      "education": null,
+      "rating": 3.0,
+      "telegram_contact": "@feruuuz1",
+      "certificate_level": "B1",
+      "work_time_start": "19:09",
+      "work_time_end": "21:09",
+      "advantages": "Тест",
+      "disadvantages": "тест"
+    }
+  ],
+  "schedule": [
+    {
+      "id": 1,
+      "teacher_id": 1,
+      "course_id": 1,
+      "day_of_week": 0,
+      "start_time": "17:00",
+      "end_time": "18:30",
+      "max_students": 8,
+      "current_students": 3,
+      "is_active": true
+    },
+    {
+      "id": 2,
+      "teacher_id": 1,
+      "course_id": 1,
+      "day_of_week": 2,
+      "start_time": "17:00",
+      "end_time": "18:30",
+      "max_students": 8,
+      "current_students": 2,
+      "is_active": true
+    },
+    {
+      "id": 3,
+      "teacher_id": 1,
+      "course_id": 1,
+      "day_of_week": 4,
+      "start_time": "17:00",
+      "end_time": "18:30",
+      "max_students": 8,
+      "current_students": 5,
+      "is_active": true
+    }
+  ],
+  "bookings": [
+    {
+      "user_id": 8154625975,
+      "user_name": "Сардор",
+      "user_phone": "+998935566623",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "success",
+      "notes": "Заявка из чата: авто-создание",
+      "id": 4,
+      "created_at": "2025-10-03T12:15:18.946947",
+      "updated_at": "2025-10-03T16:37:47.229272"
+    },
+    {
+      "user_id": 5220049342,
+      "user_name": "Beruniy📍 Metro 🚇Yaqinidan Ish Qidirayotganlar \nTatli Çay Turk Oshxonasiga \nTajribali Afitsant (O’G’Il Bolalar)\nMo’Ykachi (Ayollar ) \nIshga Qabul Qilamiz \nIsh Vaqti 16:00 Da 03:00 Gacha \nOylik Maoshlar Kelishiladi \nTelefonlar",
+      "user_phone": "+998935465665",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 16:00",
+      "id": 2,
+      "created_at": "2025-10-08T12:52:20.979085"
+    },
+    {
+      "user_id": 824553295,
+      "user_name": "Asalom Aleykum \nBek Baraka Bozorga \nQiz Bola Ishchi Kerak \nYoshi 18 Dan 30 Gacha\nIsh Vaqti 7. Dan 18.00 Gacha \nIsh Turi Pastel Magazines Sotuvchilik\nOylik Moashi Kelishiladi \nAbet Ishxona Tomonidan\nMurojat Uchun Telfon Nomer \n99 8418222",
+      "user_phone": "\n93 5911103",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 18:00",
+      "id": 3,
+      "created_at": "2025-10-08T12:53:02.813459"
+    },
+    {
+      "user_id": 5196151499,
+      "user_name": "🍔🍔🍔🍔🍔🍔🍔🍔🍔🍔🍔\nFeed Up Fast Food Tarmog’Ida \nIshga Olamiz\n\nUborka \nAfitsantka\n\n\n\n\nAhil Jamoa \n\n Ish Vohtimiz \n\n👆🏻 Talablar: Chaqonlik Va Ishka Masuliat \n☎️ \n\n\n🏫Manzilimiz: Tashkent City  Feed Up\n🍔\n▪️Batafsil Ma’Lumot Telegram Va Telefon Orqali Beriladi @Shahriyor_Ash",
+      "user_phone": "+998 998232434",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 09:98",
+      "id": 4,
+      "created_at": "2025-10-08T12:55:49.609707"
+    },
+    {
+      "user_id": 5220049342,
+      "user_name": "Beruniy📍 Metro 🚇Yaqinidan Ish Qidirayotganlar \nTatli Çay Turk Oshxonasiga \nTajribali Afitsant (O’G’Il Bolalar)\nMo’Ykachi (Ayollar ) \nIshga Qabul Qilamiz \nIsh Vaqti 16:00 Da 03:00 Gacha \nOylik Maoshlar Kelishiladi \nTelefonlar",
+      "user_phone": "+998935465665",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 16:00",
+      "id": 5,
+      "created_at": "2025-10-08T12:55:51.613135"
+    },
+    {
+      "user_id": 5196151499,
+      "user_name": "🍔🍔🍔🍔🍔🍔🍔🍔🍔🍔🍔\nFeed Up Fast Food Tarmog’Ida \nIshga Olamiz\n\nUborka \nAfitsantka\n\n\n\n\nAhil Jamoa \n\n Ish Vohtimiz \n\n👆🏻 Talablar: Chaqonlik Va Ishka Masuliat \n☎️ \n\n\n🏫Manzilimiz: Tashkent City  Feed Up\n🍔\n▪️Batafsil Ma’Lumot Telegram Va Telefon Orqali Beriladi @Shahriyor_Ash",
+      "user_phone": "+998 998232434",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 09:98",
+      "id": 6,
+      "created_at": "2025-10-08T12:55:51.771920"
+    },
+    {
+      "user_id": 7563572486,
+      "user_name": "**Требуется  Повар-Staff, Корпоративного Питаня**.\n\n📍 **Место Работы:** (Ташкент, Мирзо-Улугбекский Район, Хамид Алимжон Метро)\n💰 **Зарплата:** На Начальном Этапе 250.000 За Смену ( При Удобном Графике С 8:00-15:00) До 10 Млн Сум В Месяц, При 8 Часовом Графике \n🍽 **Обязанности:**\n • Приготовление Блюд Для Персонала (Staff Питание) 150-250 Порций В День ( Есть Помощник)\n • Соблюдение Санитарных Норм И Стандартов Качества\n • Контроль За Продуктами И Хранением Составление Закупа\n\n✅ **Требования:**\n • Опыт Работы Поваром Обязателен\n • Ответственность, Аккуратность, Умение Работать В Команде\n\n📞  **Контакты Для Связи:** []",
+      "user_phone": "+998903596080",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 08:00-15:00",
+      "id": 7,
+      "created_at": "2025-10-08T12:55:51.777112"
+    },
+    {
+      "user_id": 8344968957,
+      "user_name": "Parkka Kinoga Boriwga Qizla Bormi Hoz 500 Ming Beraman Lic Yozvorila Telegram Nomer",
+      "user_phone": "+998881913311",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 05:00",
+      "id": 8,
+      "created_at": "2025-10-08T12:55:51.781980"
+    },
+    {
+      "user_id": 6327566526,
+      "user_name": "Assalom Alaykum Kafega Moykachi Ayol  Kerak Manzil Sergili:Tel Sronchni Kk",
+      "user_phone": " 770730752",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 77:07",
+      "id": 9,
+      "created_at": "2025-10-08T12:55:51.785724"
+    },
+    {
+      "user_id": 6593500548,
+      "user_name": "👉🏻 Официант Ва Раннерлар Ишга Таклиф Этилади:\n\n\n•  Ёши: 20 Ёшдан 35 Ёшгача Булган\n•  Ресторан  Сохасида Иш Тажрибасига Эга Булган\n•  Равон Нуткли\n•  Маъмулиятли, Пунктуал, Стресс Холатларига Чидамли\n•  Ишда Фаол\n•  Жамода Ишлай Оладиган\n\n  Шароитлар:\n  Маззали Иссик Овкат Корхона Хисобидан:\n  Официантлар Маоши 300 000 Сумдан 450 000 Сумгача Кунлик\n  Раннерлар Маоши 150 000 Сумдан 200 000 Сумгача Кунлик\n  Иш Ери Замон Талабларига Жавоб Берадиган Даражада\n👉🏻 Мурожаат Учун Телефонлар: , + 99833 629 57 57, + 99890 346 07 00,",
+      "user_phone": "+99890 358 62 94",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 03:00",
+      "id": 10,
+      "created_at": "2025-10-08T12:57:05.962205"
+    },
+    {
+      "user_id": 7563572486,
+      "user_name": "**Требуется  Повар-Staff, Корпоративного Питаня**.\n\n📍 **Место Работы:** (Ташкент, Мирзо-Улугбекский Район, Хамид Алимжон Метро)\n💰 **Зарплата:** На Начальном Этапе 250.000 За Смену ( При Удобном Графике С 8:00-15:00) До 10 Млн Сум В Месяц, При 8 Часовом Графике \n🍽 **Обязанности:**\n • Приготовление Блюд Для Персонала (Staff Питание) 150-250 Порций В День ( Есть Помощник)\n • Соблюдение Санитарных Норм И Стандартов Качества\n • Контроль За Продуктами И Хранением Составление Закупа\n\n✅ **Требования:**\n • Опыт Работы Поваром Обязателен\n • Ответственность, Аккуратность, Умение Работать В Команде\n\n📞  **Контакты Для Связи:** []",
+      "user_phone": "+998903596080",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 08:00-15:00",
+      "id": 11,
+      "created_at": "2025-10-08T12:57:05.967866"
+    },
+    {
+      "user_id": 8414517500,
+      "user_name": "**Fish And Bread Do'Stona Jamoasiga Ishga Taklif Qiladi! \n\nBo'Sh Ish O'Rinlari: **\n\n**👩🏻👨🏻‍🦱 Ofitsiant (Ofitsiant)**\n🕙 9:00 - 21:00 12:00 - 1:00\n💰 150 000 - 220 000  + (Chaevoy) \nManzil: Ko'Kcha, Minor, Tsum, Vatan Uchtepa, Sergeli  Tsum \n951154429 Minor \n951154471 Vatan \n\n**🚗 Kuryer (Shaxsiy Avtomashinali Yoki Avtomobilsiz) **\n🌀 Ish Vaqti Va Maosh Kelishib Olinadi 330285353 \n\n\n**🎂Konditer (Ayollar) ** \n🕙 6/1  -  8:00 - 20:00  \n🌀 Tajriba Bo'Lishi Shart 1 Yillik \n💰Oylik 150,000 Dan 3 Kun - 200,000 Gacha \nManzil: Tsum (Kosmonavtlar Metro) \n\n**🥗 Salatchi **\n🕙 6/1  -  8:00 - 20:00 \n                  9:00 - 21:00 \n                  13:00 - 01:00 \n🌀 Tajriba Shart Emas \n💰Oylik 130,000 Dan 3 Kun - 200,000 Gacha \nManzil: Minor Metro \n\n♦️ Ish Haqi Har 15 Kunda To'Lanadi  \n♦️ Kuniga Uch Mahal Bepul Ovqatlanish           \n\n**Kontaktlar: \n📲 ****+998951154470**** \n****@Fab_Hr**",
+      "user_phone": "\n951154421",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 09:00-21:00",
+      "id": 12,
+      "created_at": "2025-10-08T12:57:05.973293"
+    },
+    {
+      "user_id": 8414517500,
+      "user_name": "**Fish And Bread Do'Stona Jamoasiga Ishga Taklif Qiladi! \n\nBo'Sh Ish O'Rinlari: **\n\n**👩🏻👨🏻‍🦱 Ofitsiant (Ofitsiant)**\n🕙 9:00 - 21:00 12:00 - 1:00\n💰 150 000 - 220 000  + (Chaevoy) \nManzil: Ko'Kcha, Minor, Tsum, Vatan Uchtepa, Sergeli  Tsum \n951154429 Minor \n951154471 Vatan \n\n**🚗 Kuryer (Shaxsiy Avtomashinali Yoki Avtomobilsiz) **\n🌀 Ish Vaqti Va Maosh Kelishib Olinadi 330285353 \n\n\n**🎂Konditer (Ayollar) ** \n🕙 6/1  -  8:00 - 20:00  \n🌀 Tajriba Bo'Lishi Shart 1 Yillik \n💰Oylik 150,000 Dan 3 Kun - 200,000 Gacha \nManzil: Tsum (Kosmonavtlar Metro) \n\n**🥗 Salatchi **\n🕙 6/1  -  8:00 - 20:00 \n                  9:00 - 21:00 \n                  13:00 - 01:00 \n🌀 Tajriba Shart Emas \n💰Oylik 130,000 Dan 3 Kun - 200,000 Gacha \nManzil: Minor Metro \n\n♦️ Ish Haqi Har 15 Kunda To'Lanadi  \n♦️ Kuniga Uch Mahal Bepul Ovqatlanish           \n\n**Kontaktlar: \n📲 ****+998951154470**** \n****@Fab_Hr**",
+      "user_phone": "\n951154421",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 09:00-21:00",
+      "id": 13,
+      "created_at": "2025-10-08T12:57:05.978690"
+    },
+    {
+      "user_id": 7563572486,
+      "user_name": "**Требуется  Повар-Staff, Корпоративного Питаня**.\n\n📍 **Место Работы:** (Ташкент, Мирзо-Улугбекский Район, Хамид Алимжон Метро)\n💰 **Зарплата:** На Начальном Этапе 250.000 За Смену ( При Удобном Графике С 8:00-15:00) До 10 Млн Сум В Месяц, При 8 Часовом Графике \n🍽 **Обязанности:**\n • Приготовление Блюд Для Персонала (Staff Питание) 150-250 Порций В День ( Есть Помощник)\n • Соблюдение Санитарных Норм И Стандартов Качества\n • Контроль За Продуктами И Хранением Составление Закупа\n\n✅ **Требования:**\n • Опыт Работы Поваром Обязателен\n • Ответственность, Аккуратность, Умение Работать В Команде\n\n📞  **Контакты Для Связи:** []",
+      "user_phone": "+998903596080",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 08:00-15:00",
+      "id": 14,
+      "created_at": "2025-10-08T12:57:05.982945"
+    },
+    {
+      "user_id": 8414517500,
+      "user_name": "**Fish And Bread Do'Stona Jamoasiga Ishga Taklif Qiladi! \n\nBo'Sh Ish O'Rinlari: **\n\n**👩🏻👨🏻‍🦱 Ofitsiant (Ofitsiant)**\n🕙 9:00 - 21:00 12:00 - 1:00\n💰 150 000 - 220 000  + (Chaevoy) \nManzil: Ko'Kcha, Minor, Tsum, Vatan Uchtepa, Sergeli  Tsum \n951154429 Minor \n951154471 Vatan \n\n**🚗 Kuryer (Shaxsiy Avtomashinali Yoki Avtomobilsiz) **\n🌀 Ish Vaqti Va Maosh Kelishib Olinadi 330285353 \n\n\n**👨‍🍳Oshpaz (Mangal, Fast-Food) **\n🕙9:00 - 21:00 / 12:00 - 00:00  — 6/1 \n💰200 000 - 250 000 Kunlik Hisoblanadi Mangal \n💰150 000 - 280 000 Kunlik Hisoblanadi Fast-Food \n🌀Tajriba Bo'Lishi Shart! \nManzil: Ko'Kcha, Aeroport, Sergeli \n+998971711020 (Mangal Shef Povar) \n+998933849606 (Shef Povar Mangal) \n\n**🎂Konditer **\n🕙 6/1  -  8:00 - 20:00  \n🌀 Tajriba Bo'Lishi Shart 1 Yillik \n💰Oylik 150,000 Dan 3 Kun - 200,000 Gacha \nManzil: Tsum (Kosmonavtlar Metro) \n\n**🥗 Salatchi **\n🕙 6/1  -  8:00 - 20:00 \n                  9:00 - 21:00 \n                  13:00 - 01:00 \n🌀 Tajriba Shart Emas \n💰Oylik 130,000 Dan 3 Kun - 200,000 Gacha \nManzil: Minor Metro \n\n♦️ Ish Haqi Har 15 Kunda To'Lanadi  \n♦️ Kuniga Uch Mahal Bepul Ovqatlanish           \n\n**Kontaktlar: \n📲 ****+998951154470**** \n****@Fab_Hr**",
+      "user_phone": "\n951154421",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 09:00-21:00",
+      "id": 15,
+      "created_at": "2025-10-08T12:57:05.987115"
+    },
+    {
+      "user_id": 8414517500,
+      "user_name": "**Fish And Bread Do'Stona Jamoasiga Ishga Taklif Qiladi! \n\nBo'Sh Ish O'Rinlari: **\n\n**👩🏻👨🏻‍🦱 Ofitsiant (Ofitsiant)**\n🕙 9:00 - 21:00 12:00 - 1:00\n💰 150 000 - 220 000  + (Chaevoy) \nManzil: Ko'Kcha, Minor, Tsum, Vatan Uchtepa, Sergeli  Tsum \n951154429 Minor \n951154471 Vatan \n\n**🚗 Kuryer (Shaxsiy Avtomashinali Yoki Avtomobilsiz) **\n🌀 Ish Vaqti Va Maosh Kelishib Olinadi 330285353 \n\n\n**🎂Konditer (Ayollar) ** \n🕙 6/1  -  8:00 - 20:00  \n🌀 Tajriba Bo'Lishi Shart 1 Yillik \n💰Oylik 150,000 Dan 3 Kun - 200,000 Gacha \nManzil: Tsum (Kosmonavtlar Metro) \n\n**🥗 Salatchi **\n🕙 6/1  -  8:00 - 20:00 \n                  9:00 - 21:00 \n                  13:00 - 01:00 \n🌀 Tajriba Shart Emas \n💰Oylik 130,000 Dan 3 Kun - 200,000 Gacha \nManzil: Minor Metro \n\n♦️ Ish Haqi Har 15 Kunda To'Lanadi  \n♦️ Kuniga Uch Mahal Bepul Ovqatlanish           \n\n**Kontaktlar: \n📲 ****+998951154470**** \n****@Fab_Hr**",
+      "user_phone": "\n951154421",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 09:00-21:00",
+      "id": 16,
+      "created_at": "2025-10-08T12:57:08.368661"
+    },
+    {
+      "user_id": 6593500548,
+      "user_name": "👉🏻 Официант Ва Раннерлар Ишга Таклиф Этилади:\n\n\n•  Ёши: 20 Ёшдан 35 Ёшгача Булган\n•  Ресторан  Сохасида Иш Тажрибасига Эга Булган\n•  Равон Нуткли\n•  Маъмулиятли, Пунктуал, Стресс Холатларига Чидамли\n•  Ишда Фаол\n•  Жамода Ишлай Оладиган\n\n  Шароитлар:\n  Маззали Иссик Овкат Корхона Хисобидан:\n  Официантлар Маоши 300 000 Сумдан 450 000 Сумгача Кунлик\n  Раннерлар Маоши 150 000 Сумдан 200 000 Сумгача Кунлик\n  Иш Ери Замон Талабларига Жавоб Берадиган Даражада\n👉🏻 Мурожаат Учун Телефонлар: , + 99833 629 57 57, + 99890 346 07 00,",
+      "user_phone": "+99890 358 62 94",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 03:00",
+      "id": 17,
+      "created_at": "2025-10-08T12:57:10.812802"
+    },
+    {
+      "user_id": 7788970489,
+      "user_name": "Assalomu Aleykum \nCall Sentrga \nAyollani Ishka Ovomiz \nManzil \nSergili Yengi Hayot Tumani \n20/30 Yoshgacha \n\n( Hr )Shahnoza \n\n@Menejersha",
+      "user_phone": "+998873111606",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 99:88",
+      "id": 18,
+      "created_at": "2025-10-08T12:58:04.630702"
+    },
+    {
+      "user_id": 5035069556,
+      "user_name": "Приглашаем  На Работу В Feedup !!!\nНа Должность Официант(10:00-17:00) Уборщица(11:00-23:00)\n\nОбед За Счет Заведения\nКарьерный Рост Имеется !\nФилиал : Меджик Сити \nНомер : \n\nGo’Zal Ayollarni Feed Up Ga  Ishga Taklif Qilamiz !!!\nLavozim : Tozalik Hodimasi (11:00-23:00) Ofitsiant(10:00-17:00)\n\nTushlik Ishxona Hisobidan \nFilial : Magic City \nNomer :",
+      "user_phone": "+998950667705",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 10:00-17:00",
+      "id": 19,
+      "created_at": "2025-10-08T12:58:04.636028"
+    },
+    {
+      "user_id": 6738509619,
+      "user_name": "🍽 В Рестораны  **Irish Pub**, **Afsona** И **Bella Napoli** Требуются:\n\n🔹 **Кассир\n🔹 Официанты\n🔹 Раннер**\n**🔹 Администратор** \n**🔹 Повар** \n\n💼 Мы Предлагаем:\n✅ Официальное Трудоустройство\n✅ Зарплата 3 Раза В Месяц (Фикс + Бонусы)\n✅ Бесплатное Питание И Форма\n✅ График: 6/1, 1/1 Или 5/2\n✅ Смены: 11:00–23:00 / 12:00–00:00\n\n📌 Требования:\n🌿 Знание Узбекского, Русского И Английского (Для Официантов)\n🌿 Ответственность И Вежливость\n\n📍 Адреса:\n• Afsona — Тараса Шевченко И Tashkent City\n• Irish Pub — Тараса Шевченко\n• Bella Napoli — Шота Руставели\n\n📲 Телефоны:\n\n+998 93 555 46 18\n+998 94 777 06 62\n+998 93 555 07 60\n+998 93 555 21 68\n💬 Telegram:\n@Zuxra_Hr \n@Hr_Rahima \n@Bon_Recruter \n@Kamiila_Hr \n@Abnmb_Recruter\n📝 Заполнить Анкету:\nHttps://Docs.Google.Com/Forms/D/E/1Faipqlsfda-R9Z43Znrioytywiwj_Ctkk6_Ttvxzvf3Bhjgiuj3Omjg/Viewform?Usp=Sharing&Ouid=106120586650392775392",
+      "user_phone": "+998 93 555 07 68",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 11:00-23:00",
+      "id": 20,
+      "created_at": "2025-10-08T13:01:45.003682"
+    },
+    {
+      "user_id": 5998582830,
+      "user_name": "Повир Йордамчилигига  Курага Шашлик \nПишириш Кулимдан Келади  Узимам 4 5 Хил Овкатлар Кила Оламан \n 28 Йошман Йоток Жойи Билан Бирга Иш Керак\n Кунлик Толанадиган 300   Атрофид Тел",
+      "user_phone": " 938779997",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 03:00",
+      "id": 21,
+      "created_at": "2025-10-08T13:02:34.549824"
+    },
+    {
+      "user_id": 5043693527,
+      "user_name": "Сеть Ресторанов Приглашает Вас На Работу! \nНаши Проекты: 𝐁𝐨𝐛𝐨𝐲, 𝐒𝐨𝐮𝐥, 𝐀𝐫𝐫𝐨𝐰𝐬 𝐚𝐧𝐝 𝐒𝐩𝐚𝐫𝐫𝐨𝐰𝐬, 𝐒𝐨𝐜𝐢𝐚𝐥𝐬, 𝐌𝐚𝐝 𝐋𝐚𝐝𝐬, 𝐒𝐨𝐮𝐥 𝐛𝐚𝐤𝐞𝐫𝐲\n\nНабираем Команду:\nОфицианты И Раннеры\nВозраст 18-25 Лет\nВремя Работы Заведения - 08:00/00:00\nЗарплата И График Обговаривается ❗\n\nОбращаться По Этому Номеру: \n@Frcode_1 - Тг",
+      "user_phone": "+998-88-800-70-51",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 18:00-25:00",
+      "id": 22,
+      "created_at": "2025-10-08T13:03:34.557251"
+    },
+    {
+      "user_id": 5998582830,
+      "user_name": "Повир Йордамчилигига  Курага Шашлик \nПишириш Кулимдан Келади  Узимам 4 5 Хил Овкатлар Кила Оламан \n 28 Йошман Йоток Жойи Билан Бирга Иш Керак\n Кунлик Толанадиган 300   Атрофид Тел",
+      "user_phone": " 938779997",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 03:00",
+      "id": 23,
+      "created_at": "2025-10-08T13:03:34.568406"
+    },
+    {
+      "user_id": 5998582830,
+      "user_name": "Повир Йордамчилигига  Курага Шашлик \nПишириш Кулимдан Келади  Узимам 4 5 Хил Овкатлар Кила Оламан \n 28 Йошман Йоток Жойи Билан Бирга Иш Керак\n Кунлик Толанадиган 300   Атрофид Тел",
+      "user_phone": " 938779997",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 03:00",
+      "id": 24,
+      "created_at": "2025-10-08T13:03:35.300917"
+    },
+    {
+      "user_id": 7698452985,
+      "user_name": "**__Safia Қандолат Уйига Юк Ташувчилар  Керак Морозилкага!❄️__**\n\n**📍Паркентский**\n\n💰Oylik 4 290 000 -5 070 000\n\n**📌Kompaniya Tomonidan Beriladi:**\n• Mazali Va Issiq Ovqat\n• Bepul Tibbiy Medko'Rik\n• Ish Jadvali 6/1\n• Ish Soatlari\n 8:00 Dan 20:00 Gacha\n\n**📌Ish Shartlari:**\n• Mas`Uliyatli Va Ishlashga Intilishli; \n\n🍰Anketa Toldiring  @Rabotasafiabot Va Oilamizning Bir Qismiga Aylaning\n ☎️****\n✉️@Safiahroperator\nHttps://T.Me/Rabotasafiabot",
+      "user_phone": "78 113 04 40",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 00:00-05:07",
+      "id": 25,
+      "created_at": "2025-10-08T13:03:35.307791"
+    },
+    {
+      "user_id": 7328126740,
+      "user_name": "**Бариста-Кассир (Только Девушки)**\nВ Корейскую Кофейню **The Coffee Belt**\n\n📍 **Локация:** Айбек 12\n\nВ Корейскую Кофейню **The Coffee Belt** Требуются **Бариста-Кассиры (Девушки)** С Хорошим Знанием **Русского Языка**.\n💬 Знание **Английского И Корейского** — Будет Преимуществом!\n\n☕ **Требования:**\n • Вежливость, Аккуратность, Пунктуальность\n • Обязательное Знание **Русского Языка**\n • Опыт Работы Приветствуется, **Но Возможно Обучение**\n • Умение Общаться С Гостями И Работать В Команде\n\n📅 **График (На Выбор):**\n • 6/1\n • 5/2\n • 4/3\n\n🕐 **Смены:**\n • **Утренняя:** 07:00 – **16:00**\n • **Вечерняя:** 15:00 – 23:00\n\n💰 **Достойная Зарплата** — Обсуждается На Собеседовании, Зависит От Графика И Опыта.\n\n📞 Контакт Для Связи: ****",
+      "user_phone": "943637491",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 15:00-23:00",
+      "id": 26,
+      "created_at": "2025-10-08T13:04:37.693278"
+    },
+    {
+      "user_id": 8042638263,
+      "user_name": "Ассалому Алайкум .Том Ёопиш Керак 2000 Кв Наманганда Иш.Профилдан Ферма Яасалади.Усталар Алокага Чиксин",
+      "user_phone": " 772812079",
+      "course_id": null,
+      "course_name": "Будет уточнено",
+      "teacher_id": null,
+      "teacher_name": "Будет назначен",
+      "status": "pending",
+      "notes": "Заявка из личного чата: авто-создание (имя и телефон одним сообщением) | Время: 20:00",
+      "id": 27,
+      "created_at": "2025-10-08T13:04:38.057535"
+    }
+  ],
+  "conversations": [
+    {
+      "id": 1,
+      "telegram_id": 123456789,
+      "message": "Привет! Какие курсы у вас есть?",
+      "response": "У нас есть курсы A1-C1!",
+      "created_at": "2025-09-20T01:18:16.679964"
+    },
+    {
+      "id": 2,
+      "telegram_id": 123456789,
+      "message": "Привет! Какие курсы у вас есть?",
+      "response": "У нас есть курсы A1-C1!",
+      "created_at": "2025-09-20T01:24:40.810052"
+    },
+    {
+      "id": 3,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "\n                🇹🇷 Извините, AI-сервис временно недоступен из-за превышения лимита запросов.\n                \n                Но я все равно могу помочь! Вот что я знаю:\n                \n                📚 Наши курсы турецкого языка:\n                • A1 - Начальный уровень (2 месяца)\n                • A2 - Элементарный уровень (2 месяца) \n                • B1 - Средний уровень (3 месяца)\n                • B2 - Продвинутый уровень (3 месяца)\n                • C1 - Профессиональный уровень (4 месяца)\n                • Индивидуальные занятия\n                \n                📞 Для подробной консультации звоните:\n                +998 94 843 5105 / +998 93 843 5105\n                \n                💬 Или пишите в Telegram: @tash_turkdiliuz\n                ",
+      "created_at": "2025-09-20T01:26:07.168179"
+    },
+    {
+      "id": 4,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "\n                🇹🇷 Извините, AI-сервис временно недоступен из-за превышения лимита запросов.\n                \n                Но я все равно могу помочь! Вот что я знаю:\n                \n                📚 Наши курсы турецкого языка:\n                • A1 - Начальный уровень (2 месяца)\n                • A2 - Элементарный уровень (2 месяца) \n                • B1 - Средний уровень (3 месяца)\n                • B2 - Продвинутый уровень (3 месяца)\n                • C1 - Профессиональный уровень (4 месяца)\n                • Индивидуальные занятия\n                \n                📞 Для подробной консультации звоните:\n                +998 94 843 5105 / +998 93 843 5105\n                \n                💬 Или пишите в Telegram: @tash_turkdiliuz\n                ",
+      "created_at": "2025-09-20T01:28:32.897157"
+    },
+    {
+      "id": 5,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "\n                🇹🇷 Извините, AI-сервис временно недоступен из-за превышения лимита запросов.\n                \n                Но я все равно могу помочь! Вот что я знаю:\n                \n                📚 Наши курсы турецкого языка:\n                • A1 - Начальный уровень (2 месяца)\n                • A2 - Элементарный уровень (2 месяца) \n                • B1 - Средний уровень (3 месяца)\n                • B2 - Продвинутый уровень (3 месяца)\n                • C1 - Профессиональный уровень (4 месяца)\n                • Индивидуальные занятия\n                \n                📞 Для подробной консультации звоните:\n                +998 94 843 5105 / +998 93 843 5105\n                \n                💬 Или пишите в Telegram: @tash_turkdiliuz\n                ",
+      "created_at": "2025-09-20T01:29:04.008877"
+    },
+    {
+      "id": 6,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "\n                🇹🇷 Извините, AI-сервис временно недоступен из-за превышения лимита запросов.\n                \n                Но я все равно могу помочь! Вот что я знаю:\n                \n                📚 Наши курсы турецкого языка:\n                • A1 - Начальный уровень (2 месяца)\n                • A2 - Элементарный уровень (2 месяца) \n                • B1 - Средний уровень (3 месяца)\n                • B2 - Продвинутый уровень (3 месяца)\n                • C1 - Профессиональный уровень (4 месяца)\n                • Индивидуальные занятия\n                \n                📞 Для подробной консультации звоните:\n                +998 94 843 5105 / +998 93 843 5105\n                \n                💬 Или пишите в Telegram: @tash_turkdiliuz\n                ",
+      "created_at": "2025-09-20T01:31:14.867784"
+    },
+    {
+      "id": 7,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "\n                🇹🇷 Извините, AI-сервис временно недоступен из-за превышения лимита запросов.\n                \n                Но я все равно могу помочь! Вот что я знаю:\n                \n                📚 Наши курсы турецкого языка:\n                • A1 - Начальный уровень (2 месяца)\n                • A2 - Элементарный уровень (2 месяца) \n                • B1 - Средний уровень (3 месяца)\n                • B2 - Продвинутый уровень (3 месяца)\n                • C1 - Профессиональный уровень (4 месяца)\n                • Индивидуальные занятия\n                \n                📞 Для подробной консультации звоните:\n                +998 94 843 5105 / +998 93 843 5105\n                \n                💬 Или пишите в Telegram: @tash_turkdiliuz\n                ",
+      "created_at": "2025-09-20T02:09:21.845785"
+    },
+    {
+      "id": 8,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "\n                🇹🇷 Извините, AI-сервис временно недоступен из-за превышения лимита запросов.\n                \n                Но я все равно могу помочь! Вот что я знаю:\n                \n                📚 Наши курсы турецкого языка:\n                • A1 - Начальный уровень (2 месяца)\n                • A2 - Элементарный уровень (2 месяца) \n                • B1 - Средний уровень (3 месяца)\n                • B2 - Продвинутый уровень (3 месяца)\n                • C1 - Профессиональный уровень (4 месяца)\n                • Индивидуальные занятия\n                \n                📞 Для подробной консультации звоните:\n                +998 94 843 5105 / +998 93 843 5105\n                \n                💬 Или пишите в Telegram: @tash_turkdiliuz\n                ",
+      "created_at": "2025-09-20T02:09:27.685762"
+    },
+    {
+      "id": 9,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "\n                🇹🇷 Извините, AI-сервис временно недоступен из-за превышения лимита запросов.\n                \n                Но я все равно могу помочь! Вот что я знаю:\n                \n                📚 Наши курсы турецкого языка:\n                • A1 - Начальный уровень (2 месяца)\n                • A2 - Элементарный уровень (2 месяца) \n                • B1 - Средний уровень (3 месяца)\n                • B2 - Продвинутый уровень (3 месяца)\n                • C1 - Профессиональный уровень (4 месяца)\n                • Индивидуальные занятия\n                \n                📞 Для подробной консультации звоните:\n                +998 94 843 5105 / +998 93 843 5105\n                \n                💬 Или пишите в Telegram: @tash_turkdiliuz\n                ",
+      "created_at": "2025-09-20T02:09:54.925842"
+    },
+    {
+      "id": 10,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "Привет! 👋  Рада приветствовать вас в Bonus Education – учебном центре, где вы сможете выучить турецкий язык с нуля до совершенства!  За 10 лет работы мы помогли более чем 3000 студентам достичь своих целей.  Хотите узнать, как мы можем помочь и вам? 😉  Может,  записаться на бесплатную консультацию, чтобы подобрать идеальный курс именно для вас?  Звоните или пишите нам прямо сейчас!",
+      "created_at": "2025-09-20T02:12:29.426130"
+    },
+    {
+      "id": 11,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "Привет! 👋  Рада приветствовать тебя в Bonus Education – лучшем учебном центре по изучению турецкого языка в Ташкенте!  \n\nХочешь открыть для себя мир возможностей, которые открывает знание турецкого?  🇹🇷  Мы поможем тебе в этом!  У нас большой опыт (10 лет!), 3000+ довольных выпускников и  преподаватели-профессионалы.\n\nЗапишись на бесплатную консультацию прямо сейчас, и мы подберем для тебя идеальный курс!  📞  Наши контакты: +998 94 843 5105 / +998 93 843 5105 / +998 90 321 1453 (или напиши нам в Telegram @tash_turkdiliuz).\n\nЖду тебя! 😊",
+      "created_at": "2025-09-20T02:12:31.575872"
+    },
+    {
+      "id": 12,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "Привет! 👋 Рада приветствовать тебя в сообществе Bonus Education!  Хочешь выучить турецкий язык и открыть для себя мир новых возможностей? 🇹🇷  Мы с удовольствием поможем тебе в этом!  Расскажи, что тебя интересует, и я с радостью отвечу на все твои вопросы.  А может, ты уже готов записаться на бесплатную консультацию и узнать больше о наших курсах? 😉",
+      "created_at": "2025-09-20T02:12:32.984505"
+    },
+    {
+      "id": 13,
+      "telegram_id": 670031187,
+      "message": "привет как ты?",
+      "response": "Привет! 👋 Отлично, а как твои дела?  Надеюсь, у тебя всё замечательно!  \n\nА ты задумывался(ась) о том, чтобы выучить турецкий язык? 🇹🇷 Это открывает невероятные возможности: путешествия по красивейшей Турции, общение с интересными людьми, новые знакомства,  а также карьерный рост! 😉\n\nВ учебном центре \"Bonus Education\" мы поможем тебе освоить турецкий язык с нуля до совершенства!  У нас 10 лет опыта, более 3000 выпускников и лучшие преподаватели.  \n\nХочешь узнать больше о наших курсах?  Или, может быть, записаться на бесплатную консультацию, чтобы подобрать оптимальный вариант обучения именно для тебя?  📞  Просто напиши мне, и я с удовольствием всё расскажу!",
+      "created_at": "2025-09-20T02:12:39.034275"
+    },
+    {
+      "id": 14,
+      "telegram_id": 670031187,
+      "message": "слушай а какие у вас есть преподователи",
+      "response": "Привет! 👋  Рада тебя слышать!  В Bonus Education работают только лучшие преподаватели турецкого языка! 🇹🇷  У нас есть опытные специалисты, свободно владеющие турецким, узбекским и русским языками.  Они подберут для тебя индивидуальный подход и помогут достичь желаемого уровня владения языком.\n\nКаждый преподаватель – это профессионал своего дела с большим опытом работы.  Мы тщательно отбираем кандидатов, обращая внимание на их квалификацию, методики преподавания и, конечно же, любовь к турецкому языку! ❤️\n\nХочешь узнать больше о наших преподавателях и их опыте?  Или, может быть, сразу записаться на пробный урок и познакомиться с ними лично? 😉  Свяжись со мной, и мы подберем для тебя идеального преподавателя!  \n\nВот наши контакты:\n\n📞 +998 94 843 5105 / +998 93 843 5105 / +998 90 321 1453\n📱 Telegram: @tash_turkdiliuz\n📸 Instagram: @turkdili.uz | @bonus_education\n📲 WhatsApp: +998 90 994 3433\n\nЖду твоего сообщения! 😊",
+      "created_at": "2025-09-20T02:13:04.825496"
+    },
+    {
+      "id": 15,
+      "telegram_id": 123456789,
+      "message": "Привет! Какие курсы у вас есть?",
+      "response": "У нас есть курсы A1-C1!",
+      "created_at": "2025-09-20T02:14:15.996810"
+    },
+    {
+      "id": 16,
+      "telegram_id": 123456789,
+      "message": "А какие преподаватели?",
+      "response": "У нас работают опытные преподаватели...",
+      "created_at": "2025-09-20T02:14:15.997382"
+    },
+    {
+      "id": 17,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "Отлично, что ты снова здесь! 😊  Что тебя интересует на этот раз?  Может быть, уже решил(а) какой уровень турецкого языка тебе подходит?  Или хочешь узнать больше о наших преподавателях и методиках обучения?  А может, тебе удобнее начать с бесплатной консультации, чтобы мы вместе подобрали для тебя идеальный курс? 😉  Я готова ответить на любые вопросы и помочь тебе сделать первый шаг к овладению турецким языком!  🇹🇷",
+      "created_at": "2025-09-20T02:20:46.662442"
+    },
+    {
+      "id": 18,
+      "telegram_id": 670031187,
+      "message": "слушай какие у вас есть курсы?",
+      "response": "Прекрасно, что ты интересуешься нашими курсами!  😉  В Bonus Education мы предлагаем широкий выбор программ по изучению турецкого языка, подходящих для любого уровня подготовки:\n\n🇹🇷  A1 - Начальный уровень (2 месяца):  Идеальный вариант, если ты только начинаешь изучать турецкий. Мы научим тебя основам грамматики и лексики, а также базовому общению.\n\n🎯  A2 - Элементарный уровень (2 месяца):  Продолжаем совершенствовать знания, полученные на A1.  Ты будешь увереннее говорить на простые темы и понимать больше турецкой речи.\n\n⭐  B1 - Средний уровень (3 месяца):  Переходим к более сложным грамматическим конструкциям и расширяем словарный запас.  Ты сможешь общаться на бытовые темы без особых трудностей.\n\n🚀  B2 - Средне-продвинутый уровень (3 месяца):  Готовься к свободному общению на турецком! Мы научим тебя понимать и выражать свои мысли на любые темы, включая более сложные.\n\n👑  C1 - Продвинутый уровень (4 месяца):  Достигнешь профессионального уровня владения турецким языком.  Ты будешь свободно общаться в любых ситуациях, понимать нюансы языка и использовать его в профессиональной сфере.\n\n\nКроме групповых занятий (маленькие группы по 4-8 человек!),  мы также предлагаем индивидуальные занятия -  персональный подход и максимальное внимание преподавателя! 🧑‍🏫\n\n\nВсе наши курсы включают:  опытных преподавателей,  практические занятия,  онлайн и офлайн форматы обучения, а также сертификат по окончании! 🎓\n\n\nКакой уровень тебе кажется наиболее подходящим? Или, может быть, ты хотел(а) бы пройти бесплатную консультацию, чтобы мы помогли тебе определиться с выбором?  Просто напиши мне, и мы вместе найдем идеальный курс для тебя! 😊",
+      "created_at": "2025-09-20T02:27:30.688430"
+    },
+    {
+      "id": 19,
+      "telegram_id": 670031187,
+      "message": "слушай какие у вас есть курсы?",
+      "response": "Отлично, что ты интересуешься нашими курсами!  😊  В Bonus Education мы предлагаем полный спектр обучения турецкому языку – от абсолютного нуля до свободного владения!  Вот наши варианты:\n\n🇹🇷 A1 - Начальный уровень (2 месяца):  Изучение основ турецкого языка, алфавита, простых фраз и грамматики.  Идеально для полного новичка!\n🎯 A2 - Элементарный уровень (2 месяца):  Продолжение обучения на основе A1, расширение словарного запаса и грамматических знаний.  Ты сможешь общаться на простые темы.\n⭐ B1 - Средний уровень (3 месяца):  Более сложная грамматика, разговорная практика, углубленное изучение лексики.  Готовность к общению в повседневных ситуациях.\n🚀 B2 - Средне-продвинутый уровень (3 месяца):  Свободное общение на различные темы, улучшение навыков письма и чтения. Ты сможешь уверенно общаться в разных ситуациях.\n👑 C1 - Продвинутый уровень (4 месяца):  Профессиональный уровень владения языком, подготовка к сдаче экзаменов, свобода в выражении мыслей.\n\n\nКроме этого, у нас есть индивидуальные занятия, которые идеально подойдут тем, кто предпочитает персональный подход и гибкий график.  😉\n\nВсе наши курсы включают:\n\n✅ Опытных преподавателей (на турецком, узбекском и русском языках)\n✅ Групповые и индивидуальные занятия (небольшие группы 4-8 человек)\n✅ Онлайн и офлайн варианты обучения\n✅ Сертификат по окончании курса\n✅ Практические занятия, направленные на разговорную речь\n\n\nКакой уровень тебе кажется наиболее подходящим, или, может быть, тебе нужна помощь в выборе?  Давай вместе определимся!  Предлагаю записаться на бесплатную консультацию, чтобы мы смогли обсудить все детали и подобрать для тебя оптимальный вариант обучения.  Это займет всего 15-20 минут, а польза будет огромной! 😊  Свяжись со мной любым удобным способом!",
+      "created_at": "2025-09-20T02:28:04.896033"
+    },
+    {
+      "id": 20,
+      "telegram_id": 670031187,
+      "message": "пошел на хуй",
+      "response": "Извините, я не понимаю, что вы имеете в виду.  😔  Я стараюсь быть максимально полезной и помочь вам выбрать подходящий курс турецкого языка в Bonus Education.  Может быть, вы всё ещё хотите узнать больше о наших программах или записаться на бесплатную консультацию?  Мы с удовольствием ответим на все ваши вопросы и поможем вам начать изучение турецкого языка!  🇹🇷",
+      "created_at": "2025-09-20T02:28:32.645198"
+    },
+    {
+      "id": 21,
+      "telegram_id": 670031187,
+      "message": "какой сегодня день",
+      "response": "Сегодня, кажется, прекрасный день для начала изучения турецкого языка! 😊  А какой уровень тебе интересен? Или всё же  хочешь сначала на бесплатную консультацию записаться, чтобы мы вместе подобрали подходящий курс?  Мы с радостью поможем тебе!  Просто сообщи, как тебе удобнее связаться - по телефону, Telegram, WhatsApp или Instagram?  😉",
+      "created_at": "2025-09-20T02:28:45.854462"
+    },
+    {
+      "id": 22,
+      "telegram_id": 6488913301,
+      "message": "Привет",
+      "response": "Привет! 👋  Рада вас видеть!  Чем могу помочь?  Возможно, вы заинтересованы в изучении турецкого языка?  Мы в Bonus Education с удовольствием поможем вам освоить его с нуля до профессионального уровня!  Наши опытные преподаватели и эффективные методики гарантируют результат.  Хотите узнать больше о наших курсах или записаться на бесплатную консультацию?  😉",
+      "created_at": "2025-09-20T02:31:08.805204"
+    },
+    {
+      "id": 23,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "Привет!  😊  Надеюсь, ты передумал и всё же хочешь выучить турецкий язык?  Мы в Bonus Education готовы тебе помочь!  Вспомним, я рассказывала о наших курсах.  Какой уровень тебе был бы интересен, или, может быть, индивидуальные занятия?  Или, может быть, у тебя появились новые вопросы?  😉  Звони, пиши – всегда готова помочь с выбором и записать тебя на курс!",
+      "created_at": "2025-09-20T12:55:24.624419"
+    },
+    {
+      "id": 24,
+      "telegram_id": 421932214,
+      "message": "Как мне начать",
+      "response": "Прекрасно!  Чтобы начать изучение турецкого языка в Bonus Education, вам нужно определиться с уровнем вашей подготовки и выбрать удобный формат обучения – онлайн или офлайн.\n\n  🇹🇷 A1 (Начальный уровень): Идеально, если вы совсем новичок.  За 2 месяца освоите основы!\n  🎯 A2 (Элементарный уровень):  Продолжите обучение после A1,  еще 2 месяца  - и вы уже будете увереннее общаться!\n  ⭐ B1 (Средний уровень):  Погрузитесь в более сложную грамматику и расширите свой словарный запас (3 месяца).\n  🚀 B2 (Средне-продвинутый уровень):  Свободное общение – ваша цель!  3 месяца интенсивных занятий.\n  👑 C1 (Продвинутый уровень): Достигните профессионального уровня владения языком за 4 месяца.\n\n\n  Также у нас есть индивидуальные занятия, идеально подходящие для тех, кто предпочитает персональный подход.\n\n\n  Чтобы подобрать для вас оптимальный курс и записаться, предлагаю вам связаться с нами удобным для вас способом:\n\n\n  📞 По телефону: +998 94 843 5105 / +998 93 843 5105 / +998 90 321 1453\n  📱 В Telegram: @tash_turkdiliuz\n  📷 В Instagram: @turkdili.uz | @bonus_education\n  📲 В WhatsApp: +998 90 994 3433\n\n\nИли запишитесь на бесплатную консультацию прямо сейчас, чтобы мы вместе обсудили все детали и вы выбрали лучший вариант для себя!  😉  Вы будете приятно удивлены результатами!  ✨",
+      "created_at": "2025-09-20T13:12:00.389639"
+    },
+    {
+      "id": 25,
+      "telegram_id": 421932214,
+      "message": "Man ruscha chunkiman",
+      "response": "Понял, вы хотите узнать больше о том, как проходят занятия на русском языке.  👍\n\nВ Bonus Education вы можете изучать турецкий язык на русском языке на всех уровнях:\n\n🇹🇷 A1, 🎯 A2, ⭐ B1, 🚀 B2, 👑 C1  и даже на индивидуальных занятиях.  Наши опытные преподаватели владеют русским языком и  адаптируют обучение под ваши потребности.  Все наши учебные материалы также доступны на русском языке.\n\n\n  Хотите узнать больше о преподавателях и программах обучения на русском?  Или, может быть,  уже готовы записаться на курс?  Свяжитесь с нами любым удобным способом, и мы с радостью ответим на все ваши вопросы и поможем с записью! 😊\n\n\n📞 По телефону: +998 94 843 5105 / +998 93 843 5105 / +998 90 321 1453\n📱 В Telegram: @tash_turkdiliuz\n📷 В Instagram: @turkdili.uz | @bonus_education\n📲 В WhatsApp: +998 90 994 3433\n\nЗаписывайтесь на бесплатную консультацию, и мы подберем для вас идеальный курс! ✨",
+      "created_at": "2025-09-20T13:12:25.779659"
+    },
+    {
+      "id": 26,
+      "telegram_id": 421932214,
+      "message": "Ман узбекча чунмиман",
+      "response": "А, понятно, вы предпочитаете общение на узбекском языке!  👍\n\nВ Bonus Education обучение турецкому языку доступно и на узбекском языке на всех уровнях:\n\n🇹🇷 A1, 🎯 A2, ⭐ B1, 🚀 B2, 👑 C1,  а также на индивидуальных занятиях.  Наши преподаватели свободно владеют узбекским и  с удовольствием помогут вам освоить турецкий язык.  Учебные материалы также адаптированы под узбекский язык.\n\n\n  Хотите узнать больше о преподавателях и программах обучения на узбекском? Или, может быть, уже готовы записаться?  Свяжитесь с нами любым удобным способом, и мы с радостью ответим на все ваши вопросы и поможем с записью! 😊\n\n\n📞 По телефону: +998 94 843 5105 / +998 93 843 5105 / +998 90 321 1453\n📱 В Telegram: @tash_turkdiliuz\n📷 В Instagram: @turkdili.uz | @bonus_education\n📲 В WhatsApp: +998 90 994 3433\n\n\nЗапишитесь на бесплатную консультацию, и мы подберем для вас идеально подходящий курс!  ✨  Вы удивитесь, как быстро вы начнете говорить по-турецки! 😉",
+      "created_at": "2025-09-20T13:12:49.488676"
+    },
+    {
+      "id": 27,
+      "telegram_id": 421932214,
+      "message": "Ха",
+      "response": "Ха?  Что-то ещё интересует? 🤔  Может быть, вы хотите уточнить детали по уровням обучения или узнать больше о наших преподавателях?  Или, быть может, уже готовы записаться на курс?  😊  Просто дайте знать, и мы с удовольствием поможем!  Давайте подберем для вас идеальный вариант изучения турецкого языка!  ✨",
+      "created_at": "2025-09-20T13:13:02.230246"
+    },
+    {
+      "id": 28,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "Привет!  😊  Рада, что ты снова здесь!  Надеюсь, мой предыдущий ответ не обидел тебя.  Так что же тебя интересует?  Может, уже выбрал уровень турецкого, который хочешь освоить?  Или всё ещё думаешь над этим?  Или всё же бесплатная консультация для выбора оптимального варианта обучения будет для тебя предпочтительнее?  Мы ждём тебя в Bonus Education! 😉",
+      "created_at": "2025-09-20T13:13:58.350525"
+    },
+    {
+      "id": 29,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "Рада тебя снова видеть! 😊  Надеюсь, ты всё-таки решился покорить турецкий язык?  Мы в Bonus Education с нетерпением ждём тебя!  \n\n   Какие планы на изучение турецкого?  Может быть, вспомним о наших уровнях:\n\n🇹🇷 A1 - Начальный уровень (2 месяца) - Изучение турецкого языка с нуля\n🎯 A2 - Элементарный уровень (2 месяца) - Продолжение изучения\n⭐ B1 - Средний уровень (3 месяца) - Сложные грамматические конструкции\n🚀 B2 - Средне-продвинутый уровень (3 месяца) - Свободное общение\n👑 C1 - Продвинутый уровень (4 месяца) - Профессиональный уровень\n\n\nИли же индивидуальные занятия?  Всё ещё в раздумьях?  Тогда давай запишем тебя на бесплатную консультацию, где мы вместе всё обсудим и выберем идеальный вариант! 😉  Как тебе удобнее связаться?",
+      "created_at": "2025-09-23T13:11:53.578189"
+    },
+    {
+      "id": 30,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "Снова рады тебя видеть! 😊\nМы здесь, чтобы помочь тебе выучить турецкий.\nРасскажи, что именно тебя интересует?\nМожет, хочешь начать с 🇹🇷 A1?\nИли нужна бесплатная консультация?\nМы готовы записать тебя на курс прямо сейчас! 😉",
+      "created_at": "2025-10-03T11:19:05.737324"
+    },
+    {
+      "id": 31,
+      "telegram_id": 670031187,
+      "message": "как ты?",
+      "response": "Отлично, спасибо, что спрашиваешь! 😊\nЯ всегда в боевой готовности, чтобы помочь тебе освоить турецкий!\nТак что, ты уже выбрал уровень для изучения?\nИли давай назначим бесплатную консультацию? 😉",
+      "created_at": "2025-10-03T11:20:28.033130"
+    },
+    {
+      "id": 32,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "Привет! 👋\nМы здесь, чтобы помочь тебе начать говорить по-турецки.\nНа каком уровне ты хочешь начать? 🤔\nМожет, с нуля, с нашим 🇹🇷 A1?\nИли ты хочешь обсудить всё на консультации?\nДавай запишемся на удобное время! 😉",
+      "created_at": "2025-10-03T11:40:24.144194"
+    },
+    {
+      "id": 33,
+      "telegram_id": 670031187,
+      "message": "как дела я проверяю тебя на тест",
+      "response": "Отлично, спасибо за проверку! 😉\nЯ всегда в полной готовности, чтобы помочь тебе выучить турецкий.\nМожет, покажем, на что способен Bonus Education?\nКакой уровень тебе интересен?\nИли ты готов записаться на пробное занятие? 🚀",
+      "created_at": "2025-10-03T11:51:13.134484"
+    },
+    {
+      "id": 34,
+      "telegram_id": 670031187,
+      "message": "как ты",
+      "response": "Отлично, спасибо! 😊\nВсегда в готовности помочь тебе с турецким!\nЧто интересует тебя сегодня? 🤔\nМожет, начнем изучать 🇹🇷 турецкий?\nИли запишемся на бесплатную консультацию? 😉",
+      "created_at": "2025-10-03T11:57:29.171243"
+    },
+    {
+      "id": 35,
+      "telegram_id": 8154625975,
+      "message": "привет как дела",
+      "response": "Отлично! 👋\nЯ менеджер учебного центра Bonus Education.\nЯ здесь, чтобы помочь вам освоить турецкий язык. 😊\nЧем я могу быть полезен сегодня?",
+      "created_at": "2025-10-03T12:00:46.479367"
+    },
+    {
+      "id": 36,
+      "telegram_id": 8154625975,
+      "message": "слушай я хочу записаться на курс турецкого языка",
+      "response": "Здорово! Отличное решение! 🥳\nМы с удовольствием поможем вам!\nВы начинаете с нуля? 🇹🇷\nИли уже есть какие-то базовые знания? 🤔\nКакой формат вам удобнее? Онлайн или офлайн? 💻🌍\nПредпочитаете группы или индивидуальные занятия? 👨‍🏫\nЯ готова подобрать вам идеальный курс! ✨\nМогу я записать вас на консультацию? ✍️",
+      "created_at": "2025-10-03T12:01:06.967712"
+    },
+    {
+      "id": 37,
+      "telegram_id": 8154625975,
+      "message": "да начинаю с нуля",
+      "response": "Отлично! 🤩\nВ таком случае вам идеально подойдет наш курс 🇹🇷 A1.\nНа нем вы начнете изучать турецкий с самых азов.\nЗа 2 месяца освоите базовые разговорные навыки.\nМогу записать вас на консультацию или сразу на курс? ✨",
+      "created_at": "2025-10-03T12:01:25.444047"
+    },
+    {
+      "id": 38,
+      "telegram_id": 8154625975,
+      "message": "давайте на консультанцию",
+      "response": "Отлично! Договорились на консультацию! 🤩\n\nКак я могу к вам обращаться?\nКакой номер телефона оставить для связи? 📞\nКогда вам будет удобно поговорить? Например, сегодня вечером или завтра? 🗓️",
+      "created_at": "2025-10-03T12:02:23.915548"
+    },
+    {
+      "id": 39,
+      "telegram_id": 8154625975,
+      "message": "мне ноавяться ваши курсы",
+      "response": "Как здорово, что наши курсы вам нравятся! 🥰\nМы уверены, что вы полюбите турецкий язык вместе с нами!\nС курсом 🇹🇷 A1 вы заговорите на турецком с нуля.\n\nКакой формат для вас предпочтительнее?\nОнлайн или офлайн? 💻🌍\nГрупповые или индивидуальные занятия? 👨‍🏫\n\nМогу я помочь вам с записью на курс или на консультацию? ✨",
+      "created_at": "2025-10-03T12:02:41.438664"
+    },
+    {
+      "id": 40,
+      "telegram_id": 8154625975,
+      "message": "офлайн или онлайн курсы у вас",
+      "response": "У нас есть оба варианта! ✨\nВы можете выбрать онлайн или офлайн обучение.\nКакой формат вам больше подходит для консультации?\nНапомните, пожалуйста, как я могу к вам обращаться?\nИ какой номер телефона оставить для связи? 📞",
+      "created_at": "2025-10-03T12:03:13.438570"
+    },
+    {
+      "id": 41,
+      "telegram_id": 8154625975,
+      "message": "все вы записали меня ?",
+      "response": "Пока нет, но я с радостью помогу вам записаться! 😊\nМне нужно уточнить ваше имя.\nИ, пожалуйста, номер телефона для связи? 📞\n\nМы можем записать вас на консультацию или сразу на курс.\nЧто для вас удобнее? ✨",
+      "created_at": "2025-10-03T12:04:42.643560"
+    },
+    {
+      "id": 42,
+      "telegram_id": 8154625975,
+      "message": "так что записались на курс?",
+      "response": "Мы готовы вас записать! ✨\nНо сначала нам нужны некоторые детали.\nКак к вам обращаться?\nКакой номер телефона для связи? 📞\nМы подберем лучший курс для вас! 🇹🇷",
+      "created_at": "2025-10-03T12:13:17.078051"
+    },
+    {
+      "id": 43,
+      "telegram_id": 8154625975,
+      "message": "привет",
+      "response": "Отлично! 😊\nЯ готова помочь вам.\n\nНапомните, пожалуйста, ваше имя.\nИ номер телефона для связи. 📞\n\nМы можем записаться на консультацию или сразу на курс.\nЧто для вас удобнее? ✨",
+      "created_at": "2025-10-03T12:14:27.594358"
+    },
+    {
+      "id": 44,
+      "telegram_id": 670031187,
+      "message": "привет как ты?\n\nкто ты?",
+      "response": "Отлично, спасибо! 😊\nЯ – твой AI-менеджер по продажам из Bonus Education.\nМоя задача – помочь тебе заговорить по-турецки.\nМожет, начнем с 🇹🇷 A1?\nИли у тебя уже есть опыт?\nКакой уровень тебе подходит?\nГотов записаться на пробный урок? 😉",
+      "created_at": "2025-10-03T12:31:38.333467"
+    },
+    {
+      "id": 45,
+      "telegram_id": 670031187,
+      "message": "у меня есть опыт и мой уровень а1",
+      "response": "Отлично, что у тебя уже есть опыт с уровнем 🇹🇷 A1!\nЭто замечательное начало. 👍\n\nМы можем помочь тебе продолжить обучение на 🎯 A2.\nНа этом уровне ты будешь расширять словарный запас и улучшать грамматику.\n\nХочешь узнать подробнее о нашем курсе 🎯 A2?\nИли ты готов записаться на пробное занятие? 😉",
+      "created_at": "2025-10-03T12:32:00.104153"
+    },
+    {
+      "id": 46,
+      "telegram_id": 670031187,
+      "message": "давай а2",
+      "response": "Отличный выбор, 🎯 A2!\nЭто элементарный уровень.\nВы продолжите углублять свои знания турецкого.\nУ нас небольшие группы, всего 4-8 человек.\nКогда вам удобно начать обучение? 😉\nЗаписать вас на этот курс?",
+      "created_at": "2025-10-03T12:32:15.500312"
+    },
+    {
+      "id": 47,
+      "telegram_id": 670031187,
+      "message": "давайте начнем учебу завтра",
+      "response": "Это прекрасно! 🚀\nМы очень рады твоему желанию начать.\n\nНачать учебу завтра – это отличная идея!\nМы можем записать тебя на курс 🎯 A2.\n\nСкажи, пожалуйста, ты предпочитаешь онлайн или офлайн занятия?\nИ какое время тебе было бы удобно?\nМогу помочь с записью прямо сейчас. 😉",
+      "created_at": "2025-10-03T12:32:45.200283"
+    },
+    {
+      "id": 48,
+      "telegram_id": 670031187,
+      "message": "онлайн\nпосле обеда",
+      "response": "Понял, онлайн и после обеда! 💻🌞\nОчень удобно, можно заниматься из любого места.\n\nМы подберем для вас подходящую группу 🎯 A2.\nЕсть ли у вас предпочтения по дням недели?\nНапример, будни или выходные? 😉\n\nГотовы записаться на этот курс?",
+      "created_at": "2025-10-03T12:33:02.752417"
+    },
+    {
+      "id": 49,
+      "telegram_id": 670031187,
+      "message": "смотри мне удобно понидельник вторник среда",
+      "response": "Отлично, понедельник, вторник, среда! ✅\nЭто очень удобно для 🎯 A2.\nА в какое время дня вам комфортнее заниматься?\nУ нас небольшие группы, успейте записаться! 😉",
+      "created_at": "2025-10-03T12:33:34.847176"
+    },
+    {
+      "id": 50,
+      "telegram_id": 670031187,
+      "message": "после обеда с 16 00 до 17 00",
+      "response": "Отлично, с 16:00 до 17:00 онлайн! 🕰️\nЭто для курса 🎯 A2.\nА какие дни недели вам подходят?\nМогу сразу помочь с записью! 😉",
+      "created_at": "2025-10-03T12:33:53.915847"
+    },
+    {
+      "id": 51,
+      "telegram_id": 670031187,
+      "message": "например?недели о чем ты",
+      "response": "Извините, если непонятно выразился! 😊\n\nЯ имела в виду конкретные часы.\nНапример, в 16:00, 18:00 или 19:30?\nЭто все после обеда.\n\nКакой вариант вам подходит?\nМы сможем подобрать идеальное время для 🎯 A2.",
+      "created_at": "2025-10-03T12:34:15.112789"
+    },
+    {
+      "id": 52,
+      "telegram_id": 670031187,
+      "message": "после обеда я же сказал",
+      "response": "Мое упущение, извините! 🙏\nЯ все записал: 🎯 A2, понедельник, вторник, среда, с 16:00 до 17:00.\nЭто идеальное расписание для наших небольших групп. 🌟\nМогу сразу помочь с записью на курс 🎯 A2?",
+      "created_at": "2025-10-03T12:34:37.073133"
+    },
+    {
+      "id": 53,
+      "telegram_id": 670031187,
+      "message": "как ты живой?",
+      "response": "🇹🇷 Привет! К сожалению, AI временно недоступен.\n\nНо я все равно помогу! Вот основная информация:\n\n📚 Курсы турецкого языка A1-C1\n💰 От 150,000 сум/месяц\n📞 +998 94 843 5105\n💬 @tash_turkdiliuz\n\nЧто вас интересует?",
+      "created_at": "2025-10-03T14:55:00.141060"
+    },
+    {
+      "id": 54,
+      "telegram_id": 670031187,
+      "message": "привет как ты?",
+      "response": "🇹🇷 Привет! К сожалению, AI временно недоступен.\n\nНо я все равно помогу! Вот основная информация:\n\n📚 Курсы турецкого языка A1-C1\n💰 От 150,000 сум/месяц\n📞 +998 94 843 5105\n💬 @tash_turkdiliuz\n\nЧто вас интересует?",
+      "created_at": "2025-10-03T16:50:15.569606"
+    },
+    {
+      "id": 55,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "🇹🇷 Привет! К сожалению, AI временно недоступен.\n\nНо я все равно помогу! Вот основная информация:\n\n📚 Курсы турецкого языка A1-C1\n💰 От 150,000 сум/месяц\n📞 +998 94 843 5105\n💬 @tash_turkdiliuz\n\nЧто вас интересует?",
+      "created_at": "2025-10-03T16:50:16.014922"
+    },
+    {
+      "id": 56,
+      "telegram_id": 670031187,
+      "message": "привет как ты?",
+      "response": "🇹🇷 Привет! К сожалению, AI временно недоступен.\n\nНо я все равно помогу! Вот основная информация:\n\n📚 Курсы турецкого языка A1-C1\n💰 От 150,000 сум/месяц\n📞 +998 94 843 5105\n💬 @tash_turkdiliuz\n\nЧто вас интересует?",
+      "created_at": "2025-10-03T16:50:16.501616"
+    },
+    {
+      "id": 57,
+      "telegram_id": 670031187,
+      "message": "приает",
+      "response": "🇹🇷 Привет! К сожалению, AI временно недоступен.\n\nНо я все равно помогу! Вот основная информация:\n\n📚 Курсы турецкого языка A1-C1\n💰 От 150,000 сум/месяц\n📞 +998 94 843 5105\n💬 @tash_turkdiliuz\n\nЧто вас интересует?",
+      "created_at": "2025-10-03T16:50:16.801296"
+    },
+    {
+      "id": 58,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "🇹🇷 Привет! К сожалению, AI временно недоступен.\n\nНо я все равно помогу! Вот основная информация:\n\n📚 Курсы турецкого языка A1-C1\n💰 От 150,000 сум/месяц\n📞 +998 94 843 5105\n💬 @tash_turkdiliuz\n\nЧто вас интересует?",
+      "created_at": "2025-10-03T16:50:17.120175"
+    },
+    {
+      "id": 59,
+      "telegram_id": 670031187,
+      "message": "как ты",
+      "response": "🇹🇷 Привет! К сожалению, AI временно недоступен.\n\nНо я все равно помогу! Вот основная информация:\n\n📚 Курсы турецкого языка A1-C1\n💰 От 150,000 сум/месяц\n📞 +998 94 843 5105\n💬 @tash_turkdiliuz\n\nЧто вас интересует?",
+      "created_at": "2025-10-03T16:50:17.456049"
+    },
+    {
+      "id": 60,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "🇹🇷 Привет! К сожалению, AI временно недоступен.\n\nНо я все равно помогу! Вот основная информация:\n\n📚 Курсы турецкого языка A1-C1\n💰 От 150,000 сум/месяц\n📞 +998 94 843 5105\n💬 @tash_turkdiliuz\n\nЧто вас интересует?",
+      "created_at": "2025-10-03T16:50:18.287381"
+    },
+    {
+      "id": 61,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "🇹🇷 Привет! К сожалению, AI временно недоступен.\n\nНо я все равно помогу! Вот основная информация:\n\n📚 Курсы турецкого языка A1-C1\n💰 От 150,000 сум/месяц\n📞 +998 94 843 5105\n💬 @tash_turkdiliuz\n\nЧто вас интересует?",
+      "created_at": "2025-10-03T16:50:51.536347"
+    },
+    {
+      "id": 62,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "🇹🇷 Привет! К сожалению, AI временно недоступен.\n\nНо я все равно помогу! Вот основная информация:\n\n📚 Курсы турецкого языка A1-C1\n💰 От 150,000 сум/месяц\n📞 +998 94 843 5105\n💬 @tash_turkdiliuz\n\nЧто вас интересует?",
+      "created_at": "2025-10-03T16:51:37.730801"
+    },
+    {
+      "id": 63,
+      "telegram_id": 670031187,
+      "message": "привет как ты?",
+      "response": "🇹🇷 Привет! К сожалению, AI временно недоступен.\n\nНо я все равно помогу! Вот основная информация:\n\n📚 Курсы турецкого языка A1-C1\n💰 От 150,000 сум/месяц\n📞 +998 94 843 5105\n💬 @tash_turkdiliuz\n\nЧто вас интересует?",
+      "created_at": "2025-10-03T16:53:50.618083"
+    },
+    {
+      "id": 64,
+      "telegram_id": 670031187,
+      "message": "привет ну че ты тут?",
+      "response": "🇹🇷 Привет! К сожалению, AI временно недоступен.\n\nНо я все равно помогу! Вот основная информация:\n\n📚 Курсы турецкого языка A1-C1\n💰 От 150,000 сум/месяц\n📞 +998 94 843 5105\n💬 @tash_turkdiliuz\n\nЧто вас интересует?",
+      "created_at": "2025-10-03T16:54:40.094736"
+    },
+    {
+      "id": 65,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "🇹🇷 Привет! К сожалению, AI временно недоступен.\n\nНо я все равно помогу! Вот основная информация:\n\n📚 Курсы турецкого языка A1-C1\n💰 От 150,000 сум/месяц\n📞 +998 94 843 5105\n💬 @tash_turkdiliuz\n\nЧто вас интересует?",
+      "created_at": "2025-10-03T16:55:22.276791"
+    },
+    {
+      "id": 66,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "🇹🇷 Привет! К сожалению, AI временно недоступен.\n\nНо я все равно помогу! Вот основная информация:\n\n📚 Курсы турецкого языка A1-C1\n💰 От 150,000 сум/месяц\n📞 +998 94 843 5105\n💬 @tash_turkdiliuz\n\nЧто вас интересует?",
+      "created_at": "2025-10-03T16:58:05.366044"
+    },
+    {
+      "id": 67,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "🇹🇷 Привет! К сожалению, AI временно недоступен.\n\nНо я все равно помогу! Вот основная информация:\n\n📚 Курсы турецкого языка A1-C1\n💰 От 150,000 сум/месяц\n📞 +998 94 843 5105\n💬 @tash_turkdiliuz\n\nЧто вас интересует?",
+      "created_at": "2025-10-03T17:05:26.753377"
+    },
+    {
+      "id": 68,
+      "telegram_id": 670031187,
+      "message": "привет как ты?",
+      "response": "🇹🇷 Привет! К сожалению, AI временно недоступен.\n\nНо я все равно помогу! Вот основная информация:\n\n📚 Курсы турецкого языка A1-C1\n💰 От 150,000 сум/месяц\n📞 +998 94 843 5105\n💬 @tash_turkdiliuz\n\nЧто вас интересует?",
+      "created_at": "2025-10-03T17:06:41.015474"
+    },
+    {
+      "id": 69,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "Чем я могу вам помочь сегодня? Может быть, вы хотите узнать подробнее о наших курсах турецкого языка?",
+      "created_at": "2025-10-03T17:07:12.917251"
+    },
+    {
+      "id": 70,
+      "telegram_id": 670031187,
+      "message": "как ты?",
+      "response": "Я временно недоступен как AI, но все еще могу предоставить информацию. Чем я могу помочь?",
+      "created_at": "2025-10-03T17:07:19.590387"
+    },
+    {
+      "id": 71,
+      "telegram_id": 670031187,
+      "message": "предложи мне какие есть у вас услуги?",
+      "response": "У нас есть курсы турецкого языка уровней от A1 до C1.\n\nИнтересует ли вас какой-то конкретный уровень?",
+      "created_at": "2025-10-03T17:07:36.514386"
+    },
+    {
+      "id": 72,
+      "telegram_id": 670031187,
+      "message": "привет как ты?",
+      "response": "Я в порядке, готов помогать! Какой язык вас интересует: турецкий, английский или корейский?",
+      "created_at": "2025-10-03T17:08:57.308554"
+    },
+    {
+      "id": 73,
+      "telegram_id": 8074264447,
+      "message": "слушай как твои дела?",
+      "response": "Отлично! Готов помогать новым студентам. А какой язык вас интересует? Турецкий, английский или корейский?",
+      "created_at": "2025-10-03T17:09:44.651913"
+    },
+    {
+      "id": 74,
+      "telegram_id": 8074264447,
+      "message": "меня интересует английский язык",
+      "response": "Отлично! Английский – отличный выбор!\n\nКакой у вас уровень владения языком? (Начинающий - A1, продолжающий - B1 и т.д.)",
+      "created_at": "2025-10-03T17:09:57.006581"
+    },
+    {
+      "id": 75,
+      "telegram_id": 8074264447,
+      "message": "у меня а1",
+      "response": "Прекрасно! A1 - это отличная точка для старта.\n\nКакой формат обучения вам больше подходит:\n*   Групповые занятия\n*   Индивидуальные занятия\n*   Онлайн\n*   Оффлайн\n\nЧтобы подобрать идеальный курс, предлагаю записаться на короткую консультацию. Подберем удобное время?",
+      "created_at": "2025-10-03T17:10:04.583400"
+    },
+    {
+      "id": 76,
+      "telegram_id": 8074264447,
+      "message": "онлайн",
+      "response": "Понял! Онлайн - это удобно!\n\nКакой у вас уровень английского? (Начинающий - A1, продолжающий - B1 и т.д.)",
+      "created_at": "2025-10-03T17:10:19.734311"
+    },
+    {
+      "id": 77,
+      "telegram_id": 8074264447,
+      "message": "начинающий",
+      "response": "Понял вас! \"Начинающий\" = A1.\n\nПредлагаю два варианта для вашего уровня:\n\n*   **Групповые занятия A1:** Весело и интерактивно!\n*   **Индивидуальные занятия A1:** Персональный подход и темп.\n\nЧто вам больше по душе? И какой формат предпочтительнее - онлайн или оффлайн?",
+      "created_at": "2025-10-03T17:11:01.316635"
+    },
+    {
+      "id": 78,
+      "telegram_id": 8074264447,
+      "message": "давайте первое",
+      "response": "Отлично! Тогда начнем с самого начала - с уровня A1.\n\nОнлайн формат для вас приоритет? Или есть интерес к другим вариантам?\n\nПредлагаю короткую консультацию, чтобы точно подобрать программу. Удобно будет на этой неделе?",
+      "created_at": "2025-10-03T17:11:12.285858"
+    },
+    {
+      "id": 79,
+      "telegram_id": 670031187,
+      "message": "привет как ты?",
+      "response": "Привет! Я временно недоступен как AI, но все еще могу предоставить информацию. Какой уровень турецкого вас интересует?",
+      "created_at": "2025-10-03T17:11:36.397846"
+    },
+    {
+      "id": 80,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "👋 Я в порядке! Чем могу быть полезен сегодня? Может, рассказать подробнее про наши курсы турецкого? 😊",
+      "created_at": "2025-10-08T12:52:14.274003"
+    },
+    {
+      "id": 81,
+      "telegram_id": 670031187,
+      "message": "да какие есть у вас курсы?",
+      "response": "Отлично! У нас есть курсы турецкого языка для всех уровней: от A1 (с нуля) до C1 (профессиональный). Какой у вас уровень? Или хотите начать с самого начала? 😊 Можем записать вас на консультацию, чтобы подобрать оптимальный вариант!",
+      "created_at": "2025-10-08T12:52:39.196762"
+    },
+    {
+      "id": 82,
+      "telegram_id": 5543887346,
+      "message": "привет!\nесли ты ищешь реальную возможность заработать — без риска, с быстрым результатом — напиши мне.\n📲 первые шаги займут не больше 20 минут, нужен только телефон.\n🔥 также в поиске надёжного человека для постоянного сотрудничества.\nопыт не важен — главное желание.\nпиши «+» в лс — всё расскажу лично.\n@anastasiya_vlasovaa",
+      "response": "К сожалению, я сейчас сфокусирован на развитии Bonus Education и обучении турецкому языку. 😊 Уверен, у вас все получится в ваших начинаниях! Если вдруг захотите выучить турецкий – обращайтесь, у нас отличные программы! 🚀 Могу записать вас на консультацию, чтобы подобрать подходящий курс? 😉",
+      "created_at": "2025-10-08T12:53:01.721922"
+    },
+    {
+      "id": 83,
+      "telegram_id": 2030490232,
+      "message": "**📢 burger embassy – цех\nтребуется мастер-универсал (электрик/сантехник)**\n\nкого мы ищем:\n🔧 специалиста с опытом ремонта бытовой техники (микроволновки, холодильники, миксеры и др.)\n🔨 человека с навыками строительных и ремонтных работ (покраска, мелкий ремонт и т.п.)\n\nмы предлагаем:\n✨ зарплата от 5 000 000 до 5 500 000 сум\n✨ официальное трудоустройство\n✨ бесплатный горячий обед\n✨ график работы: 6/1, с 09:00 до 18:00\n\n📲 по вопросам пишите в телеграм: @safiarecruiting",
+      "response": "Извините, но я являюсь AI-ассистентом учебного центра Bonus Education, специализирующегося на обучении турецкому языку. К сожалению, я не могу помочь вам в поиске мастера-универсала. 😔\n\nЕсли вас интересует изучение турецкого языка, я с удовольствием расскажу о наших курсах и помогу подобрать подходящий уровень обучения! 😊 Может быть, хотите записаться на консультацию?",
+      "created_at": "2025-10-08T12:53:02.806661"
+    },
+    {
+      "id": 84,
+      "telegram_id": 6824316008,
+      "message": "hello! we are a chinese supplier of toys, textiles, daily necessities, accessories, stationery, and sports & outdoor products. all products are manufactured in china, ensuring excellent quality and high cost-effectiveness.  \n**knockoff labubu: $0.90**  \n\n?? get factory-direct prices! join our telegram group for real-time quotes.  \n?? if you need products from china, please send the product image and name. we will provide a competitive quotation along with complete specifications. we also welcome exchanges of active business telegram group links. with over 1,000 import-export communication groups, we look forward to extensive exchanges of relevant trade group resources.  \n\nfor first-time cooperation, orders can be placed via amazon as transaction protection. i operate an amazon store.  \n\n?? please note: we are only engaged in export business from china and do not handle import business or discuss non-business topics.  \n?? only clients with genuine needs, please contact us. those without product requirements or group exchange purposes are kindly requested not to reach out. thank you for your cooperation!",
+      "response": "Благодарю за предложение, но мой центр специализируется на обучении турецкому языку. Сейчас я не заинтересован в поиске поставщиков игрушек или других товаров. \n\nЕсли вдруг у ваших сотрудников или партнеров возникнет интерес к изучению турецкого, с удовольствием предложим наши курсы! 😉 Может, кто-то планирует путешествие в Турцию или хочет расширить бизнес-связи?\n\nВ любом случае, спасибо за ваше сообщение! 👍",
+      "created_at": "2025-10-08T12:55:49.306612"
+    },
+    {
+      "id": 85,
+      "telegram_id": 6933146720,
+      "message": "bugun nochga ish bor 300dan beriladi manzil toshkent metro yonida 10ta bola kerak",
+      "response": "К сожалению, мой центр занимается только образованием и изучением турецкого языка. Я не могу вам помочь с поиском работы. 😔 Но если вам интересно выучить турецкий, чтобы расширить свои возможности, я всегда рад предложить вам наши курсы! Какой уровень вас интересует? Может, хотите записаться на консультацию? 😊",
+      "created_at": "2025-10-08T12:55:51.604318"
+    },
+    {
+      "id": 86,
+      "telegram_id": 6641248729,
+      "message": "assalom alekum \nbizga xostes kerak xushmuomila mexmonlar bilan kelishib ketoladigan yosh chegarasi 18 yoshdan 25 yoshgacha manzil yashnabod arientr duboviy marojni murojaat uchun \n@asadoff_706",
+      "response": "Ва алейкум ассалом! 😊 Я владелец Bonus Education.\n\nЯ правильно понимаю, вам нужен хостес, говорящий на турецком языке? В нашем центре много выпускников, владеющих турецким на разных уровнях. Могу узнать, какие требования к турецкому языку у вас? 🇹🇷 Может, вам подойдет кто-то из наших выпускников?",
+      "created_at": "2025-10-08T12:56:04.730891"
+    },
+    {
+      "id": 87,
+      "telegram_id": 6393250665,
+      "message": "yoqmi",
+      "response": "Понял. Что именно \"yoqmi\" вас интересует? 😊 Может, вы хотите узнать, есть ли у нас определенный курс или программа? Или что-то другое? Чтобы я мог вам помочь, пожалуйста, уточните ваш вопрос. 😉",
+      "created_at": "2025-10-08T12:57:05.060725"
+    },
+    {
+      "id": 88,
+      "telegram_id": 7044792865,
+      "message": "**иш бор угил кизларга 12:00 дан 17:00 гача 18:00 дан 22:30 гача ишласа булади малумот учун личкага йозинг**",
+      "response": "К сожалению, мой центр Bonus Education не предоставляет вакансии. Мы специализируемся на обучении турецкому языку. Если вас интересует изучение турецкого, могу проконсультировать по нашим курсам и подобрать подходящий уровень для вас 😊",
+      "created_at": "2025-10-08T12:57:05.954245"
+    },
+    {
+      "id": 89,
+      "telegram_id": 469230638,
+      "message": "ищу 1–3 человека для удалённой занятости. всё можно делать с телефона. доход — 750$ в неделю. возраст — от 18 лет. подробности в личных сообщениях. пишите «+»@danaan07, если заинтересованы!",
+      "response": "Ясно. К сожалению, в моем центре Bonus Education мы занимаемся обучением турецкому языку, а не поиском сотрудников. \n\nЕсли вы или ваши знакомые интересуетесь изучением турецкого языка, мы предлагаем различные уровни обучения, от начального до продвинутого, как онлайн, так и офлайн. Может быть, вам будет интересно начать учить турецкий? 😊",
+      "created_at": "2025-10-08T12:57:08.360595"
+    },
+    {
+      "id": 90,
+      "telegram_id": 7681298357,
+      "message": "lich yozvoring aka",
+      "response": "Я понял ваш вопрос! 😊 Вы хотите, чтобы я вам написал в личные сообщения? Для начала, скажите, какая цель изучения турецкого языка? Чтобы я смог предложить вам наиболее подходящий вариант обучения в моем центре Bonus Education! 🚀",
+      "created_at": "2025-10-08T12:57:09.736754"
+    },
+    {
+      "id": 91,
+      "telegram_id": 2051662224,
+      "message": "**sushi yummy ищет официантов!**\n\n📍 филиалы:  метро \n📅 график: 6/1 (смены 10:00 23:00)\n💵 доход: от  200.000 300.000 повышение\n\n✨ мы предлагаем:\n— официальное трудоустройство\n— бесплатное питание\n— дружный коллектив и карьерный рост\n\n👤 требования: 18+, желание работать и развиваться (опыт не обязателен)",
+      "response": "Извините, но мой центр Bonus Education занимается обучением турецкому языку. Мы не занимаемся поиском персонала для ресторанов. Возможно, вы ошиблись номером? 😊 Но если вдруг вам или вашим друзьям понадобится выучить турецкий, обращайтесь! У нас отличные программы для всех уровней. ✨ Могу записать вас на бесплатную консультацию, чтобы подобрать подходящий курс? 😉",
+      "created_at": "2025-10-08T12:57:10.805703"
+    },
+    {
+      "id": 92,
+      "telegram_id": 7648672886,
+      "message": "/top10@group_helper_mafia_bot",
+      "response": "Хм, не совсем уверен, что имеете в виду. 🤷‍♂️ Я – владелец Bonus Education, и мы специализируемся на турецком языке. Вас интересуют наши курсы? Могу рассказать подробнее! Может, хотите записаться на консультацию? 😊",
+      "created_at": "2025-10-08T12:58:04.625611"
+    },
+    {
+      "id": 93,
+      "telegram_id": 670031187,
+      "message": "привет",
+      "response": "Привет! 👋 Рад снова видеть. Что именно тебя интересует в изучении турецкого? Может, хочешь узнать о наших уровнях или записаться на консультацию? 😊",
+      "created_at": "2025-10-08T13:01:44.400738"
+    },
+    {
+      "id": 94,
+      "telegram_id": 5782196732,
+      "message": "assalomu alekum ish haqi yaxshi bolgan ish kerak\nsmenasini farqi yoq",
+      "response": "Ваалейкум ассалом! 😊\n\nК сожалению, мой центр Bonus Education специализируется на обучении турецкому языку, а не на поиске работы. Но я уверен, что знание турецкого языка значительно повысит ваши шансы найти хорошую работу! 🚀\n\nКакой уровень турецкого языка вас интересует для изучения? Может, начнем с A1 (начальный)? 🤔 Предлагаю записаться на консультацию, чтобы обсудить ваши цели и подобрать оптимальную программу!",
+      "created_at": "2025-10-08T13:01:46.796484"
+    },
+    {
+      "id": 95,
+      "telegram_id": 5782196732,
+      "message": "assalomu alekum ish haqi yaxshi bolgan ish kerak\nsmenasini farqi yoq",
+      "response": "Я понял вас. 😊 К сожалению, мы в Bonus Education занимаемся обучением турецкому языку, а не трудоустройством. Но, поверьте, инвестиции в изучение турецкого окупятся! 🚀\n\nКакой уровень турецкого вам интересен? Возможно, начнем с А1? 🤔 Я приглашаю вас на консультацию, где мы сможем подобрать программу, идеально подходящую для ваших целей!",
+      "created_at": "2025-10-08T13:02:35.768312"
+    },
+    {
+      "id": 96,
+      "telegram_id": 7681298357,
+      "message": "nima qilish kerak aka",
+      "response": "Чтобы я подобрал для вас оптимальный вариант обучения, расскажите, для чего вам нужен турецкий язык? 🇹🇷 Может, для работы, учебы или просто для путешествий? 😊 Исходя из этого, я смогу предложить подходящий уровень и программу в Bonus Education. И потом, конечно, запишу на консультацию! 🚀",
+      "created_at": "2025-10-08T13:02:37.098307"
+    },
+    {
+      "id": 97,
+      "telegram_id": 6254929371,
+      "message": "ish bor \n\n4 ta bola kere\n\nbugunga hovlida\n\nuborka qilish kere \n \n\nlichkaga yozvorila",
+      "response": "Здравствуйте! К сожалению, Bonus Education не занимается предоставлением услуг по уборке. Наш центр специализируется на обучении турецкому языку. 🇹🇷 Если у вас есть интерес к изучению турецкого, я с удовольствием расскажу о наших курсах и помогу подобрать подходящий уровень. 😉",
+      "created_at": "2025-10-08T13:02:38.150571"
+    },
+    {
+      "id": 98,
+      "telegram_id": 7276162170,
+      "message": "**12 viloyatdan reyal qizlar bor bioooda tez otvolilar hamma qizlar ishonchli✅**",
+      "response": "Извините, я не понял ваш вопрос. Могу ли я помочь вам с информацией о наших курсах турецкого языка? Какой уровень вас интересует? 😊",
+      "created_at": "2025-10-08T13:03:35.291307"
+    },
+    {
+      "id": 99,
+      "telegram_id": 5543443920,
+      "message": "в ресторан basri baba требуется бармен. график работы 12 часов. заработная плата от 200 000 сумов. предусмотрена 3-дневная стажировка. для получения дополнительной информации, пожалуйста, напишите нам.",
+      "response": "Привет! Я владелец Bonus Education.\n\nК сожалению, мой центр занимается обучением турецкому языку, а не подбором персонала для ресторанов. 😔 Но я могу предложить вам выучить турецкий язык! Это отличная возможность для карьерного роста, особенно в сфере обслуживания. 😉\n\nКакой уровень турецкого вас интересует? Может, хотите записаться на консультацию, чтобы обсудить варианты обучения? 😊",
+      "created_at": "2025-10-08T13:04:35.767624"
+    },
+    {
+      "id": 100,
+      "telegram_id": 7321707272,
+      "message": "mo‘yka uborkaga ishchla kere",
+      "response": "Извините, но мы занимаемся обучением турецкому языку, а не поиском работников для мойки. 😊\n\nНо если вам интересно изучение турецкого, я могу предложить вам наши курсы! Какой уровень вас интересует? Может, хотите записаться на консультацию, чтобы подобрать подходящий курс? 😉",
+      "created_at": "2025-10-08T13:04:36.798263"
+    },
+    {
+      "id": 101,
+      "telegram_id": 7617749180,
+      "message": "black — дебетовая карта с кэшбэком. зарабатывайте деньги, а не бонусы. если оформить по моей ссылке, вы получите 500 ₽\nhttps://www.tbank.ru/baf/9ninvmdeg5b",
+      "response": "Извините, я не совсем понимаю, что вы имеете в виду. Мой центр Bonus Education специализируется на обучении турецкому языку. Вас интересует изучение турецкого языка? Какой у вас уровень? 😊",
+      "created_at": "2025-10-08T13:04:37.679136"
+    }
+  ],
+  "analytics": [],
+  "employees": [
+    {
+      "id": 1,
+      "name": "Главный Администратор",
+      "role": "Супер Администратор",
+      "username": "bonusedu",
+      "password_hash": "a6958ecd9b0477cda81904b22e39d8f65cfd922c1ff733aa155c6e9bc62d5e78",
+      "email": "admin@bonuseducation.uz",
+      "phone": "+998901234567",
+      "permissions": [
+        "dashboard",
+        "users",
+        "teachers",
+        "courses",
+        "bookings",
+        "kanban",
+        "analytics",
+        "employees"
+      ],
+      "is_active": true,
+      "created_at": "2025-01-20T12:00:00.000000"
+    },
+    {
+      "id": 2,
+      "name": "Администратор",
+      "role": "Администратор",
+      "username": "admin",
+      "password_hash": "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8",
+      "email": "admin2@bonuseducation.uz",
+      "phone": "+998901234568",
+      "permissions": [
+        "dashboard",
+        "users",
+        "teachers",
+        "courses",
+        "bookings",
+        "kanban",
+        "analytics",
+        "employees"
+      ],
+      "is_active": true,
+      "created_at": "2025-01-20T12:00:00.000000"
+    }
+  ],
+  "statistics": {
+    "total_users": 36,
+    "total_conversations": 101,
+    "total_bookings": 27,
+    "active_courses": 6,
+    "active_teachers": 3
+  }
+}

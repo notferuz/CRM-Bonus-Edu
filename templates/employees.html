@@ -1,0 +1,500 @@
+{% extends "base.html" %}
+
+{% block title %}Сотрудники - Bonus Education CRM{% endblock %}
+
+{% block page_title %}
+    <i class="fas fa-users-cog me-3" style="color: #5580f1;"></i>
+    Сотрудники
+{% endblock %}
+
+{% block page_subtitle %}Управление сотрудниками и правами доступа к CRM{% endblock %}
+
+{% block content %}
+
+<!-- Кнопки действий -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex gap-2">
+                <button class="btn btn-outline-success" onclick="exportToCSV('employees')">
+                    <i class="fas fa-file-csv me-2"></i>Экспорт сотрудников
+                </button>
+            </div>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEmployeeModal">
+                <i class="fas fa-user-plus me-2"></i>Добавить сотрудника
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Список сотрудников -->
+<div class="row">
+    {% for employee in employees %}
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 fade-in-up employee-card" style="animation-delay: {{ loop.index0 * 0.1 }}s;">
+            <div class="card-header border-0 py-3">
+                <div class="d-flex align-items-center">
+                    <div class="employee-avatar me-3">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                        <h5 class="mb-0 text-white">{{ employee.name }}</h5>
+                        <small class="text-white-50">{{ employee.role }}</small>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-outline-light" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-ellipsis-v"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#" onclick="viewEmployee({{ employee.id }})">
+                                <i class="fas fa-eye me-2"></i>Подробнее
+                            </a></li>
+                            <li><a class="dropdown-item" href="#" onclick="editEmployee({{ employee.id }})">
+                                <i class="fas fa-edit me-2"></i>Редактировать
+                            </a></li>
+                            <li><a class="dropdown-item" href="#" onclick="resetPassword({{ employee.id }})">
+                                <i class="fas fa-key me-2"></i>Сбросить пароль
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="#" onclick="deleteEmployee({{ employee.id }})">
+                                <i class="fas fa-trash me-2"></i>Удалить
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <div class="employee-info">
+                            <i class="fas fa-user-tag text-muted me-2"></i>
+                            <span class="text-muted">Роль:</span>
+                            <strong>{{ employee.role }}</strong>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="employee-info">
+                            <i class="fas fa-shield-alt text-muted me-2"></i>
+                            <span class="text-muted">Статус:</span>
+                            {% if employee.is_active %}
+                                <span class="badge bg-success">Активен</span>
+                            {% else %}
+                                <span class="badge bg-danger">Заблокирован</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <div class="employee-info">
+                        <i class="fas fa-envelope text-muted me-2"></i>
+                        <span class="text-muted">Логин:</span>
+                        <strong>{{ employee.username }}</strong>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <div class="employee-info">
+                        <i class="fas fa-calendar text-muted me-2"></i>
+                        <span class="text-muted">Создан:</span>
+                        <strong>{{ employee.created_at[:10] if employee.created_at else 'Не указано' }}</strong>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <h6 class="mb-2">
+                        <i class="fas fa-lock me-2"></i>Доступ к страницам:
+                    </h6>
+                    <div class="d-flex flex-wrap gap-1">
+                        {% for permission in employee.permissions or [] %}
+                        <span class="badge bg-primary">
+                            <i class="fas fa-check me-1"></i>
+                            {{ permission }}
+                        </span>
+                        {% else %}
+                        <span class="text-muted">Нет доступа</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-footer bg-transparent border-0">
+                <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary btn-sm flex-fill" onclick="viewEmployee({{ employee.id }})">
+                        <i class="fas fa-eye me-1"></i>Подробнее
+                    </button>
+                    <button class="btn btn-outline-success btn-sm flex-fill" onclick="editEmployee({{ employee.id }})">
+                        <i class="fas fa-edit me-1"></i>Редактировать
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% if not employees %}
+<div class="row">
+    <div class="col-12">
+        <div class="empty-state">
+            <i class="fas fa-users-cog"></i>
+            <h5>Пока нет сотрудников</h5>
+            <p>Добавьте первого сотрудника</p>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEmployeeModal">
+                <i class="fas fa-plus me-2"></i>
+                Добавить сотрудника
+            </button>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Статистика сотрудников -->
+<div class="row mt-5">
+    <div class="col-md-3 mb-3">
+        <div class="stat-card text-center">
+            <div class="stat-icon mx-auto mb-3">
+                <i class="fas fa-users-cog"></i>
+            </div>
+            <div class="stat-number">{{ employees|length }}</div>
+            <div class="stat-label">Всего сотрудников</div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="stat-card text-center">
+            <div class="stat-icon mx-auto mb-3">
+                <i class="fas fa-user-shield"></i>
+            </div>
+            <div class="stat-number">{{ employees|selectattr('role', 'equalto', 'Администратор')|list|length }}</div>
+            <div class="stat-label">Администраторов</div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="stat-card text-center">
+            <div class="stat-icon mx-auto mb-3">
+                <i class="fas fa-user-tie"></i>
+            </div>
+            <div class="stat-number">{{ employees|selectattr('role', 'equalto', 'Менеджер')|list|length }}</div>
+            <div class="stat-label">Менеджеров</div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="stat-card text-center">
+            <div class="stat-icon mx-auto mb-3">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="stat-number">{{ employees|selectattr('is_active', 'equalto', True)|list|length }}</div>
+            <div class="stat-label">Активных</div>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно добавления сотрудника -->
+<div class="modal fade" id="addEmployeeModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="border-radius: 16px;">
+            <div class="modal-header border-0 py-3">
+                <h5 class="modal-title" style="color: #5580f1;">
+                    <i class="fas fa-user-plus me-3"></i>
+                    Добавить сотрудника
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form action="/add_employee" method="post">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">ФИО *</label>
+                            <input type="text" class="form-control" name="name" required placeholder="Иванов Иван Иванович">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Роль *</label>
+                            <select class="form-control" name="role" required>
+                                <option value="">Выберите роль</option>
+                                <option value="Администратор">Администратор</option>
+                                <option value="Менеджер">Менеджер</option>
+                                <option value="Оператор">Оператор</option>
+                                <option value="Бухгалтер">Бухгалтер</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Логин *</label>
+                            <input type="text" class="form-control" name="username" required placeholder="username">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Пароль *</label>
+                            <input type="password" class="form-control" name="password" required placeholder="Пароль">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email" placeholder="email@example.com">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Телефон</label>
+                            <input type="tel" class="form-control" name="phone" placeholder="+998901234567">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Доступ к страницам *</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="permissions" value="dashboard" id="perm_dashboard">
+                                    <label class="form-check-label" for="perm_dashboard">Дашборд</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="permissions" value="users" id="perm_users">
+                                    <label class="form-check-label" for="perm_users">Пользователи</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="permissions" value="teachers" id="perm_teachers">
+                                    <label class="form-check-label" for="perm_teachers">Преподаватели</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="permissions" value="courses" id="perm_courses">
+                                    <label class="form-check-label" for="perm_courses">Курсы</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="permissions" value="bookings" id="perm_bookings">
+                                    <label class="form-check-label" for="perm_bookings">Записи</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="permissions" value="kanban" id="perm_kanban">
+                                    <label class="form-check-label" for="perm_kanban">Kanban доска</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="permissions" value="analytics" id="perm_analytics">
+                                    <label class="form-check-label" for="perm_analytics">Аналитика</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="permissions" value="employees" id="perm_employees">
+                                    <label class="form-check-label" for="perm_employees">Сотрудники</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="is_active" id="is_active" checked>
+                            <label class="form-check-label" for="is_active">Активный сотрудник</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-2"></i>Сохранить
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Стили для карточек сотрудников */
+    .employee-card {
+        border-radius: 16px;
+        border: 1px solid #e5e7eb;
+        transition: all 0.3s ease;
+    }
+
+    .employee-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(85, 128, 241, 0.15);
+        border-color: #5580f1;
+    }
+
+    .employee-card .card-header {
+        background: linear-gradient(135deg, #5580f1 0%, #4a6fd8 100%);
+        border-radius: 16px 16px 0 0;
+    }
+
+    .employee-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+    }
+
+    .employee-info {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+    }
+
+    /* Статистические карточки */
+    .stat-card {
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        border: 1px solid #e5e7eb;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(85, 128, 241, 0.15);
+        border-color: #5580f1;
+    }
+
+    .stat-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #5580f1 0%, #4a6fd8 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #5580f1;
+        line-height: 1;
+        margin-bottom: 4px;
+    }
+
+    .stat-label {
+        color: #6b7280;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    /* Анимации */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .fade-in-up {
+        animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* Empty state */
+    .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+        color: #6b7280;
+    }
+
+    .empty-state i {
+        font-size: 4rem;
+        color: #d1d5db;
+        margin-bottom: 20px;
+    }
+
+    .empty-state h5 {
+        color: #374151;
+        margin-bottom: 10px;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 768px) {
+        .employee-card .card-body {
+            padding: 16px;
+        }
+        
+        .stat-card {
+            padding: 16px;
+        }
+        
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+
+<script>
+    // Функция просмотра сотрудника
+    function viewEmployee(employeeId) {
+        alert('Функция просмотра сотрудника ID: ' + employeeId);
+    }
+
+    // Функция редактирования сотрудника
+    function editEmployee(employeeId) {
+        alert('Функция редактирования сотрудника ID: ' + employeeId);
+    }
+
+    // Функция сброса пароля
+    function resetPassword(employeeId) {
+        if (confirm('Вы уверены, что хотите сбросить пароль этого сотрудника?')) {
+            alert('Пароль сброшен для сотрудника ID: ' + employeeId);
+        }
+    }
+
+    // Функция удаления сотрудника
+    function deleteEmployee(employeeId) {
+        if (confirm('Вы уверены, что хотите удалить этого сотрудника?')) {
+            alert('Сотрудник удален ID: ' + employeeId);
+        }
+    }
+
+    // Функция экспорта в CSV
+    function exportToCSV(type) {
+        showNotification('Подготовка файла...', 'info');
+        
+        const link = document.createElement('a');
+        link.href = `/export/${type}`;
+        link.download = `${type}_export.csv`;
+        link.click();
+        
+        setTimeout(() => {
+            showNotification('Файл успешно скачан!', 'success');
+        }, 1000);
+    }
+
+    // Функция уведомлений
+    function showNotification(message, type) {
+        const notification = document.createElement('div');
+        notification.className = `alert alert-${type === 'success' ? 'success' : type === 'error' ? 'danger' : 'info'} position-fixed`;
+        notification.style.cssText = `
+            top: 20px; 
+            right: 20px; 
+            z-index: 9999; 
+            min-width: 200px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: none;
+            padding: 12px 16px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        `;
+        
+        notification.innerHTML = message;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+</script>
+
+{% endblock %}

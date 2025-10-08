@@ -1,0 +1,444 @@
+{% extends "base.html" %}
+
+{% block title %}Дашборд - Bonus Education CRM{% endblock %}
+
+{% block page_title %}
+    <i class="fas fa-tachometer-alt me-3" style="color: #5580f1;"></i>
+    Дашборд
+{% endblock %}
+
+{% block page_subtitle %}Обзор системы управления учебным центром{% endblock %}
+
+{% block content %}
+
+<!-- Кнопки экспорта -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-end gap-2 flex-wrap">
+            <button class="btn btn-outline-success" onclick="exportToCSV('users')">
+                <i class="fas fa-file-csv me-2"></i>Экспорт пользователей
+            </button>
+            <button class="btn btn-outline-success" onclick="exportToCSV('bookings')">
+                <i class="fas fa-file-csv me-2"></i>Экспорт записей
+            </button>
+            <button class="btn btn-outline-success" onclick="exportToCSV('courses')">
+                <i class="fas fa-file-csv me-2"></i>Экспорт курсов
+            </button>
+            <button class="btn btn-outline-success" onclick="exportToCSV('teachers')">
+                <i class="fas fa-file-csv me-2"></i>Экспорт преподавателей
+            </button>
+        </div>
+            </div>
+        </div>
+
+<!-- Статистические карточки -->
+<div class="row mb-5">
+    <div class="col-xl-3 col-lg-6 col-md-6 mb-4">
+        <div class="stat-card fade-in-up">
+            <div class="stat-icon">
+                <i class="fas fa-user-friends"></i>
+                    </div>
+            <div class="stat-content">
+                    <div class="stat-number">{{ stats.total_users }}</div>
+                <div class="stat-label">Активных пользователей</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-6 col-md-6 mb-4">
+        <div class="stat-card fade-in-up" style="animation-delay: 0.1s;">
+            <div class="stat-icon">
+                <i class="fas fa-calendar-plus"></i>
+                    </div>
+            <div class="stat-content">
+                    <div class="stat-number">{{ stats.total_bookings }}</div>
+                <div class="stat-label">Записей на курсы</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-6 col-md-6 mb-4">
+        <div class="stat-card fade-in-up" style="animation-delay: 0.2s;">
+            <div class="stat-icon">
+                <i class="fas fa-book-open"></i>
+                    </div>
+            <div class="stat-content">
+                    <div class="stat-number">{{ stats.active_courses }}</div>
+                <div class="stat-label">Активных курсов</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-lg-6 col-md-6 mb-4">
+        <div class="stat-card fade-in-up" style="animation-delay: 0.3s;">
+            <div class="stat-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+            <div class="stat-content">
+                <div class="stat-number">{{ stats.active_teachers }}</div>
+                    <div class="stat-label">Преподавателей</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- Основной контент -->
+<div class="row">
+    <!-- Последние записи -->
+    <div class="col-xl-8 col-lg-7 mb-4">
+        <div class="card shadow-sm">
+            <div class="card-header border-0 py-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h6 class="mb-0 font-weight-bold">
+                            <i class="fas fa-calendar-check me-2"></i>
+                            Последние записи
+                    </h6>
+                    <a href="/bookings" class="btn btn-sm btn-outline-primary">Все записи</a>
+                </div>
+            </div>
+                    <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th class="border-0">Пользователь</th>
+                                <th class="border-0">Курс</th>
+                                <th class="border-0">Статус</th>
+                                <th class="border-0">Дата</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for booking in recent_bookings %}
+                            <tr>
+                                <td class="align-middle">
+                                            <div class="d-flex align-items-center">
+                                        <div class="avatar-sm me-3">
+                                            <div class="avatar-title rounded-circle bg-light text-primary">
+                                                    <i class="fas fa-user"></i>
+                                            </div>
+                                                </div>
+                                                <div>
+                                            <h6 class="mb-0">{{ booking.user_name or 'Не указано' }}</h6>
+                                            <small class="text-muted">{{ booking.user_phone or 'Не указан' }}</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                <td class="align-middle">
+                                    <span class="badge bg-light text-dark">{{ booking.course_name or 'Не указано' }}</span>
+                                </td>
+                                <td class="align-middle">
+                                    <span class="badge bg-primary">{{ booking.status or 'Новая' }}</span>
+                                        </td>
+                                <td class="align-middle">
+                                    <small class="text-muted">{{ booking.created_at[:16] if booking.created_at else 'Не указано' }}</small>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Быстрые действия -->
+    <div class="col-xl-4 col-lg-5 mb-4">
+        <div class="card shadow-sm">
+            <div class="card-header border-0 py-3">
+                <h6 class="mb-0 font-weight-bold" style="color: #5580f1;">
+                        <i class="fas fa-bolt me-2"></i>
+                        Быстрые действия
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a href="/users" class="btn btn-outline-primary">
+                        <i class="fas fa-users me-2"></i>Управление пользователями
+                    </a>
+                    <a href="/courses" class="btn btn-outline-primary">
+                        <i class="fas fa-book me-2"></i>Управление курсами
+                    </a>
+                    <a href="/teachers" class="btn btn-outline-primary">
+                        <i class="fas fa-chalkboard-teacher me-2"></i>Управление преподавателями
+                    </a>
+                    <a href="/bookings" class="btn btn-outline-primary">
+                        <i class="fas fa-calendar-plus me-2"></i>Новая запись
+                    </a>
+                    <a href="/analytics" class="btn btn-outline-primary">
+                        <i class="fas fa-chart-line me-2"></i>Аналитика
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Статистика по статусам -->
+        <div class="card shadow-sm mt-4">
+            <div class="card-header border-0 py-3">
+                <h6 class="mb-0 font-weight-bold" style="color: #5580f1;">
+                    <i class="fas fa-chart-pie me-2"></i>
+                    Статистика записей
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-6 mb-3">
+                        <div class="stat-mini">
+                            <div class="stat-mini-number text-success">{{ stats.confirmed_bookings or 0 }}</div>
+                            <div class="stat-mini-label">Подтверждено</div>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <div class="stat-mini">
+                            <div class="stat-mini-number text-warning">{{ stats.pending_bookings or 0 }}</div>
+                            <div class="stat-mini-label">В ожидании</div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="stat-mini">
+                            <div class="stat-mini-number text-info">{{ stats.new_bookings or 0 }}</div>
+                            <div class="stat-mini-label">Новые</div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="stat-mini">
+                            <div class="stat-mini-number text-danger">{{ stats.cancelled_bookings or 0 }}</div>
+                            <div class="stat-mini-label">Отменено</div>
+                        </div>
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Статистические карточки */
+    .stat-card {
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        border: 1px solid #e5e7eb;
+        transition: all 0.3s ease;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(85, 128, 241, 0.15);
+        border-color: #5580f1;
+    }
+
+    .stat-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #5580f1 0%, #4a6fd8 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        flex-shrink: 0;
+    }
+
+    .stat-content {
+        flex: 1;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #5580f1;
+        line-height: 1;
+        margin-bottom: 4px;
+    }
+
+    .stat-label {
+        color: #6b7280;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    /* Мини статистика */
+    .stat-mini {
+        padding: 12px;
+        border-radius: 8px;
+        background: #f8f9fa;
+    }
+
+    .stat-mini-number {
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 4px;
+    }
+
+    .stat-mini-label {
+        font-size: 0.8rem;
+        color: #6b7280;
+        font-weight: 500;
+    }
+
+    /* Анимации */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .fade-in-up {
+        animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 768px) {
+        .stat-card {
+            padding: 16px;
+            gap: 12px;
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+        }
+
+        .d-flex.gap-2 {
+            flex-direction: column;
+        }
+
+        .d-flex.gap-2 .btn {
+            margin-bottom: 8px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .stat-card {
+            flex-direction: column;
+            text-align: center;
+            gap: 16px;
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+        }
+    }
+
+    /* Кнопки экспорта */
+    .btn-outline-success {
+        color: #5580f1 !important;
+        border-color: #5580f1 !important;
+    }
+
+    .btn-outline-success:hover {
+        background-color: #5580f1 !important;
+        border-color: #5580f1 !important;
+        color: white !important;
+    }
+
+    /* Аватар */
+    .avatar-sm {
+        width: 40px;
+        height: 40px;
+    }
+
+    .avatar-title {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+    }
+
+    /* Заголовки карточек */
+    .card .card-header {
+        background-color: #5580f1 !important;
+        color: white !important;
+        border-color: #5580f1 !important;
+    }
+
+    .card .card-header h6 {
+        color: white !important;
+    }
+
+    .card .card-header .btn-outline-primary {
+        color: white !important;
+        border-color: rgba(255,255,255,0.3) !important;
+        background-color: rgba(255,255,255,0.1) !important;
+    }
+
+    .card .card-header .btn-outline-primary:hover {
+        background-color: rgba(255,255,255,0.2) !important;
+        border-color: rgba(255,255,255,0.5) !important;
+        color: white !important;
+    }
+</style>
+
+    <script>
+    // Функция экспорта в CSV
+    function exportToCSV(type) {
+        // Показываем уведомление о загрузке
+        showNotification('Подготовка файла...', 'info');
+        
+        // Создаем ссылку для скачивания
+        const link = document.createElement('a');
+        link.href = `/export/${type}`;
+        link.download = `${type}_export.csv`;
+        link.click();
+        
+        // Показываем уведомление об успехе
+        setTimeout(() => {
+            showNotification('Файл успешно скачан!', 'success');
+        }, 1000);
+    }
+
+    // Функция уведомлений
+    function showNotification(message, type) {
+        const notification = document.createElement('div');
+        notification.className = `alert alert-${type === 'success' ? 'success' : type === 'error' ? 'danger' : 'info'} position-fixed`;
+        notification.style.cssText = `
+            top: 20px; 
+            right: 20px; 
+            z-index: 9999; 
+            min-width: 200px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: none;
+            padding: 12px 16px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        `;
+        
+        notification.innerHTML = message;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+
+    // Анимация при загрузке
+        document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.stat-card');
+            cards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+                    });
+                });
+    </script>
+
+{% endblock %}

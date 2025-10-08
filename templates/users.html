@@ -1,0 +1,313 @@
+{% extends "base.html" %}
+
+{% block title %}Пользователи - Bonus Education CRM{% endblock %}
+
+{% block page_title %}
+    <i class="fas fa-user-friends me-3" style="color: var(--primary-color);"></i>
+    Пользователи
+{% endblock %}
+
+{% block page_subtitle %}Управление пользователями системы{% endblock %}
+
+{% block content %}
+<!-- Поиск и фильтры -->
+<div class="card mb-4 fade-in-up">
+    <div class="card-body">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text" style="background: var(--primary-gradient); color: white; border: none;">
+                        <i class="fas fa-search"></i>
+                    </span>
+                    <input type="text" class="form-control" id="searchInput" placeholder="Поиск пользователей..." style="border: 2px solid rgba(102,126,234,0.1); border-left: none;">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex gap-2 flex-wrap">
+                    <button class="btn btn-outline-primary filter-btn active" data-filter="all">
+                        <i class="fas fa-users me-2"></i>Все
+                    </button>
+                    <button class="btn btn-outline-warning filter-btn" data-filter="new">
+                        <i class="fas fa-bolt me-2"></i>Новые
+                    </button>
+                    <button class="btn btn-outline-info filter-btn" data-filter="call_success">
+                        <i class="fas fa-phone-volume me-2"></i>Дозвон
+                    </button>
+                    <button class="btn btn-outline-secondary filter-btn" data-filter="call_failed">
+                        <i class="fas fa-phone-slash me-2"></i>Не дозвон
+                    </button>
+                    <button class="btn btn-outline-primary filter-btn" data-filter="callback">
+                        <i class="fas fa-redo me-2"></i>Перезвонить
+                    </button>
+                    <button class="btn btn-outline-primary filter-btn" data-filter="trial_booking">
+                        <i class="fas fa-calendar-plus me-2"></i>Пробный
+                    </button>
+                    <button class="btn btn-outline-primary filter-btn" data-filter="online_trial_booking">
+                        <i class="fas fa-video me-2"></i>Онлайн пробный
+                    </button>
+                    <button class="btn btn-outline-success filter-btn" data-filter="trial_completed">
+                        <i class="fas fa-check-circle me-2"></i>Провели пробный
+                    </button>
+                    <button class="btn btn-outline-success filter-btn" data-filter="prepayment">
+                        <i class="fas fa-credit-card me-2"></i>Предоплата
+                    </button>
+                    <button class="btn btn-outline-warning filter-btn" data-filter="waiting_group">
+                        <i class="fas fa-users me-2"></i>Ожидает группу
+                    </button>
+                    <button class="btn btn-outline-success filter-btn" data-filter="success">
+                        <i class="fas fa-trophy me-2"></i>Успех
+                    </button>
+                    <button class="btn btn-outline-danger filter-btn" data-filter="failed">
+                        <i class="fas fa-times-circle me-2"></i>Не получилось
+                    </button>
+                    <button class="btn btn-outline-info filter-btn" data-filter="recent">
+                        <i class="fas fa-clock me-2"></i>Недавние
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Краткая статистика (перенесена выше) -->
+<div class="row g-3 mb-4">
+    <div class="col-6 col-md-3">
+        <div class="card shadow-sm" style="border-radius: 12px;">
+            <div class="card-body py-3 text-center">
+                <div class="mb-1" style="color: var(--primary-color);"><i class="fas fa-user-friends"></i></div>
+                <div style="font-weight: 800; font-size: 1.25rem; color: var(--dark-color);">{{ users|length }}</div>
+                <div class="text-muted" style="font-size: .8rem;">Всего пользователей</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="card shadow-sm" style="border-radius: 12px;">
+            <div class="card-body py-3 text-center">
+                <div class="mb-1" style="color: #ffc107;"><i class="fas fa-bolt"></i></div>
+                <div style="font-weight: 800; font-size: 1.25rem; color: #ffc107;">{{ users|selectattr('status', 'equalto', 'new')|list|length }}</div>
+                <div class="text-muted" style="font-size: .8rem;">Новых заявок</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="card shadow-sm" style="border-radius: 12px;">
+            <div class="card-body py-3 text-center">
+                <div class="mb-1" style="color: #ffc107;"><i class="fas fa-clock"></i></div>
+                <div style="font-weight: 800; font-size: 1.25rem; color: #ffc107;">{{ active_users|length }}</div>
+                <div class="text-muted" style="font-size: .8rem;">За последние 7 дней</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-md-3">
+        <div class="card shadow-sm" style="border-radius: 12px;">
+            <div class="card-body py-3 text-center">
+                <div class="mb-1" style="color: #17a2b8;"><i class="fas fa-user-plus"></i></div>
+                <div style="font-weight: 800; font-size: 1.25rem; color: #17a2b8;">{{ new_users_today or 0 }}</div>
+                <div class="text-muted" style="font-size: .8rem;">Новых сегодня</div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+<!-- Список пользователей -->
+<div class="row" id="usersContainer">
+    {% if users %}
+    {% for user in users %}
+    <div class="col-lg-4 col-md-6 mb-4 user-item fade-in-up" data-status="{{ user.status or 'new' }}" style="animation-delay: {{ loop.index0 * 0.1 }}s;">
+        <div class="card h-100" style="transition: var(--transition);">
+            <div class="card-body">
+                <div class="d-flex align-items-start mb-3">
+                    <div class="stat-icon me-3" style="width: 60px; height: 60px; font-size: 1.5rem;">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                        <h5 class="mb-1" style="font-weight: 700; color: var(--dark-color);">
+                            {{ user.get('first_name', 'Не указано') }} {{ user.get('last_name', '') }}
+                        </h5>
+                        <p class="mb-1 text-muted">
+                            <i class="fas fa-at me-2"></i>
+                            @{{ user.get('username', 'не указано') }}
+                        </p>
+                        <p class="mb-2 text-muted">
+                            <i class="fas fa-id-badge me-2"></i>
+                            ID: {{ user.get('telegram_id', 'не указано') }}
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    {% set s = user.status %}
+                    {% if s == 'new' %}
+                        <span class="badge bg-warning">Новая заявка</span>
+                    {% elif s == 'call_success' %}
+                        <span class="badge bg-info">Дозвон</span>
+                    {% elif s == 'call_failed' %}
+                        <span class="badge bg-secondary">Не дозвон</span>
+                    {% elif s == 'callback' %}
+                        <span class="badge bg-primary">Перезвонить</span>
+                    {% elif s == 'trial_booking' %}
+                        <span class="badge bg-primary">Пробный</span>
+                    {% elif s == 'online_trial_booking' %}
+                        <span class="badge bg-primary">Онлайн пробный</span>
+                    {% elif s == 'trial_completed' %}
+                        <span class="badge bg-success">Провели пробный</span>
+                    {% elif s == 'prepayment' %}
+                        <span class="badge bg-success">Предоплата</span>
+                    {% elif s == 'waiting_group' %}
+                        <span class="badge bg-warning">Ожидает группу</span>
+                    {% elif s == 'success' %}
+                        <span class="badge bg-success">Успех</span>
+                    {% elif s == 'failed' %}
+                        <span class="badge bg-danger">Не получилось</span>
+                    {% else %}
+                        <span class="badge bg-secondary">{{ s or '—' }}</span>
+                    {% endif %}
+                    <small class="text-muted">
+                        <i class="fas fa-calendar me-1"></i>
+                        {{ user.get('created_at', '')[:10] if user.get('created_at') else 'Не указано' }}
+                    </small>
+                </div>
+                
+                <div class="row text-center">
+                    <div class="col-4">
+                        <div class="stat-item">
+                            <div class="stat-number" style="font-size: 1.2rem; font-weight: 700; color: var(--primary-color);">{{ user.user_courses_count or 0 }}</div>
+                            <div class="stat-label" style="font-size: 0.8rem; color: #6c757d; text-transform: uppercase; letter-spacing: 0.5px;">Курсы</div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="stat-item">
+                            <div class="stat-number" style="font-size: 1.2rem; font-weight: 700; color: var(--success-color);">{{ user.user_bookings_count or 0 }}</div>
+                            <div class="stat-label" style="font-size: 0.8rem; color: #6c757d; text-transform: uppercase; letter-spacing: 0.5px;">Записи</div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="stat-item">
+                            <div class="stat-number" style="font-size: 1.2rem; font-weight: 700; color: var(--info-color);">{{ user.user_conversations_count or 0 }}</div>
+                            <div class="stat-label" style="font-size: 0.8rem; color: #6c757d; text-transform: uppercase; letter-spacing: 0.5px;">Диалоги</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer bg-transparent border-0">
+                <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary btn-sm flex-fill" onclick="viewUserDetails({{ user.id }})">
+                        <i class="fas fa-eye me-1"></i>
+                        Детали
+                    </button>
+                    <button class="btn btn-outline-success btn-sm flex-fill" onclick="editUser({{ user.id }})">
+                        <i class="fas fa-edit me-1"></i>
+                        Редактировать
+                    </button>
+                    <button class="btn btn-outline-danger btn-sm" onclick="deleteUser({{ user.id }}, '{{ user.first_name }}')" title="Удалить пользователя">
+                        <i class="fas fa-trash me-1"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="col-12">
+        <div class="empty-state">
+            <i class="fas fa-user-friends"></i>
+            <h5>Пока нет пользователей</h5>
+            <p>Когда пользователи начнут общаться с AI-ботом, они появятся здесь</p>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Удален повторный нижний блок статистики -->
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Поиск пользователей
+    document.getElementById('searchInput').addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const userItems = document.querySelectorAll('.user-item');
+        
+        userItems.forEach(item => {
+            const userName = item.querySelector('h5').textContent.toLowerCase();
+            const userUsername = item.querySelector('p').textContent.toLowerCase();
+            
+            if (userName.includes(searchTerm) || userUsername.includes(searchTerm)) {
+                item.style.display = 'block';
+                item.style.animation = 'fadeInUp 0.3s ease-out';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+
+    // Фильтрация пользователей
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Убираем активный класс со всех кнопок
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.classList.remove('active');
+                b.classList.add('btn-outline-primary', 'btn-outline-success', 'btn-outline-warning', 'btn-outline-info');
+            });
+            
+            // Добавляем активный класс к текущей кнопке
+            this.classList.add('active');
+            this.classList.remove('btn-outline-primary', 'btn-outline-success', 'btn-outline-warning', 'btn-outline-info');
+            
+            const filter = this.dataset.filter;
+            const userItems = document.querySelectorAll('.user-item');
+            
+            userItems.forEach(item => {
+                const status = item.dataset.status;
+                if (filter === 'all' || status === filter || (filter === 'recent' && isRecent(item))) {
+                    item.style.display = 'block';
+                    item.style.animation = 'fadeInUp 0.3s ease-out';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    function isRecent(item) {
+        // Логика для определения недавних пользователей
+        return true; // Пока возвращаем true для всех
+    }
+
+    // Анимация появления карточек
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.user-item');
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            setTimeout(() => {
+                card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, index * 100);
+        });
+    });
+
+    // Функции навигации
+    function viewUserDetails(userId) {
+        window.location.href = `/users/${userId}`;
+    }
+
+    function editUser(userId) {
+        window.location.href = `/users/${userId}/edit`;
+    }
+
+    function deleteUser(userId, userName) {
+        if (confirm(`Вы уверены, что хотите удалить пользователя "${userName}"?\n\nЭто действие нельзя отменить!`)) {
+            // Создаем форму для отправки POST запроса
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = `/delete_user/${userId}`;
+            document.body.appendChild(form);
+            form.submit();
+        }
+    }
+</script>
+{% endblock %}

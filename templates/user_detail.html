@@ -1,0 +1,730 @@
+{% extends "base.html" %}
+
+{% block title %}Детали клиента - Bonus Education CRM{% endblock %}
+
+{% block page_title %}
+    <i class="fas fa-user me-3" style="color: var(--primary-color);"></i>
+    Детали клиента
+{% endblock %}
+
+{% block page_subtitle %}{{ user.first_name }} {{ user.last_name or '' }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- Основная информация -->
+    <div class="col-lg-8">
+        <div class="card mb-4 fade-in-up">
+            <div class="card-header" style="background: var(--primary-gradient); color: white;">
+                <h5 class="mb-0">
+                    <i class="fas fa-user-circle me-2"></i>
+                    Личная информация
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="info-item mb-3">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-user me-2" style="color: var(--primary-color);"></i>
+                                ФИО
+                            </label>
+                            <p class="mb-0">{{ user.first_name }} {{ user.last_name or '' }}</p>
+                        </div>
+                        <div class="info-item mb-3">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-phone me-2" style="color: var(--success-color);"></i>
+                                Номер телефона
+                            </label>
+                            <p class="mb-0">{{ user.phone or 'Не указан' }}</p>
+                        </div>
+                        <div class="info-item mb-3">
+                            <label class="form-label fw-bold">
+                                <i class="fab fa-telegram me-2" style="color: #0088cc;"></i>
+                                Ник в Telegram
+                            </label>
+                            <p class="mb-0">@{{ user.username or 'Не указан' }}</p>
+                        </div>
+                        <div class="info-item mb-3">
+                            <label class="form-label fw-bold">
+                                <i class="fab fa-instagram me-2" style="color: #E4405F;"></i>
+                                Ник в Instagram
+                            </label>
+                            <p class="mb-0">@{{ user.instagram_username or 'Не указан' }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-item mb-3">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-chart-line me-2" style="color: var(--warning-color);"></i>
+                                Уровень
+                            </label>
+                            <p class="mb-0">
+                                {% if user.level %}
+                                    <span class="badge bg-primary">{{ user.level }}</span>
+                                {% else %}
+                                    <span class="text-muted">Не определен</span>
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="info-item mb-3">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-language me-2" style="color: var(--info-color);"></i>
+                                Предпочитаемый язык обучения
+                            </label>
+                            <p class="mb-0">
+                                {% if user.preferred_language %}
+                                    <span class="badge bg-info">{{ user.preferred_language }}</span>
+                                {% else %}
+                                    <span class="text-muted">Не указан</span>
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="info-item mb-3">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-search me-2" style="color: var(--info-color);"></i>
+                                Откуда нас нашел
+                            </label>
+                            <p class="mb-0">{{ user.source or 'Не указано' }}</p>
+                        </div>
+                        <div class="info-item mb-3">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-calendar-plus me-2" style="color: var(--primary-color);"></i>
+                                Дата первого обращения
+                            </label>
+                            <p class="mb-0">
+                                {% if user.first_contact_date %}
+                                    {{ user.first_contact_date[:10] }}
+                                {% else %}
+                                    {{ user.created_at[:10] if user.created_at else 'Не указано' }}
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="info-item mb-3">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-comments me-2" style="color: var(--success-color);"></i>
+                                Статус
+                            </label>
+                            <p class="mb-0">
+                                {% set s = user.status %}
+                                {% if s == 'new' %}
+                                    <span class="badge bg-warning">Новая заявка</span>
+                                {% elif s == 'call_success' %}
+                                    <span class="badge bg-info">Дозвон</span>
+                                {% elif s == 'call_failed' %}
+                                    <span class="badge bg-secondary">Не дозвон</span>
+                                {% elif s == 'callback' %}
+                                    <span class="badge bg-primary">Перезвонить</span>
+                                {% elif s == 'trial_booking' %}
+                                    <span class="badge bg-primary">Запись на пробный</span>
+                                {% elif s == 'online_trial_booking' %}
+                                    <span class="badge bg-primary">Запись на онлайн пробный</span>
+                                {% elif s == 'trial_completed' %}
+                                    <span class="badge bg-success">Провели пробный</span>
+                                {% elif s == 'prepayment' %}
+                                    <span class="badge bg-success">Предоплата</span>
+                                {% elif s == 'waiting_group' %}
+                                    <span class="badge bg-warning">В ожидании гр</span>
+                                {% elif s == 'success' %}
+                                    <span class="badge bg-success">Успешно реализована</span>
+                                {% elif s == 'failed' %}
+                                    <span class="badge bg-danger">Не получилось</span>
+                                {% else %}
+                                    <span class="badge bg-secondary">{{ s or 'Не определен' }}</span>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- История чата -->
+        <div class="card mb-4 fade-in-up">
+            <div class="card-header" style="background: var(--success-gradient); color: white;">
+                <h5 class="mb-0">
+                    <i class="fas fa-comments me-2"></i>
+                    История чата
+                </h5>
+            </div>
+            <div class="card-body" id="chatScroll" style="max-height: 520px; overflow-y: auto; background: linear-gradient(180deg,#f7f9fc 0%, #eef2ff 100%);">
+                {% if conversations %}
+                <div class="chat-thread">
+                    {% for c in conversations %}
+                    <div class="chat-item">
+                        <!-- Пользователь -->
+                        <div class="chat-row chat-row-user">
+                            <div class="chat-avatar user"><i class="fas fa-user"></i></div>
+                            <div class="chat-bubble chat-user">
+                                <div class="chat-meta">{{ user.first_name }} {{ user.last_name or '' }}</div>
+                                <div class="chat-text">{{ c.message }}</div>
+                                <div class="chat-time">{{ c.created_at[:16] if c.created_at else '' }}</div>
+                            </div>
+                        </div>
+                        <!-- Бот/AI -->
+                        {% if c.response %}
+                        <div class="chat-row chat-row-bot">
+                            <div class="chat-bubble chat-bot">
+                                <div class="chat-meta"><i class="fas fa-robot me-1"></i> AI‑бот</div>
+                                <div class="chat-text">{{ c.response }}</div>
+                                <div class="chat-time">{{ c.created_at[:16] if c.created_at else '' }}</div>
+                            </div>
+                            <div class="chat-avatar bot"><i class="fas fa-robot"></i></div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                    <p class="text-muted mb-0">Чат еще пуст.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Результат -->
+        {% if user.result %}
+        <div class="card mb-4 fade-in-up">
+            <div class="card-header" style="background: var(--warning-gradient); color: white;">
+                <h5 class="mb-0">
+                    <i class="fas fa-trophy me-2"></i>
+                    Результат
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="info-item mb-3">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-users me-2" style="color: var(--primary-color);"></i>
+                                Группа
+                            </label>
+                            <p class="mb-0">{{ user.result.group_name or 'Не указана' }}</p>
+                        </div>
+                        <div class="info-item mb-3">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-chalkboard-teacher me-2" style="color: var(--success-color);"></i>
+                                Преподаватель
+                            </label>
+                            <p class="mb-0">{{ user.result.teacher_name or 'Не назначен' }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-item mb-3">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-dollar-sign me-2" style="color: var(--warning-color);"></i>
+                                Цена
+                            </label>
+                            <p class="mb-0">
+                                {% if user.result.price %}
+                                    {{ "{:,.0f}".format(user.result.price) }} сум
+                                {% else %}
+                                    Не указана
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="info-item mb-3">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-calendar-check me-2" style="color: var(--info-color);"></i>
+                                День начала занятий
+                            </label>
+                            <p class="mb-0">{{ user.result.start_date[:10] if user.result and user.result.start_date else 'Не указан' }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Боковая панель -->
+    <div class="col-lg-4">
+        <!-- Статистика клиента -->
+        <div class="card mb-4 fade-in-up">
+            <div class="card-header" style="background: var(--info-gradient); color: white;">
+                <h6 class="mb-0">
+                    <i class="fas fa-chart-bar me-2"></i>
+                    Статистика
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="stat-item mb-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="stat-label">Курсы</span>
+                        <span class="stat-number">{{ user.courses_count or 0 }}</span>
+                    </div>
+                </div>
+                <div class="stat-item mb-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="stat-label">Записи</span>
+                        <span class="stat-number">{{ user.bookings_count or 0 }}</span>
+                    </div>
+                </div>
+                <div class="stat-item mb-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="stat-label">Сообщения</span>
+                        <span class="stat-number">{{ user.conversations_count or 0 }}</span>
+                    </div>
+                </div>
+                <div class="stat-item mb-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="stat-label">Последняя активность</span>
+                        <span class="stat-number text-muted" style="font-size: 0.8rem;">
+                            {{ user.last_activity[:10] if user.last_activity else 'Не указано' }}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Действия -->
+        <div class="card mb-4 fade-in-up">
+            <div class="card-header" style="background: var(--dark-gradient); color: white;">
+                <h6 class="mb-0">
+                    <i class="fas fa-cog me-2"></i>
+                    Действия
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" onclick="editUser({{ user.id }})">
+                        <i class="fas fa-edit me-2"></i>
+                        Редактировать
+                    </button>
+                    <button class="btn btn-success" onclick="addBooking({{ user.id }})">
+                        <i class="fas fa-plus me-2"></i>
+                        Добавить запись
+                    </button>
+                    <button class="btn btn-info" onclick="viewConversations({{ user.id }})">
+                        <i class="fas fa-comments me-2"></i>
+                        История сообщений
+                    </button>
+                    <button class="btn btn-warning" onclick="exportUserData({{ user.id }})">
+                        <i class="fas fa-download me-2"></i>
+                        Экспорт данных
+                    </button>
+                    <button class="btn btn-danger" onclick="deleteUser({{ user.id }}, '{{ user.first_name }} {{ user.last_name or '' }}')">
+                        <i class="fas fa-trash me-2"></i>
+                        Удалить пользователя
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+
+<!-- Модальное окно редактирования -->
+<div class="modal fade" id="editUserModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background: var(--primary-gradient); color: white;">
+                <h5 class="modal-title">
+                    <i class="fas fa-edit me-2"></i>
+                    Редактировать клиента
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <form id="editUserForm" method="POST">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">ФИО</label>
+                                <input type="text" class="form-control" name="first_name" value="{{ user.first_name }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Фамилия</label>
+                                <input type="text" class="form-control" name="last_name" value="{{ user.last_name or '' }}">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Номер телефона</label>
+                                <input type="tel" class="form-control" name="phone" value="{{ user.phone or '' }}">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Ник в Telegram</label>
+                                <input type="text" class="form-control" name="username" value="{{ user.username or '' }}">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Ник в Instagram</label>
+                                <input type="text" class="form-control" name="instagram_username" value="{{ user.instagram_username or '' }}">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Уровень</label>
+                                <select class="form-select" name="level">
+                                    <option value="">Не выбран</option>
+                                    <option value="A1" {% if user.level == 'A1' %}selected{% endif %}>A1</option>
+                                    <option value="A2" {% if user.level == 'A2' %}selected{% endif %}>A2</option>
+                                    <option value="B1" {% if user.level == 'B1' %}selected{% endif %}>B1</option>
+                                    <option value="B2" {% if user.level == 'B2' %}selected{% endif %}>B2</option>
+                                    <option value="C1" {% if user.level == 'C1' %}selected{% endif %}>C1</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Откуда нас нашел</label>
+                                <select class="form-select" name="source">
+                                    <option value="">Не указано</option>
+                                    <option value="telegram" {% if user.source == 'telegram' %}selected{% endif %}>Telegram</option>
+                                    <option value="instagram" {% if user.source == 'instagram' %}selected{% endif %}>Instagram</option>
+                                    <option value="facebook" {% if user.source == 'facebook' %}selected{% endif %}>Facebook</option>
+                                    <option value="recommendation" {% if user.source == 'recommendation' %}selected{% endif %}>Рекомендация</option>
+                                    <option value="website" {% if user.source == 'website' %}selected{% endif %}>Сайт</option>
+                                    <option value="other" {% if user.source == 'other' %}selected{% endif %}>Другое</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Статус</label>
+                                <select class="form-select" name="status">
+                                    <option value="new" {% if user.status == 'new' %}selected{% endif %}>Новая заявка</option>
+                                    <option value="call_success" {% if user.status == 'call_success' %}selected{% endif %}>Дозвон</option>
+                                    <option value="call_failed" {% if user.status == 'call_failed' %}selected{% endif %}>Не дозвон</option>
+                                    <option value="callback" {% if user.status == 'callback' %}selected{% endif %}>Перезвонить</option>
+                                    <option value="trial_booking" {% if user.status == 'trial_booking' %}selected{% endif %}>Запись на пробный</option>
+                                    <option value="online_trial_booking" {% if user.status == 'online_trial_booking' %}selected{% endif %}>Запись на онлайн пробный</option>
+                                    <option value="trial_completed" {% if user.status == 'trial_completed' %}selected{% endif %}>Провели пробный</option>
+                                    <option value="prepayment" {% if user.status == 'prepayment' %}selected{% endif %}>Предоплата</option>
+                                    <option value="waiting_group" {% if user.status == 'waiting_group' %}selected{% endif %}>В ожидании гр</option>
+                                    <option value="success" {% if user.status == 'success' %}selected{% endif %}>Успешно реализована</option>
+                                    <option value="failed" {% if user.status == 'failed' %}selected{% endif %}>Не получилось</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Предпочитаемый язык обучения</label>
+                                <select class="form-select" name="preferred_language">
+                                    <option value="">Не указан</option>
+                                    <option value="Турецкий" {% if user.preferred_language == 'Турецкий' %}selected{% endif %}>Турецкий</option>
+                                    <option value="Английский" {% if user.preferred_language == 'Английский' %}selected{% endif %}>Английский</option>
+                                    <option value="Корейский" {% if user.preferred_language == 'Корейский' %}selected{% endif %}>Корейский</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Дата первого обращения</label>
+                                <input type="date" class="form-control" name="first_contact_date" value="{{ user.first_contact_date[:10] if user.first_contact_date else '' }}">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    <h6>История контактов</h6>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Ответ при первом звонке</label>
+                        <textarea class="form-control" name="first_call_response" rows="3">{{ user.first_call_response or '' }}</textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Дата первого звонка</label>
+                        <input type="date" class="form-control" name="first_call_date" value="{{ user.first_call_date[:10] if user.first_call_date else '' }}">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Ответ при втором контакте</label>
+                        <textarea class="form-control" name="second_contact_response" rows="3">{{ user.second_contact_response or '' }}</textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Дата второго контакта</label>
+                        <input type="date" class="form-control" name="second_contact_date" value="{{ user.second_contact_date[:10] if user.second_contact_date else '' }}">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Решение клиента</label>
+                        <textarea class="form-control" name="decision" rows="3">{{ user.decision or '' }}</textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Дата решения</label>
+                        <input type="date" class="form-control" name="decision_date" value="{{ user.decision_date[:10] if user.decision_date else '' }}">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-2"></i>
+                        Сохранить изменения
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--primary-color);
+}
+
+.timeline-item {
+    position: relative;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -22px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+.timeline-title {
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 5px;
+}
+
+.timeline-text {
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.info-item {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.stat-item {
+    padding: 8px 0;
+}
+
+.stat-label {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.stat-number {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.activity-item {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-icon {
+    width: 24px;
+    text-align: center;
+}
+
+.activity-content p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Chat styles */
+.chat-thread {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.chat-item {}
+.chat-bubble {
+    max-width: 72%;
+    border-radius: 16px;
+    padding: 12px 14px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+.chat-meta {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+}
+.chat-time {
+    font-size: 0.75rem;
+    color: #9aa0a6;
+    margin-left: auto;
+}
+.chat-text { white-space: pre-wrap; }
+.chat-user {
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+}
+.chat-bot {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    border: none;
+}
+
+/* Enhanced chat visuals */
+.chat-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+}
+.chat-row-user { justify-content: flex-start; }
+.chat-row-bot { justify-content: flex-end; }
+
+.chat-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+.chat-avatar.user { background: linear-gradient(135deg,#667eea,#764ba2); }
+.chat-avatar.bot { background: linear-gradient(135deg,#43e97b,#38f9d7); }
+
+.chat-bubble { position: relative; }
+.chat-row-user .chat-bubble:after {
+    content: '';
+    position: absolute;
+    left: -6px;
+    bottom: 8px;
+    width: 10px;
+    height: 10px;
+    background: #ffffff;
+    border-left: 1px solid #e9ecef;
+    border-bottom: 1px solid #e9ecef;
+    transform: rotate(45deg);
+}
+.chat-row-bot .chat-bubble:after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    bottom: 8px;
+    width: 10px;
+    height: 10px;
+    background: #764ba2;
+    border-right: none;
+    border-bottom: none;
+    transform: rotate(45deg);
+}
+.chat-row-user .chat-meta { margin-bottom: 6px; color: #6b7280; }
+.chat-row-bot .chat-meta { margin-bottom: 6px; color: rgba(255,255,255,0.9); }
+.chat-row-bot .chat-time { color: rgba(255,255,255,0.85); }
+
+.chat-item + .chat-item { margin-top: 6px; }
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function editUser(userId) {
+    const form = document.getElementById('editUserForm');
+    form.action = `/edit_user/${userId}`;
+    const modal = new bootstrap.Modal(document.getElementById('editUserModal'));
+    modal.show();
+}
+
+function addBooking(userId) {
+    window.location.href = `/bookings?user_id=${userId}`;
+}
+
+function viewConversations(userId) {
+    window.location.href = `/conversations?user_id=${userId}`;
+}
+
+function exportUserData(userId) {
+    window.location.href = `/export/user_data/${userId}`;
+}
+
+function deleteUser(userId, userName) {
+    if (confirm(`Вы уверены, что хотите удалить пользователя "${userName}"?\n\nЭто действие нельзя отменить!`)) {
+        // Создаем форму для отправки POST запроса
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = `/delete_user/${userId}`;
+        document.body.appendChild(form);
+        form.submit();
+    }
+}
+
+// Анимация появления элементов
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.fade-in-up');
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        setTimeout(() => {
+            card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, index * 100);
+    });
+    // автоскролл вниз при открытии
+    const chatEl = document.getElementById('chatScroll');
+    if (chatEl) chatEl.scrollTop = chatEl.scrollHeight;
+    // автообновление чата каждые 5 сек
+    const userId = {{ user.id }};
+    function formatDateTime(iso){
+        if(!iso) return '';
+        const d = new Date(iso);
+        if (isNaN(d)) return String(iso).replace('T',' ').slice(0,16);
+        const dd = String(d.getDate()).padStart(2,'0');
+        const mm = String(d.getMonth()+1).padStart(2,'0');
+        const yyyy = d.getFullYear();
+        const hh = String(d.getHours()).padStart(2,'0');
+        const mi = String(d.getMinutes()).padStart(2,'0');
+        return `${hh}:${mi} ${dd}.${mm}.${yyyy}`;
+    }
+    async function refreshChat(){
+        try{
+            const res = await fetch(`/api/user_conversations/${userId}`);
+            if(!res.ok) return;
+            const items = await res.json();
+            const thread = document.querySelector('.chat-thread');
+            if (!thread) return;
+            let html = '';
+            for (const c of items){
+                const dt = formatDateTime(c.created_at || '');
+                html += `
+                <div class="chat-item">
+                    <div class="chat-row chat-row-user">
+                        <div class="chat-avatar user"><i class="fas fa-user"></i></div>
+                        <div class="chat-bubble chat-user">
+                            <div class="chat-meta">{{ user.first_name }} {{ user.last_name or '' }}</div>
+                            <div class="chat-text">${(c.message||'').replaceAll('\n','<br>')}</div>
+                            <div class="chat-time">${dt}</div>
+                        </div>
+                    </div>
+                    ${c.response ? `
+                    <div class=\"chat-row chat-row-bot\">
+                        <div class=\"chat-bubble chat-bot\">
+                            <div class=\"chat-meta\"><i class=\"fas fa-robot me-1\"></i> AI‑бот</div>
+                            <div class=\"chat-text\">${(c.response||'').replaceAll('\\n','<br>')}</div>
+                            <div class=\"chat-time\">${dt}</div>
+                        </div>
+                        <div class=\"chat-avatar bot\"><i class=\"fas fa-robot\"></i></div>
+                    </div>` : ''}
+                </div>`;
+            }
+            thread.innerHTML = html;
+            if (chatEl) chatEl.scrollTop = chatEl.scrollHeight;
+        }catch(e){ console.warn('refreshChat error', e); }
+    }
+    refreshChat();
+    setInterval(refreshChat, 5000);
+});
+</script>
+{% endblock %}

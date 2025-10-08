@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Запись #{{ booking.id }} - Bonus Education CRM{% endblock %}
+
+{% block page_title %}
+    <i class="fas fa-calendar-check me-3" style="color: var(--primary-color);"></i>
+    Запись #{{ booking.id }}
+{% endblock %}
+
+{% block page_subtitle %}Подробная информация о записи{% endblock %}
+
+{% block content %}
+<div class="card mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <span>Информация о записи</span>
+        <div class="d-flex gap-2">
+            <a href="/bookings" class="btn btn-sm btn-light">Назад</a>
+            {% if booking.status == 'pending' %}
+            <form action="/update_booking_status/{{ booking.id }}" method="post" class="d-inline">
+                <input type="hidden" name="status" value="confirmed" />
+                <button class="btn btn-sm btn-success" type="submit"><i class="fas fa-check me-1"></i> Подтвердить</button>
+            </form>
+            <form action="/update_booking_status/{{ booking.id }}" method="post" class="d-inline">
+                <input type="hidden" name="status" value="cancelled" />
+                <button class="btn btn-sm btn-danger" type="submit"><i class="fas fa-times me-1"></i> Отменить</button>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row g-4">
+            <div class="col-md-6">
+                <h6 class="text-muted">Клиент</h6>
+                <div class="mb-2"><strong>Имя:</strong> {{ booking.user_name or '—' }}</div>
+                <div class="mb-2"><strong>Телефон:</strong> {{ booking.user_phone or '—' }}</div>
+                {% if related_user %}
+                <div class="mb-2"><strong>Telegram:</strong> @{{ related_user.username or '—' }} (ID: {{ related_user.telegram_id }})</div>
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                <h6 class="text-muted">Курс и преподаватель</h6>
+                <div class="mb-2"><strong>Курс:</strong> {{ course.name if course else (booking.course_name or '—') }}</div>
+                <div class="mb-2"><strong>Преподаватель:</strong> {{ teacher.name if teacher else (booking.teacher_name or '—') }}</div>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row g-4">
+            <div class="col-md-6">
+                <h6 class="text-muted">Статус и даты</h6>
+                <div class="mb-2"><strong>Статус:</strong>
+                    {% if booking.status == 'confirmed' %}
+                        <span class="badge bg-success">Подтверждена</span>
+                    {% elif booking.status == 'pending' %}
+                        <span class="badge bg-warning">Ожидает</span>
+                    {% elif booking.status == 'cancelled' %}
+                        <span class="badge bg-danger">Отменена</span>
+                    {% else %}
+                        <span class="badge bg-secondary">{{ booking.status }}</span>
+                    {% endif %}
+                </div>
+                <div class="mb-2"><strong>Создана:</strong> {{ created_at_fmt }}</div>
+                <div class="mb-2"><strong>Обновлена:</strong> {{ updated_at_fmt }}</div>
+            </div>
+            <div class="col-md-6">
+                <h6 class="text-muted">Примечания</h6>
+                <div class="p-3 bg-light rounded" style="min-height: 60px;">{{ booking.notes or '—' }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

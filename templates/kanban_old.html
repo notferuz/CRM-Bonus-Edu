@@ -1,0 +1,761 @@
+{% extends "base.html" %}
+
+{% block title %}Kanban доска - Bonus Education CRM{% endblock %}
+
+{% block page_title %}
+    <i class="fas fa-columns me-3" style="color: var(--primary-color);"></i>
+    Kanban доска
+{% endblock %}
+
+{% block page_subtitle %}Управление записями с помощью перетаскивания{% endblock %}
+
+{% block content %}
+<!-- Фильтры и поиск -->
+<div class="card mb-4 fade-in-up">
+    <div class="card-body">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text" style="background: var(--primary-gradient); color: white; border: none;">
+                        <i class="fas fa-search"></i>
+                    </span>
+                    <input type="text" class="form-control" id="searchInput" placeholder="Поиск записей..." style="border: 2px solid rgba(102,126,234,0.1); border-left: none;">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex gap-2 flex-wrap">
+                    <button class="btn btn-outline-primary" onclick="refreshBoard()">
+                        <i class="fas fa-sync-alt me-2"></i>Обновить
+                    </button>
+                    <button class="btn btn-outline-success" onclick="addNewBooking()">
+                        <i class="fas fa-plus me-2"></i>Добавить запись
+                    </button>
+                    <a href="/bookings" class="btn btn-outline-info">
+                        <i class="fas fa-table me-2"></i>Табличный вид
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Kanban доска -->
+<div class="kanban-board" id="kanbanBoard">
+    <!-- Колонка: Новая заявка -->
+    <div class="kanban-column" data-status="new">
+        <div class="column-header">
+            <div class="column-title">
+                <i class="fas fa-plus-circle"></i>
+                Новая заявка
+            </div>
+            <div class="column-count" id="count-new">0</div>
+        </div>
+        <div class="column-content" ondrop="drop(event)" ondragover="allowDrop(event)">
+            {% for booking in bookings %}
+                {% if booking.get('status') == 'new' %}
+                <div class="kanban-card" draggable="true" ondragstart="drag(event)" data-booking-id="{{ booking.get('id') }}" data-status="{{ booking.get('status', 'new') }}">
+                    <div class="card-header">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="user-details">
+                                <h6 class="user-name">{{ booking.get('user_name', 'Не указано') }}</h6>
+                                <small class="user-phone">{{ booking.get('user_phone', 'Не указан') }}</small>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn btn-sm btn-outline-primary" onclick="viewBooking({{ booking.get('id') }})">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="course-info">
+                            <span class="badge bg-primary">
+                                <i class="fas fa-book-open me-1"></i>
+                                {{ booking.get('course_name', 'Не указано') }}
+                            </span>
+                        </div>
+                        <div class="booking-time">
+                            <i class="fas fa-clock me-1"></i>
+                            {{ booking.get('created_at', '')[:16] if booking.get('created_at') else 'Не указано' }}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Колонка: В обработке -->
+    <div class="kanban-column" data-status="processing">
+        <div class="column-header">
+            <div class="column-title">
+                <i class="fas fa-cogs"></i>
+                В обработке
+            </div>
+            <div class="column-count" id="count-processing">0</div>
+        </div>
+        <div class="column-content" ondrop="drop(event)" ondragover="allowDrop(event)">
+            {% for booking in bookings %}
+                {% if booking.get('status') == 'processing' %}
+                <div class="kanban-card" draggable="true" ondragstart="drag(event)" data-booking-id="{{ booking.get('id') }}" data-status="{{ booking.get('status', 'new') }}">
+                    <div class="card-header">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="user-details">
+                                <h6 class="user-name">{{ booking.get('user_name', 'Не указано') }}</h6>
+                                <small class="user-phone">{{ booking.get('user_phone', 'Не указан') }}</small>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn btn-sm btn-outline-primary" onclick="viewBooking({{ booking.get('id') }})">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="course-info">
+                            <span class="badge bg-primary">
+                                <i class="fas fa-book-open me-1"></i>
+                                {{ booking.get('course_name', 'Не указано') }}
+                            </span>
+                        </div>
+                        <div class="booking-time">
+                            <i class="fas fa-clock me-1"></i>
+                            {{ booking.get('created_at', '')[:16] if booking.get('created_at') else 'Не указано' }}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Колонка: Ожидает звонка -->
+    <div class="kanban-column" data-status="pending">
+        <div class="column-header">
+            <div class="column-title">
+                <i class="fas fa-phone"></i>
+                Ожидает звонка
+            </div>
+            <div class="column-count" id="count-pending">0</div>
+        </div>
+        <div class="column-content" ondrop="drop(event)" ondragover="allowDrop(event)">
+            {% for booking in bookings %}
+                {% if booking.get('status') == 'pending' %}
+                <div class="kanban-card" draggable="true" ondragstart="drag(event)" data-booking-id="{{ booking.get('id') }}" data-status="{{ booking.get('status', 'new') }}">
+                    <div class="card-header">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="user-details">
+                                <h6 class="user-name">{{ booking.get('user_name', 'Не указано') }}</h6>
+                                <small class="user-phone">{{ booking.get('user_phone', 'Не указан') }}</small>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn btn-sm btn-outline-primary" onclick="viewBooking({{ booking.get('id') }})">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="course-info">
+                            <span class="badge bg-primary">
+                                <i class="fas fa-book-open me-1"></i>
+                                {{ booking.get('course_name', 'Не указано') }}
+                            </span>
+                        </div>
+                        <div class="booking-time">
+                            <i class="fas fa-clock me-1"></i>
+                            {{ booking.get('created_at', '')[:16] if booking.get('created_at') else 'Не указано' }}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Колонка: Подтверждено -->
+    <div class="kanban-column" data-status="confirmed">
+        <div class="column-header">
+            <div class="column-title">
+                <i class="fas fa-check-circle"></i>
+                Подтверждено
+            </div>
+            <div class="column-count" id="count-confirmed">0</div>
+        </div>
+        <div class="column-content" ondrop="drop(event)" ondragover="allowDrop(event)">
+            {% for booking in bookings %}
+                {% if booking.get('status') == 'confirmed' %}
+                <div class="kanban-card" draggable="true" ondragstart="drag(event)" data-booking-id="{{ booking.get('id') }}" data-status="{{ booking.get('status', 'new') }}">
+                    <div class="card-header">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="user-details">
+                                <h6 class="user-name">{{ booking.get('user_name', 'Не указано') }}</h6>
+                                <small class="user-phone">{{ booking.get('user_phone', 'Не указан') }}</small>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn btn-sm btn-outline-primary" onclick="viewBooking({{ booking.get('id') }})">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="course-info">
+                            <span class="badge bg-primary">
+                                <i class="fas fa-book-open me-1"></i>
+                                {{ booking.get('course_name', 'Не указано') }}
+                            </span>
+                        </div>
+                        <div class="booking-time">
+                            <i class="fas fa-clock me-1"></i>
+                            {{ booking.get('created_at', '')[:16] if booking.get('created_at') else 'Не указано' }}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Колонка: Отменено -->
+    <div class="kanban-column" data-status="cancelled">
+        <div class="column-header">
+            <div class="column-title">
+                <i class="fas fa-times-circle"></i>
+                Отменено
+            </div>
+            <div class="column-count" id="count-cancelled">0</div>
+        </div>
+        <div class="column-content" ondrop="drop(event)" ondragover="allowDrop(event)">
+            {% for booking in bookings %}
+                {% if booking.get('status') == 'cancelled' %}
+                <div class="kanban-card" draggable="true" ondragstart="drag(event)" data-booking-id="{{ booking.get('id') }}" data-status="{{ booking.get('status', 'new') }}">
+                    <div class="card-header">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="user-details">
+                                <h6 class="user-name">{{ booking.get('user_name', 'Не указано') }}</h6>
+                                <small class="user-phone">{{ booking.get('user_phone', 'Не указан') }}</small>
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn btn-sm btn-outline-primary" onclick="viewBooking({{ booking.get('id') }})">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="course-info">
+                            <span class="badge bg-primary">
+                                <i class="fas fa-book-open me-1"></i>
+                                {{ booking.get('course_name', 'Не указано') }}
+                            </span>
+                        </div>
+                        <div class="booking-time">
+                            <i class="fas fa-clock me-1"></i>
+                            {{ booking.get('created_at', '')[:16] if booking.get('created_at') else 'Не указано' }}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Статистика Kanban доски -->
+<div class="row mt-5">
+    <div class="col-md-2 mb-3">
+        <div class="stat-card primary text-center">
+            <div class="stat-icon primary mx-auto mb-3">
+                <i class="fas fa-plus-circle"></i>
+            </div>
+            <div class="stat-number" id="total-new">0</div>
+            <div class="stat-label">Новые</div>
+        </div>
+    </div>
+    <div class="col-md-2 mb-3">
+        <div class="stat-card warning text-center">
+            <div class="stat-icon warning mx-auto mb-3">
+                <i class="fas fa-cogs"></i>
+            </div>
+            <div class="stat-number" id="total-processing">0</div>
+            <div class="stat-label">В обработке</div>
+        </div>
+    </div>
+    <div class="col-md-2 mb-3">
+        <div class="stat-card info text-center">
+            <div class="stat-icon info mx-auto mb-3">
+                <i class="fas fa-phone"></i>
+            </div>
+            <div class="stat-number" id="total-pending">0</div>
+            <div class="stat-label">Ожидают</div>
+        </div>
+    </div>
+    <div class="col-md-2 mb-3">
+        <div class="stat-card success text-center">
+            <div class="stat-icon success mx-auto mb-3">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="stat-number" id="total-confirmed">0</div>
+            <div class="stat-label">Подтверждены</div>
+        </div>
+    </div>
+    <div class="col-md-2 mb-3">
+        <div class="stat-card danger text-center">
+            <div class="stat-icon danger mx-auto mb-3">
+                <i class="fas fa-times-circle"></i>
+            </div>
+            <div class="stat-number" id="total-cancelled">0</div>
+            <div class="stat-label">Отменены</div>
+        </div>
+    </div>
+    <div class="col-md-2 mb-3">
+        <div class="stat-card info text-center">
+            <div class="stat-icon info mx-auto mb-3">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="stat-number" id="conversion-rate">0%</div>
+            <div class="stat-label">Конверсия</div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<style>
+    .kanban-board {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        padding: 20px 0;
+        min-height: 600px;
+    }
+
+    .kanban-column {
+        min-width: 300px;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        border: 1px solid #e5e7eb;
+        transition: all 0.2s ease;
+    }
+
+    .kanban-column:hover {
+        box-shadow: 0 4px 16px rgba(85,128,241,0.1);
+    }
+
+    .column-header {
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #5580f1;
+        color: white;
+        border-radius: 12px 12px 0 0;
+    }
+
+    .column-title {
+        font-weight: 600;
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        color: white;
+    }
+
+    .column-title i {
+        margin-right: 8px;
+        font-size: 1rem;
+    }
+
+    .column-count {
+        background: rgba(255,255,255,0.2);
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 0.8rem;
+        min-width: 24px;
+        text-align: center;
+    }
+
+    .column-content {
+        padding: 20px;
+        min-height: 500px;
+        transition: var(--transition);
+    }
+
+    .column-content.drag-over {
+        background: rgba(102,126,234,0.1);
+        border: 2px dashed var(--primary-color);
+        border-radius: var(--border-radius);
+    }
+
+    .kanban-card {
+        background: #ffffff;
+        border-radius: 20px;
+        margin-bottom: 12px;
+        border: 2px solid #0b6ffd;
+        transition: all 0.2s ease;
+        cursor: grab;
+        position: relative;
+        overflow: visible;
+    }
+
+    .kanban-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 16px rgba(11,111,253,0.15);
+        border-color: #0b6ffd;
+    }
+
+    .kanban-card:active {
+        cursor: grabbing;
+        transform: scale(1.02);
+    }
+
+    .kanban-card.dragging {
+        opacity: 0.7;
+        transform: rotate(2deg);
+        box-shadow: 0 8px 24px rgba(11,111,253,0.25);
+        z-index: 1000;
+    }
+
+    .card-header {
+        padding: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #5680f1;
+        border-radius: 20px 20px 0 0 !important;
+        margin: 0;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    .card-header:first-child {
+        border-radius: 20px 20px 0 0 !important;
+    }
+
+    .user-info {
+        display: flex;
+        align-items: center;
+        flex: 1;
+    }
+
+    .user-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.2);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 12px;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .user-details {
+        flex: 1;
+    }
+
+    .user-name {
+        margin: 0 0 2px 0;
+        font-weight: 600;
+        color: white;
+        font-size: 0.95rem;
+        line-height: 1.3;
+    }
+
+    .user-phone {
+        color: rgba(255,255,255,0.8);
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+
+    .card-actions {
+        display: flex;
+        gap: 4px;
+        opacity: 0;
+        transition: opacity 0.2s ease;
+    }
+
+    .kanban-card:hover .card-actions {
+        opacity: 1;
+    }
+
+    .card-actions .btn {
+        width: 28px;
+        height: 28px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        border: 1px solid rgba(255,255,255,0.3);
+        background: rgba(255,255,255,0.1);
+        color: white;
+        transition: all 0.2s ease;
+    }
+
+    .card-actions .btn:hover {
+        background: rgba(255,255,255,0.2);
+        color: white;
+        border-color: rgba(255,255,255,0.5);
+    }
+
+    .card-body {
+        padding: 16px;
+        overflow: visible;
+    }
+
+    .course-info {
+        margin-bottom: 8px;
+    }
+
+    .course-info .badge {
+        background: #5580f1;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 0.85rem;
+        display: block;
+        width: 100%;
+        word-wrap: break-word;
+        line-height: 1.3;
+        white-space: normal;
+        text-align: left;
+    }
+
+    .booking-time {
+        color: #374151;
+        font-size: 0.75rem;
+        font-weight: 500;
+    }
+
+    /* Единый стиль для всех карточек */
+    .kanban-card {
+        border: 2px solid #0b6ffd;
+    }
+
+    /* Минималистичные анимации */
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .kanban-card {
+        animation: slideIn 0.2s ease-out;
+    }
+
+    /* Простые эффекты для drag and drop */
+    .column-content.drag-over {
+        background: rgba(11,111,253,0.05);
+        border: 2px dashed #0b6ffd;
+        border-radius: 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .kanban-board {
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .kanban-column {
+            min-width: 100%;
+        }
+    }
+</style>
+
+<script>
+    let draggedElement = null;
+
+    // Drag and Drop функции
+    function allowDrop(ev) {
+        ev.preventDefault();
+        ev.currentTarget.classList.add('drag-over');
+    }
+
+    function drag(ev) {
+        draggedElement = ev.target;
+        ev.target.classList.add('dragging');
+        ev.dataTransfer.effectAllowed = 'move';
+        ev.dataTransfer.setData('text/html', ev.target.outerHTML);
+    }
+
+    function drop(ev) {
+        ev.preventDefault();
+        ev.currentTarget.classList.remove('drag-over');
+        
+        if (draggedElement) {
+            const newStatus = ev.currentTarget.closest('.kanban-column').dataset.status;
+            const bookingId = draggedElement.dataset.bookingId;
+            
+            // Обновляем статус на сервере
+            updateBookingStatus(bookingId, newStatus);
+            
+            // Перемещаем элемент в новую колонку
+            ev.currentTarget.appendChild(draggedElement);
+            draggedElement.classList.remove('dragging');
+            
+            // Обновляем счетчики
+            updateCounters();
+            
+            // Показываем уведомление
+            showNotification('Статус обновлен', 'success');
+        }
+        
+        draggedElement = null;
+    }
+
+    // Убираем drag-over класс при уходе мыши
+    document.addEventListener('dragleave', function(e) {
+        if (e.target.classList.contains('column-content')) {
+            e.target.classList.remove('drag-over');
+        }
+    });
+
+    // Обновление статуса на сервере
+    function updateBookingStatus(bookingId, newStatus) {
+        fetch(`/update_booking_status/${bookingId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `status=${newStatus}`
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Ошибка обновления статуса');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showNotification('Ошибка обновления статуса', 'error');
+        });
+    }
+
+    // Обновление счетчиков
+    function updateCounters() {
+        const statuses = ['new', 'processing', 'pending', 'confirmed', 'cancelled'];
+        
+        statuses.forEach(status => {
+            const count = document.querySelectorAll(`[data-status="${status}"] .kanban-card`).length;
+            document.getElementById(`count-${status}`).textContent = count;
+            document.getElementById(`total-${status}`).textContent = count;
+        });
+        
+        // Обновляем конверсию
+        const total = statuses.reduce((sum, status) => {
+            return sum + parseInt(document.getElementById(`total-${status}`).textContent);
+        }, 0);
+        
+        const confirmed = parseInt(document.getElementById('total-confirmed').textContent);
+        const conversion = total > 0 ? ((confirmed / total) * 100).toFixed(1) : 0;
+        document.getElementById('conversion-rate').textContent = conversion + '%';
+    }
+
+    // Поиск записей
+    document.getElementById('searchInput').addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const cards = document.querySelectorAll('.kanban-card');
+        
+        cards.forEach(card => {
+            const userName = card.querySelector('.user-name').textContent.toLowerCase();
+            const userPhone = card.querySelector('.user-phone').textContent.toLowerCase();
+            const courseName = card.querySelector('.badge').textContent.toLowerCase();
+            
+            if (userName.includes(searchTerm) || userPhone.includes(searchTerm) || courseName.includes(searchTerm)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+
+    // Дополнительные функции
+    function refreshBoard() {
+        location.reload();
+    }
+
+    function addNewBooking() {
+        // Здесь можно добавить модальное окно для создания новой записи
+        showNotification('Функция добавления записи в разработке', 'info');
+    }
+
+    function toggleView() {
+        // Переключение между Kanban и табличным видом
+        window.location.href = '/bookings';
+    }
+
+    function viewBooking(bookingId) {
+        // Просмотр детальной информации о записи
+        showNotification('Просмотр записи (функция в разработке)', 'info');
+    }
+
+    function showNotification(message, type) {
+        const notification = document.createElement('div');
+        notification.className = `alert alert-${type === 'success' ? 'success' : type === 'error' ? 'danger' : 'info'} position-fixed`;
+        notification.style.cssText = `
+            top: 20px; 
+            right: 20px; 
+            z-index: 9999; 
+            min-width: 200px; 
+            border-radius: 4px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border: none;
+            padding: 12px 16px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        `;
+        
+        notification.innerHTML = message;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 2000);
+    }
+
+    // Инициализация при загрузке страницы
+    document.addEventListener('DOMContentLoaded', function() {
+        updateCounters();
+        
+        // Анимация появления колонок
+        const columns = document.querySelectorAll('.kanban-column');
+        columns.forEach((column, index) => {
+            column.style.opacity = '0';
+            column.style.transform = 'translateY(30px)';
+            setTimeout(() => {
+                column.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                column.style.opacity = '1';
+                column.style.transform = 'translateY(0)';
+            }, index * 100);
+        });
+    });
+</script>
+{% endblock %}

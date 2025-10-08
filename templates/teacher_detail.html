@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block title %}Преподаватель - Bonus Education CRM{% endblock %}
+
+{% block page_title %}
+    <i class="fas fa-chalkboard-teacher me-3" style="color: var(--primary-color);"></i>
+    {{ teacher.name }}
+{% endblock %}
+
+{% block page_subtitle %}Детальная информация о преподавателе{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-4">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <span>Профиль преподавателя</span>
+                <div class="d-flex gap-2">
+                    <a href="/teachers" class="btn btn-sm btn-light">Назад</a>
+                    <button id="editToggleBtn" class="btn btn-sm btn-primary" type="button">
+                        <i class="fas fa-edit me-1"></i> Редактировать
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <form id="teacherForm" action="/update_teacher/{{ teacher.id }}" method="post">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label text-muted">ФИО</label>
+                                <div class="fw-semibold" data-view>{{ teacher.name }}</div>
+                                <input class="form-control d-none" data-edit type="text" name="name" value="{{ teacher.name }}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-muted">Номер / Ник TG</label>
+                                <div data-view>{{ teacher.telegram_contact or teacher.phone or '—' }}</div>
+                                <input class="form-control d-none" data-edit type="text" name="telegram_contact" value="{{ teacher.telegram_contact or '' }}">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-muted">Уровень сертификата</label>
+                                <div data-view>{{ teacher.certificate_level or '—' }}</div>
+                                <input class="form-control d-none" data-edit type="text" name="certificate_level" value="{{ teacher.certificate_level or '' }}">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-muted">Опыт работы</label>
+                                <div data-view>
+                                    {{ teacher.experience or (experience_years_display ~ ' лет') if experience_years_display else (teacher.experience_years ~ ' лет' if teacher.experience_years else '—') }}
+                                </div>
+                                <input class="form-control d-none" data-edit type="text" name="experience" value="{{ teacher.experience or '' }}" placeholder="например: 8 лет преподавания">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-muted">Кто преподаватель, чему учит</label>
+                                <div data-view>{{ teacher.specialization or '—' }}</div>
+                                <input class="form-control d-none" data-edit type="text" name="specialization" value="{{ teacher.specialization or '' }}">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label text-muted">Время занятий</label>
+                                <div data-view>{{ (teacher.work_time_start ~ ' - ' ~ teacher.work_time_end) if teacher.work_time_start and teacher.work_time_end else '—' }}</div>
+                                <div class="row g-2 d-none" data-edit>
+                                    <div class="col-6">
+                                        <input class="form-control" type="time" name="work_time_start" value="{{ teacher.work_time_start or '' }}">
+                                    </div>
+                                    <div class="col-6">
+                                        <input class="form-control" type="time" name="work_time_end" value="{{ teacher.work_time_end or '' }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-muted">Плюсы</label>
+                                <div data-view>{{ teacher.advantages or '—' }}</div>
+                                <textarea class="form-control d-none" data-edit name="advantages" rows="2">{{ teacher.advantages or '' }}</textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-muted">Минусы</label>
+                                <div data-view>{{ teacher.disadvantages or '—' }}</div>
+                                <textarea class="form-control d-none" data-edit name="disadvantages" rows="2">{{ teacher.disadvantages or '' }}</textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-muted">Языки</label>
+                                <div data-view>{{ teacher.languages|join(', ') if teacher.languages else '—' }}</div>
+                                <div class="d-none" data-edit>
+                                    {% set langs = teacher.languages or [] %}
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="languages" id="lang_en" value="Английский" {% if 'английский' in langs|map('lower')|list %}checked{% endif %}>
+                                        <label class="form-check-label" for="lang_en">Английский</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="languages" id="lang_tr" value="Турецкий" {% if 'турецкий' in langs|map('lower')|list %}checked{% endif %}>
+                                        <label class="form-check-label" for="lang_tr">Турецкий</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" name="languages" id="lang_kr" value="Корейский" {% if 'корейский' in langs|map('lower')|list %}checked{% endif %}>
+                                        <label class="form-check-label" for="lang_kr">Корейский</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-muted">Рейтинг</label>
+                                <div data-view>{{ teacher.rating if teacher.rating is not none else '—' }}</div>
+                                <input class="form-control d-none" data-edit type="number" step="0.1" name="rating" value="{{ teacher.rating or '' }}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-none mt-3 d-flex gap-2 align-items-center" id="editActions" data-edit-actions>
+                        <button class="btn btn-success" type="submit">
+                            <i class="fas fa-save me-1"></i> Сохранить
+                        </button>
+                        <button class="btn btn-outline-secondary" type="button" id="cancelEditBtn">Отмена</button>
+                        <button class="btn btn-outline-danger ms-auto" type="submit" formaction="/delete_teacher/{{ teacher.id }}" formmethod="post" onclick="return confirm('Удалить преподавателя?');">
+                            <i class="fas fa-trash me-1"></i> Удалить
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const editBtn = document.getElementById('editToggleBtn');
+        const cancelBtn = document.getElementById('cancelEditBtn');
+        const editElems = document.querySelectorAll('[data-edit]');
+        const viewElems = document.querySelectorAll('[data-view]');
+        const actions = document.getElementById('editActions');
+        let editing = false;
+
+        function setMode(isEdit) {
+            editing = isEdit;
+            editElems.forEach(el => el.classList.toggle('d-none', !isEdit));
+            viewElems.forEach(el => el.classList.toggle('d-none', isEdit));
+            actions.classList.toggle('d-none', !isEdit);
+            editBtn.innerHTML = isEdit ? '<i class="fas fa-eye me-1"></i> Просмотр' : '<i class="fas fa-edit me-1"></i> Редактировать';
+            editBtn.classList.toggle('btn-secondary', isEdit);
+            editBtn.classList.toggle('btn-primary', !isEdit);
+        }
+
+        editBtn?.addEventListener('click', function() { setMode(!editing); });
+        cancelBtn?.addEventListener('click', function() { setMode(false); });
+    })();
+</script>
+{% endblock %}
+

@@ -1,0 +1,204 @@
+{% extends "base.html" %}
+
+{% block title %}Дашборд - Bonus Education CRM{% endblock %}
+
+{% block page_title %}
+    <i class="fas fa-tachometer-alt me-3" style="color: var(--primary-color);"></i>
+                            Дашборд
+{% endblock %}
+
+{% block page_subtitle %}Обзор системы управления учебным центром{% endblock %}
+
+{% block content %}
+
+<!-- Статистические карточки -->
+<div class="row mb-5">
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="stat-card primary fade-in-up">
+                    <div class="stat-icon primary">
+                <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div class="stat-number">{{ stats.total_users }}</div>
+            <div class="stat-label">Активных пользователей</div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="stat-card success fade-in-up" style="animation-delay: 0.1s;">
+                    <div class="stat-icon success">
+                <i class="fas fa-calendar-plus"></i>
+                    </div>
+                    <div class="stat-number">{{ stats.total_bookings }}</div>
+            <div class="stat-label">Записей на курсы</div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="stat-card warning fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="stat-icon warning">
+                <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="stat-number">{{ stats.active_courses }}</div>
+            <div class="stat-label">Активных курсов</div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="stat-card info fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="stat-icon info">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="stat-number">{{ stats.active_teachers }}</div>
+                    <div class="stat-label">Преподавателей</div>
+        </div>
+    </div>
+</div>
+
+        <!-- Основной контент -->
+<div class="row">
+    <!-- Последние записи -->
+            <div class="col-lg-8 mb-4">
+        <div class="card fade-in-up" style="animation-delay: 0.4s;">
+            <div class="card-header">
+                        <h5 class="mb-0">
+                    <i class="fas fa-calendar-plus me-3"></i>
+                    Последние записи на курсы
+                        </h5>
+            </div>
+                    <div class="card-body p-0">
+                        {% if recent_bookings %}
+                <div class="table-responsive">
+                            <table class="table">
+                        <thead>
+                            <tr>
+                                <th><i class="fas fa-user me-2"></i>Пользователь</th>
+                                <th><i class="fas fa-book me-2"></i>Курс</th>
+                                <th><i class="fas fa-calendar me-2"></i>Дата</th>
+                                <th><i class="fas fa-info-circle me-2"></i>Статус</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for booking in recent_bookings %}
+                            <tr>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="activity-icon me-3">
+                                            <i class="fas fa-user-circle"></i>
+                                                </div>
+                                                <div>
+                                            <div class="fw-bold" style="color: var(--dark-color);">{{ booking.get('user_name', 'Не указано') }}</div>
+                                                    <small class="text-muted">{{ booking.get('user_phone', '') }}</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                    <span class="badge bg-primary">
+                                        <i class="fas fa-book-open me-1"></i>
+                                        {{ booking.get('course_name', 'Не указано') }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <i class="fas fa-clock me-2 text-muted"></i>
+                                    {{ booking.get('created_at', 'Не указано')[:10] }}
+                                </td>
+                                <td>
+                                    {% if booking.get('status') == 'confirmed' %}
+                                        <span class="badge bg-success">
+                                            <i class="fas fa-check me-1"></i>
+                                            Подтверждено
+                                        </span>
+                                    {% elif booking.get('status') == 'pending' %}
+                                        <span class="badge bg-warning">
+                                            <i class="fas fa-hourglass-half me-1"></i>
+                                            Ожидает
+                                        </span>
+                                    {% else %}
+                                        <span class="badge bg-secondary">
+                                            <i class="fas fa-times me-1"></i>
+                                            Отменено
+                                        </span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                        {% else %}
+                        <div class="empty-state">
+                            <i class="fas fa-calendar-times"></i>
+                            <h5>Пока нет записей</h5>
+                            <p>Когда появятся новые записи, они отобразятся здесь</p>
+                        </div>
+                        {% endif %}
+            </div>
+        </div>
+    </div>
+
+            <!-- Боковая панель -->
+            <div class="col-lg-4">
+    <!-- Быстрые действия -->
+        <div class="quick-actions mb-4 fade-in-up" style="animation-delay: 0.5s;">
+            <h5 class="mb-4" style="font-weight: 700; color: var(--dark-color);">
+                <i class="fas fa-bolt me-3" style="color: var(--warning-color);"></i>
+                        Быстрые действия
+                    </h5>
+                    <a href="/courses" class="quick-action-btn">
+                <i class="fas fa-plus-circle"></i>
+                        <div class="fw-bold">Добавить курс</div>
+                        <small>Создать новый курс турецкого языка</small>
+                    </a>
+                    <a href="/teachers" class="quick-action-btn">
+                        <i class="fas fa-user-plus"></i>
+                        <div class="fw-bold">Добавить преподавателя</div>
+                        <small>Зарегистрировать нового преподавателя</small>
+                    </a>
+                    <a href="/bookings" class="quick-action-btn">
+                <i class="fas fa-calendar-alt"></i>
+                        <div class="fw-bold">Просмотр записей</div>
+                        <small>Управление записями на курсы</small>
+                    </a>
+                    <a href="/analytics" class="quick-action-btn">
+                <i class="fas fa-chart-bar"></i>
+                        <div class="fw-bold">Аналитика</div>
+                        <small>Подробная статистика и отчеты</small>
+                    </a>
+                </div>
+
+                <!-- Активность -->
+        <div class="card fade-in-up" style="animation-delay: 0.6s;">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                    <i class="fas fa-comments me-3"></i>
+                            Последняя активность
+                        </h5>
+                    </div>
+                    <div class="card-body p-0">
+                        {% if recent_conversations %}
+                        {% for conversation in recent_conversations %}
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                        <i class="fas fa-comment-dots"></i>
+                            </div>
+                            <div class="activity-content">
+                                <div class="activity-title">{{ conversation.get('message', '')[:50] }}...</div>
+                        <div class="activity-time">
+                            <i class="fas fa-clock me-1"></i>
+                            {{ conversation.get('created_at', '')[:16] }}
+                        </div>
+            </div>
+        </div>
+                        {% endfor %}
+                        {% else %}
+                        <div class="empty-state">
+                            <i class="fas fa-comments"></i>
+                            <h6>Нет активности</h6>
+                    <p>Диалоги с AI-ботом появятся здесь</p>
+                        </div>
+                        {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

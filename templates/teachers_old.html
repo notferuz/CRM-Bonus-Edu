@@ -1,0 +1,256 @@
+{% extends "base.html" %}
+
+{% block title %}Преподаватели - Bonus Education CRM{% endblock %}
+
+{% block page_title %}
+    <i class="fas fa-chalkboard-teacher me-3" style="color: var(--primary-color);"></i>
+    Преподаватели
+{% endblock %}
+
+{% block page_subtitle %}Управление преподавателями и их специализациями{% endblock %}
+
+{% block content %}
+<!-- Список преподавателей -->
+<div class="row">
+    {% for teacher in teachers %}
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 fade-in-up" style="animation-delay: {{ loop.index0 * 0.1 }}s;">
+            <div class="card-body text-center">
+                <div class="stat-icon mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem;">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                
+                <h5 class="card-title mb-2" style="font-weight: 700; color: var(--dark-color);">
+                    {{ teacher.name }}
+                </h5>
+                
+                <div class="mb-3">
+                    <span class="badge bg-primary">
+                        <i class="fas fa-graduation-cap me-1"></i>
+                        {{ teacher.specialization }}
+                    </span>
+                </div>
+                
+                <div class="mb-3">
+                    <div class="d-flex align-items-center justify-content-center text-muted">
+                        <i class="fas fa-clock me-2" style="color: var(--warning-color);"></i>
+                        <span>Опыт: {{ teacher.experience }}</span>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <h6 class="mb-2" style="font-weight: 600; color: var(--dark-color);">
+                        <i class="fas fa-language me-2"></i>Языки:
+                    </h6>
+                    <div class="d-flex flex-wrap gap-1 justify-content-center">
+                        {% for language in teacher.languages %}
+                        <span class="badge bg-light text-dark">
+                            <i class="fas fa-globe me-1"></i>
+                            {{ language }}
+                        </span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer bg-transparent border-0">
+                <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary btn-sm flex-fill">
+                        <i class="fas fa-edit me-1"></i>
+                        Редактировать
+                    </button>
+                    <button class="btn btn-outline-success btn-sm flex-fill">
+                        <i class="fas fa-eye me-1"></i>
+                        Подробнее
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    
+    <!-- Кнопка добавления преподавателя -->
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 fade-in-up add-teacher-card" data-bs-toggle="modal" data-bs-target="#addTeacherModal" style="cursor: pointer; border: 2px dashed rgba(102,126,234,0.3); background: rgba(102,126,234,0.05);">
+            <div class="card-body d-flex flex-column align-items-center justify-content-center text-center" style="min-height: 300px;">
+                <div class="stat-icon mb-3" style="width: 80px; height: 80px; background: var(--primary-gradient);">
+                    <i class="fas fa-plus" style="font-size: 2rem;"></i>
+                </div>
+                <h5 class="mb-2" style="font-weight: 700; color: var(--dark-color);">Добавить преподавателя</h5>
+                <p class="text-muted mb-0">Зарегистрировать нового преподавателя</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if not teachers %}
+<div class="row">
+    <div class="col-12">
+        <div class="empty-state">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <h5>Пока нет преподавателей</h5>
+            <p>Добавьте первого преподавателя</p>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTeacherModal">
+                <i class="fas fa-plus me-2"></i>
+                Добавить преподавателя
+            </button>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Статистика преподавателей -->
+<div class="row mt-5">
+    <div class="col-md-3 mb-3">
+        <div class="stat-card primary text-center">
+            <div class="stat-icon primary mx-auto mb-3">
+                <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+            <div class="stat-number">{{ teachers|length }}</div>
+            <div class="stat-label">Всего преподавателей</div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="stat-card success text-center">
+            <div class="stat-icon success mx-auto mb-3">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="stat-number">{{ teachers|selectattr('is_active', 'equalto', True)|list|length }}</div>
+            <div class="stat-label">Активных</div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="stat-card warning text-center">
+            <div class="stat-icon warning mx-auto mb-3">
+                <i class="fas fa-clock"></i>
+            </div>
+            <div class="stat-number">0</div>
+            <div class="stat-label">Часов в неделю</div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="stat-card info text-center">
+            <div class="stat-icon info mx-auto mb-3">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="stat-number">4.8</div>
+            <div class="stat-label">Средний рейтинг</div>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно добавления преподавателя -->
+<div class="modal fade" id="addTeacherModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="border-radius: var(--border-radius-lg);">
+            <div class="modal-header" style="background: var(--primary-gradient); border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;">
+                <h5 class="modal-title text-white">
+                    <i class="fas fa-user-plus me-3"></i>
+                    Добавить преподавателя
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-4">
+                <form id="addTeacherForm">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-user me-2"></i>Имя преподавателя
+                            </label>
+                            <input type="text" class="form-control" name="name" placeholder="Например: Азиза Каримова" required style="border-radius: var(--border-radius);">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-graduation-cap me-2"></i>Специализация
+                            </label>
+                            <input type="text" class="form-control" name="specialization" placeholder="Например: Турецкий язык A1-A2" required style="border-radius: var(--border-radius);">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-clock me-2"></i>Опыт работы
+                            </label>
+                            <input type="text" class="form-control" name="experience" placeholder="Например: 5 лет" required style="border-radius: var(--border-radius);">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">
+                                <i class="fas fa-language me-2"></i>Языки (через запятую)
+                            </label>
+                            <input type="text" class="form-control" name="languages" placeholder="турецкий, узбекский, русский" required style="border-radius: var(--border-radius);">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer border-0 p-4">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                    <i class="fas fa-times me-2"></i>Отмена
+                </button>
+                <button type="button" class="btn btn-primary" onclick="addTeacher()">
+                    <i class="fas fa-save me-2"></i>Сохранить преподавателя
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function addTeacher() {
+        const form = document.getElementById('addTeacherForm');
+        const formData = new FormData(form);
+        
+        fetch('/api/add_teacher', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const modal = bootstrap.Modal.getInstance(document.getElementById('addTeacherModal'));
+                modal.hide();
+                showNotification('Преподаватель успешно добавлен!', 'success');
+                setTimeout(() => {
+                    location.reload();
+                }, 1000);
+            } else {
+                showNotification('Ошибка при добавлении преподавателя', 'error');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showNotification('Ошибка при добавлении преподавателя', 'error');
+        });
+    }
+
+    function showNotification(message, type) {
+        const notification = document.createElement('div');
+        notification.className = `alert alert-${type === 'success' ? 'success' : 'danger'} position-fixed`;
+        notification.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px; border-radius: var(--border-radius);';
+        notification.innerHTML = `
+            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'} me-2"></i>
+            ${message}
+        `;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+
+    // Анимация появления карточек
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.card');
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            setTimeout(() => {
+                card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, index * 100);
+        });
+    });
+</script>
+{% endblock %}

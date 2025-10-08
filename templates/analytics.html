@@ -1,0 +1,379 @@
+{% extends "base.html" %}
+
+{% block title %}Аналитика - Bonus Education CRM{% endblock %}
+
+{% block page_title %}
+    <i class="fas fa-chart-line me-3" style="color: var(--primary-color);"></i>
+    Аналитика и отчеты
+{% endblock %}
+
+{% block page_subtitle %}Подробная статистика и аналитика системы{% endblock %}
+
+{% block content %}
+<!-- Фильтры -->
+<div class="card mb-4 fade-in-up">
+    <div class="card-body">
+        <div class="d-flex gap-2 flex-wrap">
+            <button class="btn btn-outline-primary filter-btn active" data-period="7">
+                <i class="fas fa-calendar-week me-2"></i>7 дней
+            </button>
+            <button class="btn btn-outline-primary filter-btn" data-period="30">
+                <i class="fas fa-calendar-alt me-2"></i>30 дней
+            </button>
+            <button class="btn btn-outline-primary filter-btn" data-period="90">
+                <i class="fas fa-calendar me-2"></i>3 месяца
+            </button>
+            <button class="btn btn-outline-primary filter-btn" data-period="365">
+                <i class="fas fa-calendar-check me-2"></i>Год
+            </button>
+        </div>
+            </div>
+        </div>
+
+        <!-- Основные метрики -->
+<div class="row mb-5">
+            <div class="col-xl-3 col-md-6 mb-3">
+        <div class="stat-card primary text-center fade-in-up">
+            <div class="stat-icon primary mx-auto mb-3">
+                <i class="fas fa-user-friends"></i>
+                    </div>
+            <div class="stat-number">{{ stats.total_users }}</div>
+            <div class="stat-label">Всего пользователей</div>
+                </div>
+            </div>
+            
+            <div class="col-xl-3 col-md-6 mb-3">
+        <div class="stat-card success text-center fade-in-up" style="animation-delay: 0.1s;">
+            <div class="stat-icon success mx-auto mb-3">
+                <i class="fas fa-calendar-plus"></i>
+                    </div>
+            <div class="stat-number">{{ stats.total_bookings }}</div>
+            <div class="stat-label">Записей на курсы</div>
+                </div>
+            </div>
+            
+            <div class="col-xl-3 col-md-6 mb-3">
+        <div class="stat-card warning text-center fade-in-up" style="animation-delay: 0.2s;">
+            <div class="stat-icon warning mx-auto mb-3">
+                        <i class="fas fa-comments"></i>
+                    </div>
+            <div class="stat-number">{{ stats.total_conversations }}</div>
+            <div class="stat-label">Диалогов с AI</div>
+                </div>
+            </div>
+            
+            <div class="col-xl-3 col-md-6 mb-3">
+        <div class="stat-card info text-center fade-in-up" style="animation-delay: 0.3s;">
+            <div class="stat-icon info mx-auto mb-3">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+            <div class="stat-number">{{ "%.1f"|format((stats.total_bookings / stats.total_users * 100) if stats.total_users > 0 else 0) }}%</div>
+            <div class="stat-label">Конверсия</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Графики -->
+<div class="row mb-5">
+            <div class="col-lg-8">
+        <div class="card fade-in-up" style="animation-delay: 0.4s;">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-chart-line me-3"></i>
+                        Динамика записей
+                    </h5>
+            </div>
+            <div class="card-body">
+                <div class="chart-container" style="position: relative; height: 300px;">
+                        <canvas id="bookingsChart"></canvas>
+                </div>
+            </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+        <div class="card fade-in-up" style="animation-delay: 0.5s;">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-chart-pie me-3"></i>
+                        Популярные курсы
+                    </h5>
+            </div>
+            <div class="card-body">
+                <div class="chart-container" style="position: relative; height: 300px;">
+                        <canvas id="coursesChart"></canvas>
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Детальная статистика -->
+        <div class="row">
+            <div class="col-lg-6">
+        <div class="card fade-in-up" style="animation-delay: 0.6s;">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-calendar-check me-3"></i>
+                        Последние записи
+                    </h5>
+            </div>
+            <div class="card-body p-0">
+                    {% if recent_bookings %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                <th><i class="fas fa-user me-2"></i>Пользователь</th>
+                                <th><i class="fas fa-book me-2"></i>Курс</th>
+                                <th><i class="fas fa-calendar me-2"></i>Дата</th>
+                                <th><i class="fas fa-info-circle me-2"></i>Статус</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for booking in recent_bookings[:10] %}
+                                <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="activity-icon me-2">
+                                            <i class="fas fa-user-circle"></i>
+                                        </div>
+                                        <span>{{ booking.get('user_name', 'Не указано') }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="badge bg-primary">
+                                        <i class="fas fa-book-open me-1"></i>
+                                        {{ booking.get('course_name', 'Не указано') }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <i class="fas fa-clock me-2 text-muted"></i>
+                                    {{ booking.get('created_at', 'Не указано')[:10] }}
+                                    </td>
+                                <td>
+                                    {% if booking.get('status') == 'confirmed' %}
+                                        <span class="badge bg-success">
+                                            <i class="fas fa-check me-1"></i>
+                                            Подтверждена
+                                        </span>
+                                    {% elif booking.get('status') == 'pending' %}
+                                        <span class="badge bg-warning">
+                                            <i class="fas fa-hourglass-half me-1"></i>
+                                            Ожидает
+                                        </span>
+                                    {% else %}
+                                        <span class="badge bg-secondary">
+                                            <i class="fas fa-question me-1"></i>
+                                            {{ booking.get('status', 'pending') }}
+                                        </span>
+                                    {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="empty-state">
+                        <i class="fas fa-calendar-times"></i>
+                        <h6>Нет записей</h6>
+                        <p>Записи появятся здесь</p>
+                    </div>
+                    {% endif %}
+            </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+        <div class="card fade-in-up" style="animation-delay: 0.7s;">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-user-friends me-3"></i>
+                        Активные пользователи
+                    </h5>
+            </div>
+            <div class="card-body p-0">
+                    {% if active_users %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                <th><i class="fas fa-user me-2"></i>Пользователь</th>
+                                <th><i class="fas fa-clock me-2"></i>Последняя активность</th>
+                                <th><i class="fas fa-info-circle me-2"></i>Статус</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for user in active_users[:10] %}
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                        <div class="activity-icon me-2">
+                                            <i class="fas fa-user-circle"></i>
+                                        </div>
+                                        <span>{{ user.get('first_name', 'Не указано') }} {{ user.get('last_name', '') }}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <i class="fas fa-clock me-2 text-muted"></i>
+                                    {{ user.get('last_activity', 'Не указано')[:16] if user.get('last_activity') else 'Не указано' }}
+                                    </td>
+                                    <td>
+                                    <span class="badge bg-success">
+                                        <i class="fas fa-check-circle me-1"></i>
+                                        Активен
+                                    </span>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="empty-state">
+                    <i class="fas fa-user-friends"></i>
+                        <h6>Нет активных пользователей</h6>
+                        <p>Активные пользователи появятся здесь</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        // График динамики записей
+        const bookingsCtx = document.getElementById('bookingsChart').getContext('2d');
+        new Chart(bookingsCtx, {
+            type: 'line',
+            data: {
+                labels: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
+                datasets: [{
+                    label: 'Записи',
+                    data: [12, 19, 3, 5, 2, 3, 8],
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                    tension: 0.4,
+                fill: true,
+                borderWidth: 3,
+                pointBackgroundColor: '#667eea',
+                pointBorderColor: '#ffffff',
+                pointBorderWidth: 2,
+                pointRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(0,0,0,0.1)'
+                    }
+                },
+                x: {
+                    grid: {
+                        color: 'rgba(0,0,0,0.1)'
+                    }
+                    }
+                }
+            }
+        });
+
+        // График популярных курсов
+        const coursesCtx = document.getElementById('coursesChart').getContext('2d');
+        new Chart(coursesCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['A1', 'A2', 'B1', 'B2', 'C1', 'Индивидуальные'],
+                datasets: [{
+                    data: [30, 25, 20, 15, 8, 2],
+                    backgroundColor: [
+                        '#667eea',
+                        '#764ba2',
+                    '#4facfe',
+                    '#43e97b',
+                    '#fa709a',
+                    '#2c3e50'
+                ],
+                borderWidth: 0,
+                hoverOffset: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                    position: 'bottom',
+                    labels: {
+                        padding: 20,
+                        usePointStyle: true
+                    }
+                    }
+                }
+            }
+        });
+
+        // Фильтры по периодам
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.classList.remove('active');
+                b.classList.add('btn-outline-primary');
+            });
+            
+                this.classList.add('active');
+            this.classList.remove('btn-outline-primary');
+                
+                const period = this.dataset.period;
+                // Здесь можно добавить логику обновления данных
+                console.log('Selected period:', period);
+            });
+        });
+
+        // Анимация появления карточек
+        document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.card, .stat-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                card.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+
+        // Обновление данных каждые 30 секунд
+        setInterval(function() {
+            fetch('/api/analytics')
+                .then(response => response.json())
+                .then(data => {
+                    // Обновляем метрики
+                document.querySelectorAll('.stat-number').forEach((el, index) => {
+                        const values = [
+                            data.stats.total_users,
+                            data.stats.total_bookings,
+                            data.stats.total_conversations,
+                            ((data.stats.total_bookings / data.stats.total_users * 100) if data.stats.total_users > 0 else 0).toFixed(1) + '%'
+                        ];
+                        if (values[index] !== undefined) {
+                            el.textContent = values[index];
+                        }
+                    });
+            })
+            .catch(error => console.log('Ошибка обновления аналитики:', error));
+        }, 30000);
+    </script>
+{% endblock %}

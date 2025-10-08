@@ -1,0 +1,12 @@
+python-telegram-bot==21.0.1
+google-generativeai==0.3.2
+python-dotenv==1.0.0
+# Upgraded to be compatible with Python 3.11 and Pydantic v1
+fastapi==0.95.2
+starlette==0.27.0
+uvicorn==0.22.0
+jinja2==3.1.2
+python-multipart==0.0.5
+pydantic==1.10.13
+typing-extensions>=4.7.1
+aiohttp==3.9.1

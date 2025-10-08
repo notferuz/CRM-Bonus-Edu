@@ -1,0 +1,431 @@
+{% extends "base.html" %}
+
+{% block title %}Преподаватели - Bonus Education CRM{% endblock %}
+
+{% block page_title %}
+    <i class="fas fa-chalkboard-teacher me-3" style="color: #5580f1;"></i>
+    Преподаватели
+{% endblock %}
+
+{% block page_subtitle %}Управление преподавателями и их специализациями{% endblock %}
+
+{% block content %}
+
+<!-- Кнопки действий -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex gap-2">
+                <button class="btn btn-outline-success" onclick="exportToCSV('teachers')">
+                    <i class="fas fa-file-csv me-2"></i>Экспорт преподавателей
+                </button>
+            </div>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTeacherModal">
+                <i class="fas fa-plus me-2"></i>Добавить преподавателя
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Список преподавателей -->
+<div class="row">
+    {% for teacher in teachers %}
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 fade-in-up teacher-card" style="animation-delay: {{ loop.index0 * 0.1 }}s;">
+            <div class="card-header border-0 py-3">
+                <div class="d-flex align-items-center">
+                    <div class="teacher-avatar me-3">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                        <h5 class="mb-0 text-white">{{ teacher.name }}</h5>
+                        <small class="text-white-50">{{ teacher.specialization }}</small>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-6">
+                        <div class="teacher-info">
+                            <i class="fas fa-clock text-muted me-2"></i>
+                            <span class="text-muted">Опыт:</span>
+                            <strong>{{ teacher.experience_years or teacher.experience or 'Не указан' }}</strong>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="teacher-info">
+                            <i class="fas fa-phone text-muted me-2"></i>
+                            <span class="text-muted">Телефон:</span>
+                            <strong>{{ teacher.phone or 'Не указан' }}</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <div class="teacher-info">
+                        <i class="fas fa-envelope text-muted me-2"></i>
+                        <span class="text-muted">Email:</span>
+                        <strong>{{ teacher.email or 'Не указан' }}</strong>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <h6 class="mb-2">
+                        <i class="fas fa-language me-2"></i>Языки:
+                    </h6>
+                    <div class="d-flex flex-wrap gap-1">
+                        {% if teacher.languages %}
+                            {% if teacher.languages is string %}
+                                {% for language in teacher.languages.split(',') %}
+                                <span class="badge bg-light text-dark">
+                                    <i class="fas fa-globe me-1"></i>
+                                    {{ language.strip() }}
+                                </span>
+                                {% endfor %}
+                            {% else %}
+                                {% for language in teacher.languages %}
+                                <span class="badge bg-light text-dark">
+                                    <i class="fas fa-globe me-1"></i>
+                                    {{ language }}
+                                </span>
+                                {% endfor %}
+                            {% endif %}
+                        {% else %}
+                            <span class="text-muted">Не указаны</span>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <h6 class="mb-2">
+                        <i class="fas fa-graduation-cap me-2"></i>Образование:
+                    </h6>
+                    <p class="text-muted mb-0">{{ teacher.bio or teacher.education or 'Не указано' }}</p>
+                </div>
+            </div>
+            
+            <div class="card-footer bg-transparent border-0">
+                <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary btn-sm flex-fill" onclick="viewTeacher({{ teacher.id }})">
+                        <i class="fas fa-eye me-1"></i>Подробнее
+                    </button>
+                    <button class="btn btn-outline-success btn-sm flex-fill" onclick="editTeacher({{ teacher.id }})">
+                        <i class="fas fa-edit me-1"></i>Редактировать
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% if not teachers %}
+<div class="row">
+    <div class="col-12">
+        <div class="empty-state">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <h5>Пока нет преподавателей</h5>
+            <p>Добавьте первого преподавателя</p>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addTeacherModal">
+                <i class="fas fa-plus me-2"></i>
+                Добавить преподавателя
+            </button>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Статистика преподавателей -->
+<div class="row mt-5">
+    <div class="col-md-3 mb-3">
+        <div class="stat-card text-center">
+            <div class="stat-icon mx-auto mb-3">
+                <i class="fas fa-chalkboard-teacher"></i>
+            </div>
+            <div class="stat-number">{{ teachers|length }}</div>
+            <div class="stat-label">Всего преподавателей</div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="stat-card text-center">
+            <div class="stat-icon mx-auto mb-3">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="stat-number">{{ teachers|selectattr('is_active', 'equalto', True)|list|length }}</div>
+            <div class="stat-label">Активных</div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="stat-card text-center">
+            <div class="stat-icon mx-auto mb-3">
+                <i class="fas fa-clock"></i>
+            </div>
+            <div class="stat-number">0</div>
+            <div class="stat-label">Часов в неделю</div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="stat-card text-center">
+            <div class="stat-icon mx-auto mb-3">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="stat-number">4.8</div>
+            <div class="stat-label">Средний рейтинг</div>
+        </div>
+    </div>
+</div>
+
+<!-- Модальное окно добавления преподавателя -->
+<div class="modal fade" id="addTeacherModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="border-radius: 16px;">
+            <div class="modal-header border-0 py-3">
+                <h5 class="modal-title" style="color: #5580f1;">
+                    <i class="fas fa-user-plus me-3"></i>
+                    Добавить преподавателя
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form action="/add_teacher" method="post">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Имя и фамилия *</label>
+                            <input type="text" class="form-control" name="name" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Специализация *</label>
+                            <input type="text" class="form-control" name="specialization" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Телефон</label>
+                            <input type="tel" class="form-control" name="phone">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Опыт работы</label>
+                            <input type="text" class="form-control" name="experience" placeholder="например: 5 лет">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Часов в неделю</label>
+                            <input type="number" class="form-control" name="hours_per_week" min="0" max="40">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Образование</label>
+                        <textarea class="form-control" name="education" rows="2"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Языки (через запятую)</label>
+                        <input type="text" class="form-control" name="languages" placeholder="например: Русский, Английский, Немецкий">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Рейтинг (1-5)</label>
+                        <input type="number" class="form-control" name="rating" min="1" max="5" step="0.1">
+                    </div>
+                </div>
+                <div class="modal-footer border-0">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-2"></i>Сохранить
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Стили для карточек преподавателей */
+    .teacher-card {
+        border-radius: 16px;
+        border: 1px solid #e5e7eb;
+        transition: all 0.3s ease;
+    }
+
+    .teacher-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(85, 128, 241, 0.15);
+        border-color: #5580f1;
+    }
+
+    .teacher-card .card-header {
+        background: linear-gradient(135deg, #5580f1 0%, #4a6fd8 100%);
+        border-radius: 16px 16px 0 0;
+    }
+
+    .teacher-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+    }
+
+    .teacher-info {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+    }
+
+    /* Статистические карточки */
+    .stat-card {
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        border: 1px solid #e5e7eb;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(85, 128, 241, 0.15);
+        border-color: #5580f1;
+    }
+
+    .stat-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #5580f1 0%, #4a6fd8 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #5580f1;
+        line-height: 1;
+        margin-bottom: 4px;
+    }
+
+    .stat-label {
+        color: #6b7280;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+
+    /* Анимации */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .fade-in-up {
+        animation: fadeInUp 0.6s ease-out;
+    }
+
+    /* Empty state */
+    .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+        color: #6b7280;
+    }
+
+    .empty-state i {
+        font-size: 4rem;
+        color: #d1d5db;
+        margin-bottom: 20px;
+    }
+
+    .empty-state h5 {
+        color: #374151;
+        margin-bottom: 10px;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 768px) {
+        .teacher-card .card-body {
+            padding: 16px;
+        }
+        
+        .stat-card {
+            padding: 16px;
+        }
+        
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+
+<script>
+    // Функция просмотра преподавателя
+    function viewTeacher(teacherId) {
+        alert('Функция просмотра преподавателя ID: ' + teacherId);
+    }
+
+    // Функция редактирования преподавателя
+    function editTeacher(teacherId) {
+        alert('Функция редактирования преподавателя ID: ' + teacherId);
+    }
+
+    // Функция экспорта в CSV
+    function exportToCSV(type) {
+        showNotification('Подготовка файла...', 'info');
+        
+        const link = document.createElement('a');
+        link.href = `/export/${type}`;
+        link.download = `${type}_export.csv`;
+        link.click();
+        
+        setTimeout(() => {
+            showNotification('Файл успешно скачан!', 'success');
+        }, 1000);
+    }
+
+    // Функция уведомлений
+    function showNotification(message, type) {
+        const notification = document.createElement('div');
+        notification.className = `alert alert-${type === 'success' ? 'success' : type === 'error' ? 'danger' : 'info'} position-fixed`;
+        notification.style.cssText = `
+            top: 20px; 
+            right: 20px; 
+            z-index: 9999; 
+            min-width: 200px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: none;
+            padding: 12px 16px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        `;
+        
+        notification.innerHTML = message;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+</script>
+
+{% endblock %}
